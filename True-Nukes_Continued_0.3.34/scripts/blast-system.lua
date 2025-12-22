@@ -1,6 +1,6 @@
 local function fire_damage_entity(surface, entity, force, cause, killPlanes)
   if (entity.valid and entity.position and (killPlanes or entity.type ~= "car")) then
-    if(not (entity.prototype.max_health == 0)) then
+    if(not (entity.prototype.get_max_health(entity.quality) == 0)) then
       -- For thermobarics, with the blast wave carrying the fire
       local type = entity.type
       if (type == "unit" or type == "car" or type == "spider-vehicle") then
@@ -23,7 +23,7 @@ local function fire_damage_entity(surface, entity, force, cause, killPlanes)
           if(entity.valid)then
             entity.damage(40, force, "physical", cause)
           end
-          if(entity.valid and entity.type == "car" and (entity.prototype.max_health >= 1000 or fireShield)) then
+          if(entity.valid and entity.type == "car" and (entity.prototype.get_max_health(entity.quality) >= 1000 or fireShield)) then
             entity.damage(80, force, "fire", cause)
           end
         else
@@ -31,7 +31,7 @@ local function fire_damage_entity(surface, entity, force, cause, killPlanes)
           if(entity.valid)then
             entity.damage(40, force, "physical")
           end
-          if(entity.valid and entity.type == "car" and (entity.prototype.max_health >= 1000 or fireShield)) then
+          if(entity.valid and entity.type == "car" and (entity.prototype.get_max_health(entity.quality) >= 1000 or fireShield)) then
             entity.damage(80, force, "fire")
           end
         end
@@ -257,7 +257,7 @@ local function move_blast(i,blast,pastEHits, corpseMap)
       local xdif = ePos.x-cx
       local ydif = ePos.y-cy
       local distSq = xdif*xdif + ydif*ydif
-      if(distSq <= blastSq and distSq>blastInnerSq and entity.valid and entity.prototype.max_health ~= 0
+      if(distSq <= blastSq and distSq>blastInnerSq and entity.valid and entity.prototype.get_max_health(entity.quality) ~= 0
         and ePos.x>=area[1][1] and ePos.x<area[2][1] and ePos.y>=area[1][2] and ePos.y<area[2][2]) then
 
         damage_entity(surface, distSq, ePos, blast.pow, blast.fire, blast.damage_init, blast.blast_min_damage, entity, blast.force, blast.cause, corpseMap, deathStatsForTrees, deathStatsForOthers)
@@ -326,7 +326,7 @@ local function chunk_loaded(chunkLoaderStruct, surface_index, originPos, chunkPo
       local xdif = ePos.x-cx
       local ydif = ePos.y-cy
       local distSq = xdif*xdif + ydif*ydif
-      if(distSq <= blastSq and entity.prototype.max_health ~= 0
+      if(distSq <= blastSq and entity.prototype.get_max_health(entity.quality) ~= 0
         and ePos.x>=x and ePos.x<x+32 and ePos.y>=y and ePos.y<y+32 and (killPlanes or entity.type ~= "car")) then
         damage_entity(game.surfaces[surface_index], distSq, ePos, fireballSq, false, init_blast, blast_min_damage, entity, force, cause, corpseMap, false, false)
       end

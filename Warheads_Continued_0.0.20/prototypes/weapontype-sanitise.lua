@@ -234,6 +234,7 @@ local function sanitseWeapontype(weapontype)
 
   result.item.ammo_category = weapontype.ammo_category
   if(item.ammo_type and (result.item.ammo_category == nil)) then result.item.ammo_category = item.ammo_type.category end
+  if(item.ammo_category and (result.item.ammo_category == nil)) then result.item.ammo_category = item.ammo_category end
 
   -- default action creators
   if not result.item.action_creator then
