@@ -181,8 +181,8 @@ data.raw.technology["atomic-bomb"].prerequisites = {"basic-atomic-weapons", "pro
 
 data.raw.technology["atomic-bomb"].unit.count = 1
 if(data.raw.tool["test-pack-atomic-20t-1"]) then
-  --data.raw.technology["atomic-bomb"].research_trigger = {type = "scripted"}
-  data.raw.technology["atomic-bomb"].unit.ingredients = {{"test-pack-atomic-20t-1", 1}}
+  data.raw.technology["atomic-bomb"].research_trigger = {type = "scripted", trigger_description = "Detonate a 20t test pack"}
+  --data.raw.technology["atomic-bomb"].unit.ingredients = {{"test-pack-atomic-20t-1", 1}}
 else
   data.raw.technology["atomic-bomb"].unit.ingredients = no_prod
 end
@@ -256,13 +256,13 @@ if(hasLarge) then
     },
   }
   if(data.raw.tool["test-pack-atomic-500t-1"]) then
-    --data.raw.technology["full-fission-atomics"].research_trigger = {type = "scripted"}
-    data.raw.technology["full-fission-atomics"].unit =
-      {
-        count = 1,
-        ingredients = {{"test-pack-atomic-500t-1", 1}},
-        time = 1
-      }
+    data.raw.technology["full-fission-atomics"].research_trigger = {type = "scripted", trigger_description = "Detonate a 500t test pack"}
+    --data.raw.technology["full-fission-atomics"].unit =
+    --  {
+    --    count = 1,
+    --    ingredients = {{"test-pack-atomic-500t-1", 1}},
+    --    time = 1
+    --  }
   end
 end
 if(hasMedium or hasLarge or hasCompact15kt) then
@@ -415,11 +415,11 @@ if(hasCompact15kt or hasCompactLarge) then
   local canDoTest = true
 
   if(data.raw.tool["test-pack-atomic-15kt-1"]) then
-    --data.raw.technology["compact-full-fission-weapons"].research_trigger = {type = "scripted"}
-    table.insert(data.raw.technology["compact-full-fission-weapons"].unit.ingredients, {"test-pack-atomic-15kt-1", 1})
+    data.raw.technology["compact-full-fission-weapons"].research_trigger = {type = "scripted", trigger_description = "Detonate a 15kt test pack"}
+    --table.insert(data.raw.technology["compact-full-fission-weapons"].unit.ingredients, {"test-pack-atomic-15kt-1", 1})
   elseif(data.raw.tool["test-pack-atomic-1kt-1"])then
-    --data.raw.technology["compact-full-fission-weapons"].research_trigger = {type = "scripted"}
-    table.insert(data.raw.technology["compact-full-fission-weapons"].unit.ingredients, {"test-pack-atomic-1kt-1", 1})
+    data.raw.technology["compact-full-fission-weapons"].research_trigger = {type = "scripted", trigger_description = "Detonate a 1kt test pack"}
+    --table.insert(data.raw.technology["compact-full-fission-weapons"].unit.ingredients, {"test-pack-atomic-1kt-1", 1})
   else
     canDoTest = false
   end
@@ -427,8 +427,8 @@ if(hasCompact15kt or hasCompactLarge) then
     table.insert(data.raw.technology["compact-full-fission-weapons"].prerequisites, "compact-californium-weapons")
 
     if(data.raw.tool["test-pack-atomic-20t-3"] and canDoTest) then
-      --data.raw.technology["compact-full-fission-weapons"].research_trigger = {type = "scripted"}
-      table.insert(data.raw.technology["compact-full-fission-weapons"].unit.ingredients, {"test-pack-atomic-20t-3", 1})
+      data.raw.technology["compact-full-fission-weapons"].research_trigger = {type = "scripted", trigger_description = "Detonate a compact 20t test pack"}
+      --table.insert(data.raw.technology["compact-full-fission-weapons"].unit.ingredients, {"test-pack-atomic-20t-3", 1})
     end
   elseif(data.raw.technology["compact-full-fission-weapons"]) then
     if(nuke_materials.smallBoomMaterial == "californium") then
@@ -553,13 +553,13 @@ if(hasCompactFusion) then
   }
 
   if(data.raw.tool["test-pack-atomic-2-stage-100kt-1"]) then
-    --data.raw.technology["compact-fusion-weapons"].research_trigger = {type = "scripted"}
-    data.raw.technology["compact-fusion-weapons"].unit =
-      {
-        count = 1,
-        ingredients = {{"test-pack-atomic-2-stage-100kt-1", 1}},
-        time = 1
-      }
+    data.raw.technology["compact-fusion-weapons"].research_trigger = {type = "scripted", trigger_description = "Detonate a 100kt test pack"}
+    --data.raw.technology["compact-fusion-weapons"].unit =
+    --  {
+    --    count = 1,
+    --    ingredients = {{"test-pack-atomic-2-stage-100kt-1", 1}},
+    --    time = 1
+    --  }
   end
 end
 

@@ -21,6 +21,7 @@ local function reevaluateResearch(force)
     end
     if(ingCount ~= 0) then -- just to really make sure we don't mess up any other mods...
       if(matchCount == ingCount) then
+        --force.script_trigger_research()
         force.current_research.researched = true;
     else
       force.research_progress = (matchCount + 0.0)/ingCount

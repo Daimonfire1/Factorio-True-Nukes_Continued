@@ -71,10 +71,10 @@ local hasCompactFusion = settings.startup["enable-compact-fusion"].value and has
 data.raw.technology["basic-atomic-weapons"].unit.ingredients = basic
 
 if(hasMedium and settings.startup["enable-nuclear-tests"].value) then
-  --data.raw.technology["atomic-bomb"].research_trigger = {type = "scripted"}
-  data.raw.technology["atomic-bomb"].unit.ingredients = {{"test-pack-atomic-20t-1", 1}}
-  data.raw.technology["atomic-bomb"].unit.count = 1
-  data.raw.technology["atomic-bomb"].unit.time = 1
+  data.raw.technology["atomic-bomb"].research_trigger = {type = "scripted", trigger_description = "Detonate a 20t test pack"}
+  --data.raw.technology["atomic-bomb"].unit.ingredients = {{"test-pack-atomic-20t-1", 1}}
+  --data.raw.technology["atomic-bomb"].unit.count = 1
+  --data.raw.technology["atomic-bomb"].unit.time = 1
 else
   data.raw.technology["atomic-bomb"].unit.ingredients = basic
 end
@@ -94,13 +94,13 @@ if(settings.startup["enable-large-atomics"].value) then
     time = 45
   }
   if(settings.startup["enable-nuclear-tests"].value) then
-    --data.raw.technology["full-fission-atomics"].research_trigger = {type = "scripted"}
-    data.raw.technology["full-fission-atomics"].unit =
-      {
-        count = 1,
-        ingredients = {{"test-pack-atomic-500t-1", 1}},
-        time = 1
-      }
+    data.raw.technology["full-fission-atomics"].research_trigger = {type = "scripted", trigger_description = "Detonate a 500t test pack"}
+    --data.raw.technology["full-fission-atomics"].unit =
+    --  {
+    --    count = 1,
+    --    ingredients = {{"test-pack-atomic-500t-1", 1}},
+    --    time = 1
+    --  }
   end
 end
 if(data.raw.technology["artillery-atomics"]) then
@@ -130,16 +130,16 @@ if(data.raw.technology["compact-full-fission-weapons"]) then
   data.raw.technology["compact-full-fission-weapons"].unit.ingredients = {}
   if(settings.startup["enable-nuclear-tests"].value) then
     if(settings.startup["enable-15kt"].value) then
-      data.raw.technology["atomic-bomb"].research_trigger = {type = "scripted"}
-      --data.raw.technology["compact-full-fission-weapons"].research_trigger = {type = "scripted"}
-      table.insert(data.raw.technology["compact-full-fission-weapons"].unit.ingredients, {"test-pack-atomic-15kt-1", 1})
+      --data.raw.technology["atomic-bomb"].research_trigger = {type = "scripted"} How did this get here?
+      data.raw.technology["compact-full-fission-weapons"].research_trigger = {type = "scripted", trigger_description = "Detonate a 15kt test pack"}
+      --table.insert(data.raw.technology["compact-full-fission-weapons"].unit.ingredients, {"test-pack-atomic-15kt-1", 1})
     else
-      --data.raw.technology["compact-full-fission-weapons"].research_trigger = {type = "scripted"}
-      table.insert(data.raw.technology["compact-full-fission-weapons"].unit.ingredients, {"test-pack-atomic-1kt-1", 1})
+      data.raw.technology["compact-full-fission-weapons"].research_trigger = {type = "scripted", trigger_description = "Detonate a 1kt test pack"}
+      --table.insert(data.raw.technology["compact-full-fission-weapons"].unit.ingredients, {"test-pack-atomic-1kt-1", 1})
     end
     if(settings.startup["enable-compact-medium-atomics"].value or settings.startup["enable-compact-small-atomics"].value) then
-      --data.raw.technology["compact-full-fission-weapons"].research_trigger = {type = "scripted"}
-      table.insert(data.raw.technology["compact-full-fission-weapons"].unit.ingredients, {"test-pack-atomic-20t-3", 1})
+      data.raw.technology["compact-full-fission-weapons"].research_trigger = {type = "scripted", trigger_description = "Detonate a compact 20t test pack"}
+      --table.insert(data.raw.technology["compact-full-fission-weapons"].unit.ingredients, {"test-pack-atomic-20t-3", 1})
     end
   end
   
@@ -167,13 +167,13 @@ if(hasCompactFusion) then
     time = 60
   }
   if(settings.startup["enable-nuclear-tests"].value) then
-    --data.raw.technology["compact-fusion-weapons"].research_trigger = {type = "scripted"}
-    data.raw.technology["compact-fusion-weapons"].unit =
-      {
-        count = 1,
-        ingredients = {{"test-pack-atomic-2-stage-100kt-1", 1}},
-        time = 1
-      }
+    data.raw.technology["compact-fusion-weapons"].research_trigger = {type = "scripted", trigger_description = "Detonate a 100kt test pack"}
+    --data.raw.technology["compact-fusion-weapons"].unit =
+    --  {
+    --    count = 1,
+    --    ingredients = {{"test-pack-atomic-2-stage-100kt-1", 1}},
+    --    time = 1
+    --  }
   end
 end
 
