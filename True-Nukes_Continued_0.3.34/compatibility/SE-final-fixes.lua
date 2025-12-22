@@ -143,13 +143,13 @@ if(data.raw.technology["compact-full-fission-weapons"]) then
     end
   end
   
-  if not next(data.raw.technology["compact-full-fission-weapons"].unit.ingredients[1]) then
+  --[[if not next(data.raw.technology["compact-full-fission-weapons"].unit.ingredients[1]) then
     data.raw.technology["compact-full-fission-weapons"].unit = {
       count = 200,
       ingredients = energy,
       time = 60
     }
-  end
+  end]]
   
 end
 
