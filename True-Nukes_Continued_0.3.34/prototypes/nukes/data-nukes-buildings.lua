@@ -1,7 +1,7 @@
 local hit_effects = require ("__base__.prototypes.entity.hit-effects")
 local sounds = require("__base__.prototypes.entity.sounds")
 
-require("__Warheads__.prototypes.warheads")
+require("__Warheads_Continued__.prototypes.warheads")
 
 table.insert(data.raw.technology["basic-atomic-weapons"].effects,
   {
@@ -38,9 +38,9 @@ for _,w in pairs(warheads_to_add) do
         energy_required = w.energy,
         ingredients =
         {
-          {w.warhead, 1}
+          {type = "item", name = w.warhead, amount = 1}
         },
-        result = "detonation" .. warhead.appendName .. explosion.appendName .. w.label,
+        results = {{type = "item", name = "detonation" .. warhead.appendName .. explosion.appendName .. w.label, amount = 1}},
       }
       if(w.fusion) then
         recipe.category = "fusion-detonation"
@@ -58,7 +58,7 @@ for _,w in pairs(warheads_to_add) do
       local item = {
         type = "item",
         name = "detonation" .. warhead.appendName .. explosion.appendName .. w.label,
-        icon = w.icon or "__True-Nukes__/graphics/15kiloton-detonation.png",
+        icon = w.icon or "__True-Nukes_Continued__/graphics/15kiloton-detonation.png",
         icon_size = 64, icon_mipmaps = 1,
         subgroup = "TN-atomic-detonation",
         order = "a[nuke]" ..warhead.appendOrder .. explosion.appendOrder .. w.label,
@@ -104,12 +104,12 @@ data:extend{
     energy_required = 120,
     ingredients =
     {
-      {"steel-plate", 200},
-      {"concrete", 200},
-      {"advanced-circuit", 25},
-      {"accumulator", 5}
+      {type = "item", name = "steel-plate", amount = 200},
+      {type = "item", name = "concrete", amount = 200},
+      {type = "item", name = "advanced-circuit", amount = 25},
+      {type = "item", name = "accumulator", amount = 5}
     },
-    result = "nuclear-test-site"
+    results = {{type = "item", name = "nuclear-test-site", amount = 1}}
   },
   {
     type = "recipe",
@@ -118,17 +118,17 @@ data:extend{
     energy_required = 120,
     ingredients =
     {
-      {"steel-plate", 2000},
-      {"refined-concrete", 2000},
-      {"processing-unit", 25},
-      {"accumulator", 50}
+      {type = "item", name = "steel-plate", amount = 2000},
+      {type = "item", name = "refined-concrete", amount = 2000},
+      {type = "item", name = "processing-unit", amount = 25},
+      {type = "item", name = "accumulator", amount = 50}
     },
-    result = "fusion-test-site"
+    results = {{type = "item", name = "fusion-test-site", amount = 1}}
   },
   {
     type = "item",
     name = "nuclear-test-site",
-    icon = "__True-Nukes__/graphics/nuclear-test-building.png",
+    icon = "__True-Nukes_Continued__/graphics/nuclear-test-building.png",
     icon_size = 64, icon_mipmaps = 1,
     subgroup = "defensive-structure",
     order = "e[nuke]-a[nuclear-test-site]",
@@ -138,7 +138,7 @@ data:extend{
   {
     type = "item",
     name = "fusion-test-site",
-    icon = "__True-Nukes__/graphics/fusion-test-building.png",
+    icon = "__True-Nukes_Continued__/graphics/fusion-test-building.png",
     icon_size = 64, icon_mipmaps = 1,
     subgroup = "defensive-structure",
     order = "e[nuke]-b[fusion-test-site]",
@@ -149,7 +149,7 @@ data:extend{
     type = "furnace",
     name = "nuclear-test-site",
     is_military_target = true,
-    icon = "__True-Nukes__/graphics/nuclear-test-building.png",
+    icon = "__True-Nukes_Continued__/graphics/nuclear-test-building.png",
     icon_size = 64, icon_mipmaps = 1,
     source_inventory_size = 1,
     result_inventory_size = 1,
@@ -236,32 +236,32 @@ data:extend{
       layers =
       {
         {
-          filename = "__True-Nukes__/graphics/megaton-nuke/megaton-nuke-base.png",
+          filename = "__True-Nukes_Continued__/graphics/megaton-nuke/megaton-nuke-base.png",
           width = 212,
           height = 192,
           shift = util.by_pixel(0, -5),
-          scale = 0.5,
+          scale = 0.5--[[,
           hr_version =
           {
-            filename = "__True-Nukes__/graphics/megaton-nuke/megaton-nuke-base.png",
+            filename = "__True-Nukes_Continued__/graphics/megaton-nuke/megaton-nuke-base.png",
             width = 212,
             height = 192,
             shift = util.by_pixel(0, -5),
             scale = 0.5
-          }
+          }]]
         },
         {
-          filename = "__True-Nukes__/graphics/megaton-nuke/megaton-nuke-shadow.png",
+          filename = "__True-Nukes_Continued__/graphics/megaton-nuke/megaton-nuke-shadow.png",
           priority = "high",
           width = 287,
           height = 159,
           repeat_count = repeat_count,
           shift = util.by_pixel(20, 6),
           draw_as_shadow = true,
-          scale = 0.5,
+          scale = 0.5--[[,
           hr_version =
           {
-            filename = "__True-Nukes__/graphics/megaton-nuke/megaton-nuke-shadow.png",
+            filename = "__True-Nukes_Continued__/graphics/megaton-nuke/megaton-nuke-shadow.png",
             priority = "high",
             width = 287,
             height = 159,
@@ -269,7 +269,7 @@ data:extend{
             shift = util.by_pixel(20, 6),
             draw_as_shadow = true,
             scale = 0.5
-          }
+        }]]
         }
       }
     },
@@ -297,7 +297,7 @@ data:extend{
     type = "assembling-machine",
     name = "fusion-test-site",
     is_military_target = true,
-    icon = "__True-Nukes__/graphics/fusion-test-building.png",
+    icon = "__True-Nukes_Continued__/graphics/fusion-test-building.png",
     icon_size = 64, icon_mipmaps = 1,
     source_inventory_size = 1,
     result_inventory_size = 1,
@@ -384,32 +384,32 @@ data:extend{
       layers =
       {
         {
-          filename = "__True-Nukes__/graphics/megaton-nuke/megaton-nuke-base.png",
+          filename = "__True-Nukes_Continued__/graphics/megaton-nuke/megaton-nuke-base.png",
           width = 212,
           height = 192,
           shift = util.by_pixel(0, -5),
-          scale = 0.5,
+          scale = 0.5--[[,
           hr_version =
           {
-            filename = "__True-Nukes__/graphics/megaton-nuke/megaton-nuke-base.png",
+            filename = "__True-Nukes_Continued__/graphics/megaton-nuke/megaton-nuke-base.png",
             width = 212,
             height = 192,
             shift = util.by_pixel(0, -5),
             scale = 0.5
-          }
+          }]]
         },
         {
-          filename = "__True-Nukes__/graphics/megaton-nuke/megaton-nuke-shadow.png",
+          filename = "__True-Nukes_Continued__/graphics/megaton-nuke/megaton-nuke-shadow.png",
           priority = "high",
           width = 287,
           height = 159,
           repeat_count = repeat_count,
           shift = util.by_pixel(20, 6),
           draw_as_shadow = true,
-          scale = 0.5,
+          scale = 0.5--[[,
           hr_version =
           {
-            filename = "__True-Nukes__/graphics/megaton-nuke/megaton-nuke-shadow.png",
+            filename = "__True-Nukes_Continued__/graphics/megaton-nuke/megaton-nuke-shadow.png",
             priority = "high",
             width = 287,
             height = 159,
@@ -417,7 +417,7 @@ data:extend{
             shift = util.by_pixel(20, 6),
             draw_as_shadow = true,
             scale = 0.5
-          }
+          }]]
         }
       }
     },

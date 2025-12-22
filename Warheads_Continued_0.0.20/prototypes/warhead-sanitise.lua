@@ -58,7 +58,7 @@ local function sanitseWarhead(key, warhead)
   end
   result.warhead.recipe.ingredients = {}
   for ingName,ingAmount in pairs(recipeIngreds) do
-    table.insert(result.warhead.recipe.ingredients, {ingName,ingAmount})
+    table.insert(result.warhead.recipe.ingredients, {type = "item", name = ingName, amount = ingAmount})
   end
   if warhead.tint then
     result.warhead.recipe.crafting_machine_tint = warhead.tint
@@ -118,7 +118,7 @@ local function sanitseWarhead(key, warhead)
       end
     end
     if(explosion.additional_ingedient) then
-      table.insert(weapon.recipe.additional_ingedients, {name = explosion.additional_ingedient, amount = explosion.ingredient_count or 1})
+      table.insert(weapon.recipe.additional_ingedients, {type = "item", name = explosion.additional_ingedient, amount = explosion.ingredient_count or 1})
     end
 
     if(prevExplosionName == nil) then
@@ -128,13 +128,13 @@ local function sanitseWarhead(key, warhead)
         end
       end
       if(warhead.additional_ingedient) then
-        table.insert(weapon.recipe.additional_ingedients, {name = warhead.additional_ingedient, amount = warhead.ingredient_count or 1})
+        table.insert(weapon.recipe.additional_ingedients, {type = "item", name = warhead.additional_ingedient, amount = warhead.ingredient_count or 1})
       end
     end
 
     if(warhead.progressiveRecipe) then
       if(prevExplosionName ~= nil) then
-        weapon.recipe.build_up_ingredient = {name = prevExplosionName, amount = explosion.built_up_ingredient_amount or 1}
+        weapon.recipe.build_up_ingredient = {type = "item", name = prevExplosionName, amount = explosion.built_up_ingredient_amount or 1}
       end
       if(warhead.progressiveRecipe == "from-first")then
         if(prevExplosionName == nil) then
@@ -181,7 +181,7 @@ local function sanitseWarhead(key, warhead)
     if not weapon.projectile.chart_picture then
       if explosion.chart_tint or weapon.chart_tint then
         weapon.projectile.chart_picture = {
-          filename = "__Warheads__/graphics/artillery/artillery-map.png",
+          filename = "__Warheads_Continued__/graphics/artillery/artillery-map.png",
           flags = { "icon" },
           frame_count = 1,
           width = 64,

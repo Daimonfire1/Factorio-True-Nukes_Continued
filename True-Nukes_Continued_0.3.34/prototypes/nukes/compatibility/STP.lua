@@ -1,4 +1,4 @@
-local create_utils = require("__Warheads__.prototypes.sprite-assembly-util")
+local create_utils = require("__Warheads_Continued__.prototypes.sprite-assembly-util")
 
 local setupWarheadsForWeapon = create_utils.setupWarheadsForWeapon
 local tints = create_utils.tints
@@ -6,7 +6,7 @@ local tints = create_utils.tints
 
 
 local setupForAutocannon = {
-  sprite_types = require("__Warheads__.prototypes.compatibility.SchallTankPlatoon-sprites"),
+  sprite_types = require("__Warheads_Continued__.prototypes.compatibility.SchallTankPlatoon-sprites"),
   type = "autocannon",
   weapon = "autocannon-shell",
   warheads = {}

@@ -12,26 +12,26 @@ local achievement_system = require("scripts.achievement-system")
 
 local createBlastSoundsAndFlash = mushroomFunctions[1]
 script.on_init(function()
-  global.nuclearTests = {}       -- a map of force-index to maps from atomic-test-pack to count...
-  global.thermalBlasts = {}				-- a simple array, with elements: {surface_index, position, force, thermal_max_r, initialDamage, fireball_r, x, y}, each as a key of the map
-  global.blastWaves = {}					-- a simple array, with elements:
+  storage.nuclearTests = {}       -- a map of force-index to maps from atomic-test-pack to count...
+  storage.thermalBlasts = {}				-- a simple array, with elements: {surface_index, position, force, thermal_max_r, initialDamage, fireball_r, x, y}, each as a key of the map
+  storage.blastWaves = {}					-- a simple array, with elements:
   --{r = currrent explosion radius, pos = centre position, pow = initial blast multiplier (usually initial r*r)
   -- , max = maximum radius, s = surface index, fire = leave fires (true for thermobarics, false for nukes), damage_init = starting damage, speed = how far to jump every round, fire_rad = the radius to which the fire wave is solid
   -- , blast_min_damage = amount of extra damage to add all the time, itt = the number of itterations done, doItts = whether to time slice the blast, ittframe = keeps track of frame count for time slicing
   -- , force = force of the cause of the explosion - allows allocating kills correctly, cause = allows allocating kills to the originator})
 
-  global.nukeBuildings = {} 				-- array of the LuaEntities for any nukeBuildings
-  global.optimisedNukes = {} 				-- has keys:
+  storage.nukeBuildings = {} 				-- array of the LuaEntities for any nukeBuildings
+  storage.optimisedNukes = {} 				-- has keys:
   --position, surface_index, crater_internal_r, crater_external_r, fireball_r, fire_outer_r, blast_max_r, tree_fire_max_r, thermal_max_r, check_craters
   --used for doing chunk-by-chunk loading of detonation results
 
-  global.cratersFast = {} 				-- map: cratersFast[surface index][xposition][yposition] = the highest water height in that area (x, y in units of 10)
-  global.cratersFastData = {}				-- map: cratersFastData[surface index] =
+  storage.cratersFast = {} 				-- map: cratersFast[surface index][xposition][yposition] = the highest water height in that area (x, y in units of 10)
+  storage.cratersFastData = {}				-- map: cratersFastData[surface index] =
   -- {synch =  1-4 making deep water travel slower, xCount = number of x chunks on this surface, xCountSoFar = number of x chunks done so far this round, xDone = all x values done so far this round}
-  global.cratersFastItterationCount = 0	-- the counter of ticks for circling x chunks - counts up to 53
+  storage.cratersFastItterationCount = 0	-- the counter of ticks for circling x chunks - counts up to 53
 
 
-  global.cratersSlow = {} 				-- array of {t = time waiting - 20s units, x = xin units of 32, y = y in units of 32, surface = the surface index}
+  storage.cratersSlow = {} 				-- array of {t = time waiting - 20s units, x = xin units of 32, y = y in units of 32, surface = the surface index}
 end)
 
 
@@ -66,23 +66,23 @@ corpseMap["behemoth-worm-turret"] = "behemoth-worm-corpse"
 
 local function tickHandler(event)
   mushroomFunctions[2](event)
-  if(global.blastWaves ==nil) then
-    global.blastWaves = {}
+  if(storage.blastWaves ==nil) then
+    storage.blastWaves = {}
   end
-  if(global.nukeBuildings ==nil) then
-    global.nukeBuildings = {}
+  if(storage.nukeBuildings ==nil) then
+    storage.nukeBuildings = {}
   end
-  if(global.thermalBlasts ==nil) then
-    global.thermalBlasts = {}
+  if(storage.thermalBlasts ==nil) then
+    storage.thermalBlasts = {}
   end
-  if(next(global.blastWaves) ~= nil) then
-    for i,blast in pairs(global.blastWaves) do
+  if(next(storage.blastWaves) ~= nil) then
+    for i,blast in pairs(storage.blastWaves) do
       blast_system.move_blast(i,blast,0, corpseMap)
     end
     --  else
     --    Profiler.Stop(false, "")
   end
-  if (#global.thermalBlasts>0) then
+  if (#storage.thermalBlasts>0) then
     thermal_system.atomic_thermal_blast_move_along(corpseMap)
   end
   water.fastFill(event)
@@ -129,10 +129,10 @@ local function optimisedChunkLoadHandler(chunkPosAndArea, chunkLoaderStruct, kil
     local cause = chunkLoaderStruct.source;
     local force = chunkLoaderStruct.force;
     local blastR = 0
-    if(global.blastWaves == nil or global.blastWaves[blastIndex] == nil or global.blastWaves[blastIndex].blastId ~= blastId) then
+    if(storage.blastWaves == nil or storage.blastWaves[blastIndex] == nil or storage.blastWaves[blastIndex].blastId ~= blastId) then
       blastR = -1
     else
-      blastR = global.blastWaves[blastIndex].r
+      blastR = storage.blastWaves[blastIndex].r
     end
 
     --fireball
@@ -212,12 +212,12 @@ local function atomic_weapon_hit_optimised(surface_index, source, position, crat
     buildingCount = game.surfaces[surface_index].count_entities_filtered{force = force, type = {"furnace", "assembling-machine"}, limit = 200}
   end
   
-  if(not global.blastWaves) then
-    global.blastWaves = {};
+  if(not storage.blastWaves) then
+    storage.blastWaves = {};
   end
   local blastId = math.random();
-  table.insert(global.blastWaves, {r = fireball_r, pos = position, blastId=blastId, pow = fireball_r*fireball_r, max = blast_max_r, s = surface_index, fire = false, damage_init = 5000.0, speed = 8, fire_rad = 0, blast_min_damage = 0, itt = 1, doItts = true, ittframe = 1, force = force, cause = cause})
-  local index = #global.blastWaves
+  table.insert(storage.blastWaves, {r = fireball_r, pos = position, blastId=blastId, pow = fireball_r*fireball_r, max = blast_max_r, s = surface_index, fire = false, damage_init = 5000.0, speed = 8, fire_rad = 0, blast_min_damage = 0, itt = 1, doItts = true, ittframe = 1, force = force, cause = cause})
+  local index = #storage.blastWaves
   local chunkData = {surface_index=surface_index, blastIndex=index, blastId=blastId, force=force, source=cause, position=position, crater_internal_r=crater_internal_r,
     crater_external_r=crater_external_r, fireball_r=fireball_r, blast_max_r=blast_max_r, init_blast=5000.0, blast_min_damage=0, thermal_max_r=thermal_max_r, init_thermal=5000.0};
   local chunks = {}
@@ -232,10 +232,10 @@ local function atomic_weapon_hit_optimised(surface_index, source, position, crat
     --log(math.sqrt(xdiff*xdiff+ydiff*ydiff));
     optimisedChunkLoadHandler(chunk, chunkData, true);
   end
-  if(not global.optimisedNukes) then
-    global.optimisedNukes = {}
+  if(not storage.optimisedNukes) then
+    storage.optimisedNukes = {}
   end
-  table.insert(global.optimisedNukes, chunkData);
+  table.insert(storage.optimisedNukes, chunkData);
 
   if(force and buildingCount>=1000 and game.surfaces[surface_index].count_entities_filtered{force = force, type = {"furnace", "assembling-machine"}}<20) then
     achievement_system.nukedEverything(force)
@@ -305,7 +305,7 @@ local function atomic_weapon_hit(surface_index, source, position, crater_interna
     end
   end
   thermal_system.atomic_thermal_blast(surface_index, position, force, cause, thermal_max_r, 5000, fireball_r, corpseMap)
-  table.insert(global.blastWaves, {r = fireball_r, pos = position, pow = fireball_r*fireball_r, max = blast_max_r, s = surface_index, fire = false, damage_init = 5000.0, speed = 8, fire_rad = 0, blast_min_damage = 0, itt = 1, doItts = true, ittframe = 1, force = force, cause = cause})
+  table.insert(storage.blastWaves, {r = fireball_r, pos = position, pow = fireball_r*fireball_r, max = blast_max_r, s = surface_index, fire = false, damage_init = 5000.0, speed = 8, fire_rad = 0, blast_min_damage = 0, itt = 1, doItts = true, ittframe = 1, force = force, cause = cause})
 
   if(force and buildingCount>=200 and game.surfaces[surface_index].count_entities_filtered{force = force, type = {"furnace", "assembling-machine"}}<20) then
     achievement_system.nukedEverything(force)
@@ -331,7 +331,7 @@ local function thermobaric_weapon_hit(surface_index, source, position, explosion
   for _,v in pairs(game.surfaces[surface_index].find_tiles_filtered{position=position, radius=explosion_r}) do
     game.surfaces[surface_index].create_entity{name="fire-flame",position=v.position}
   end
-  table.insert(global.blastWaves, {r = explosion_r, pos = position, pow = explosion_r*explosion_r, max = blast_max_r, s = surface_index, fire = true, damage_init = 600.0, speed = 1, fire_rad = fire_r, blast_min_damage = 30, itt = 1, doItts = false, ittframe = 1, force = force, cause = cause})
+  table.insert(storage.blastWaves, {r = explosion_r, pos = position, pow = explosion_r*explosion_r, max = blast_max_r, s = surface_index, fire = true, damage_init = 600.0, speed = 1, fire_rad = fire_r, blast_min_damage = 30, itt = 1, doItts = false, ittframe = 1, force = force, cause = cause})
 end
 
 
@@ -439,7 +439,7 @@ script.on_event(defines.events.on_script_trigger_effect, function(event)
   elseif(event.effect_id=="Nuke firing") then
     nukeFiredScan(event);
   elseif(event.effect_id=="Mega-nuke built") then
-    table.insert(global.nukeBuildings, source)
+    table.insert(storage.nukeBuildings, source)
   end
 
 end)
@@ -449,11 +449,11 @@ end)
 script.on_nth_tick(1207, water.slowFill)
 
 script.on_event(defines.events.on_chunk_generated, function(event)
-  if(global.optimisedNukes == nil) then
-    global.optimisedNukes = {}
+  if(storage.optimisedNukes == nil) then
+    storage.optimisedNukes = {}
   end
-  if(#global.optimisedNukes>0) then
-    for _,chunkData in pairs(global.optimisedNukes) do
+  if(#storage.optimisedNukes>0) then
+    for _,chunkData in pairs(storage.optimisedNukes) do
       if(chunkData.surface_index == event.surface.index) then
         optimisedChunkLoadHandler({x=event.position.x, y=event.position.y, area=event.area}, chunkData, false);
       end

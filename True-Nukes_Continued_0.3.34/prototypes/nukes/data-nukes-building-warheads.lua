@@ -175,7 +175,7 @@ local warheads_to_add = {
     explosion = 1,
     label = "-1",
     fusion = true,
-    icon = "__True-Nukes__/graphics/15kiloton-detonation.png",
+    icon = "__True-Nukes_Continued__/graphics/15kiloton-detonation.png",
     energy = 60
   },
   {
@@ -184,7 +184,7 @@ local warheads_to_add = {
     explosion = 2,
     label = "-1",
     fusion = true,
-    icon = "__True-Nukes__/graphics/100kiloton-detonation.png",
+    icon = "__True-Nukes_Continued__/graphics/100kiloton-detonation.png",
     energy = 90
   },
   {
@@ -193,7 +193,7 @@ local warheads_to_add = {
     explosion = 3,
     label = "-1",
     fusion = true,
-    icon = "__True-Nukes__/graphics/megaton-detonation.png",
+    icon = "__True-Nukes_Continued__/graphics/megaton-detonation.png",
     energy = 120
   },
   {
@@ -202,7 +202,7 @@ local warheads_to_add = {
     explosion = 4,
     label = "-1",
     fusion = true,
-    icon = "__True-Nukes__/graphics/5megaton-detonation.png",
+    icon = "__True-Nukes_Continued__/graphics/5megaton-detonation.png",
     energy = 120
   },
   {
@@ -211,7 +211,7 @@ local warheads_to_add = {
     explosion = 5,
     label = "-1",
     fusion = true,
-    icon = "__True-Nukes__/graphics/10megaton-detonation.png",
+    icon = "__True-Nukes_Continued__/graphics/10megaton-detonation.png",
     energy = 180
   },
   {
@@ -220,7 +220,7 @@ local warheads_to_add = {
     explosion = 6,
     label = "-1",
     fusion = true,
-    icon = "__True-Nukes__/graphics/50megaton-detonation.png",
+    icon = "__True-Nukes_Continued__/graphics/50megaton-detonation.png",
     energy = 300
   },
   {
@@ -229,7 +229,7 @@ local warheads_to_add = {
     explosion = 7,
     label = "-1",
     fusion = true,
-    icon = "__True-Nukes__/graphics/100megaton-detonation.png",
+    icon = "__True-Nukes_Continued__/graphics/100megaton-detonation.png",
     energy = 480
   },
   {
@@ -238,7 +238,7 @@ local warheads_to_add = {
     explosion = 8,
     label = "-1",
     fusion = true,
-    icon = "__True-Nukes__/graphics/1gigaton-detonation.png",
+    icon = "__True-Nukes_Continued__/graphics/1gigaton-detonation.png",
     energy = 600
   },
 
@@ -249,7 +249,7 @@ local warheads_to_add = {
     explosion = 1,
     label = "-2",
     fusion = true,
-    icon = "__True-Nukes__/graphics/15kiloton-detonation.png",
+    icon = "__True-Nukes_Continued__/graphics/15kiloton-detonation.png",
     energy = 60
   },
   {
@@ -258,7 +258,7 @@ local warheads_to_add = {
     explosion = 2,
     label = "-2",
     fusion = true,
-    icon = "__True-Nukes__/graphics/100kiloton-detonation.png",
+    icon = "__True-Nukes_Continued__/graphics/100kiloton-detonation.png",
     energy = 90
   },
   {
@@ -267,7 +267,7 @@ local warheads_to_add = {
     explosion = 3,
     label = "-2",
     fusion = true,
-    icon = "__True-Nukes__/graphics/megaton-detonation.png",
+    icon = "__True-Nukes_Continued__/graphics/megaton-detonation.png",
     energy = 120
   },
   {
@@ -276,7 +276,7 @@ local warheads_to_add = {
     explosion = 4,
     label = "-2",
     fusion = true,
-    icon = "__True-Nukes__/graphics/5megaton-detonation.png",
+    icon = "__True-Nukes_Continued__/graphics/5megaton-detonation.png",
     energy = 120
   },
 
@@ -287,7 +287,7 @@ local warheads_to_add = {
     explosion = 1,
     label = "-3",
     fusion = true,
-    icon = "__True-Nukes__/graphics/15kiloton-detonation.png",
+    icon = "__True-Nukes_Continued__/graphics/15kiloton-detonation.png",
     energy = 60
   },
   {
@@ -296,7 +296,7 @@ local warheads_to_add = {
     explosion = 2,
     label = "-3",
     fusion = true,
-    icon = "__True-Nukes__/graphics/100kiloton-detonation.png",
+    icon = "__True-Nukes_Continued__/graphics/100kiloton-detonation.png",
     energy = 90
   },
 }

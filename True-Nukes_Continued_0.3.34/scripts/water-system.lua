@@ -82,38 +82,38 @@ depthsForCraterWater[-1][0] = "water-mud"
 
 local function fastFill(event)
   -- fast crater filling
-  if(global.cratersFast==nil) then
-    global.cratersFast = {}
+  if(storage.cratersFast==nil) then
+    storage.cratersFast = {}
   end
-  if(global.cratersFastItterationCount == nil) then
-    global.cratersFastItterationCount = 0
+  if(storage.cratersFastItterationCount == nil) then
+    storage.cratersFastItterationCount = 0
   end
-  if(global.cratersFastData == nil) then
-    global.cratersFastData = {}
+  if(storage.cratersFastData == nil) then
+    storage.cratersFastData = {}
   end
-  global.cratersFastItterationCount = global.cratersFastItterationCount + 1
-  if(global.cratersFastItterationCount > 53) then
-    global.cratersFastItterationCount = 1
+  storage.cratersFastItterationCount = storage.cratersFastItterationCount + 1
+  if(storage.cratersFastItterationCount > 53) then
+    storage.cratersFastItterationCount = 1
   end
-  for surface,chunks in pairs(global.cratersFast) do
+  for surface,chunks in pairs(storage.cratersFast) do
     if(not game.surfaces[surface]) then
-      global.cratersFast[surface] = nil;
+      storage.cratersFast[surface] = nil;
     else
-      global.cratersFastData[surface].synch = global.cratersFastData[surface].synch+1
-      if(global.cratersFastData[surface].synch == 5) then
-        global.cratersFastData[surface].synch = 1
+      storage.cratersFastData[surface].synch = storage.cratersFastData[surface].synch+1
+      if(storage.cratersFastData[surface].synch == 5) then
+        storage.cratersFastData[surface].synch = 1
       end
-      if(global.cratersFastItterationCount == 1) then
-        global.cratersFastData[surface].xCountSoFar = 0
-        global.cratersFastData[surface].xDone = {}
+      if(storage.cratersFastItterationCount == 1) then
+        storage.cratersFastData[surface].xCountSoFar = 0
+        storage.cratersFastData[surface].xDone = {}
       end
       for x,xchunks in pairs(chunks) do
-        if(global.cratersFastData[surface].xDone[x]==nil) then  --ignore all the ones we have already done
-          if(global.cratersFastData[surface].xCountSoFar > global.cratersFastData[surface].xCount*global.cratersFastItterationCount/53) then
+        if(storage.cratersFastData[surface].xDone[x]==nil) then  --ignore all the ones we have already done
+          if(storage.cratersFastData[surface].xCountSoFar > storage.cratersFastData[surface].xCount*storage.cratersFastItterationCount/53) then
             break;
         end
-        global.cratersFastData[surface].xDone[x] = 1
-        global.cratersFastData[surface].xCountSoFar = global.cratersFastData[surface].xCountSoFar + 1
+        storage.cratersFastData[surface].xDone[x] = 1
+        storage.cratersFastData[surface].xCountSoFar = storage.cratersFastData[surface].xCountSoFar + 1
         local count = 0;
         for y,foundChunkH in pairs(xchunks) do
           local tileChanges = {}
@@ -122,9 +122,9 @@ local function fastFill(event)
           local targetTiles
           local chunkH = foundChunkH
 
-          if(chunkH >= 0 and global.cratersFastData[surface].synch==1) then
+          if(chunkH >= 0 and storage.cratersFastData[surface].synch==1) then
             targetTiles = game.surfaces[surface].find_tiles_filtered{area={{x*8, y*8}, {x*8+8, y*8+8}}, name=craterTypes0}
-          elseif(chunkH >= -1 and (global.cratersFastData[surface].synch == 3 or global.cratersFastData[surface].synch == 1)) then
+          elseif(chunkH >= -1 and (storage.cratersFastData[surface].synch == 3 or storage.cratersFastData[surface].synch == 1)) then
             targetTiles = game.surfaces[surface].find_tiles_filtered{area={{x*8, y*8}, {x*8+8, y*8+8}}, name=craterTypes1}
           else
             targetTiles = game.surfaces[surface].find_tiles_filtered{area={{x*8, y*8}, {x*8+8, y*8+8}}, name=craterTypes2}
@@ -216,7 +216,7 @@ local function fastFill(event)
                 if(t.position.x == x*8) then
                   if(chunks[x-1]==nil) then
                     chunks[x-1] = {};
-                    global.cratersFastData[surface].xCount = global.cratersFastData[surface].xCount + 1
+                    storage.cratersFastData[surface].xCount = storage.cratersFastData[surface].xCount + 1
                   end
                   if(chunks[x-1][y]==nil) then
                     chunks[x-1][y] = currentH+1
@@ -226,7 +226,7 @@ local function fastFill(event)
                 elseif(t.position.x == x*8+7) then
                   if(chunks[x+1]==nil) then
                     chunks[x+1] = {};
-                    global.cratersFastData[surface].xCount = global.cratersFastData[surface].xCount + 1
+                    storage.cratersFastData[surface].xCount = storage.cratersFastData[surface].xCount + 1
                   end
                   if(chunks[x+1][y]==nil) then
                     chunks[x+1][y] = currentH+1
@@ -254,18 +254,18 @@ local function fastFill(event)
               game.surfaces[surface].create_entity{name="tile-ghost",position=ghost.pos,inner_name=ghost.ghost_name,force=ghost.force}
             end
             xchunks[y] = chunkH; -- just to set the height back to being correct, in case it has changed (e.g. a new, higher water level has been found)
-            if global.cratersFastData[surface].synch==1 and not hasHeightDiff then
+            if storage.cratersFastData[surface].synch==1 and not hasHeightDiff then
               xchunks[y] = nil
               if next(xchunks) == nil then
-                global.cratersFastData[surface].xCount = global.cratersFastData[surface].xCount-1
+                storage.cratersFastData[surface].xCount = storage.cratersFastData[surface].xCount-1
                 chunks[x] = nil
               end
               if next(chunks) == nil then
-                global.cratersFast[surface] = nil
-                global.cratersFastData[surface] = nil
+                storage.cratersFast[surface] = nil
+                storage.cratersFastData[surface] = nil
               end
             end
-          elseif(global.cratersFastData[surface].synch ~= 1) then
+          elseif(storage.cratersFastData[surface].synch ~= 1) then
             count = count+1;
           else
             xchunks[y] = nil;
@@ -281,15 +281,15 @@ local function fastFill(event)
 end
 local function slowFill(event)
   -- slow crater filling
-  if(global.cratersSlow == nil) then
-    global.cratersSlow = {}
+  if(storage.cratersSlow == nil) then
+    storage.cratersSlow = {}
   end
-  for index,chunk in pairs(global.cratersSlow) do
+  for index,chunk in pairs(storage.cratersSlow) do
     chunk.t = chunk.t+1;
     if(chunk.t>30) then
       local target = nil
       if not game.surfaces[chunk.surface] then
-        global.cratersSlow[index] = nil
+        storage.cratersSlow[index] = nil
       elseif (not (game.surfaces[chunk.surface].count_tiles_filtered{area={{chunk.x*32, chunk.y*32}, {chunk.x*32+32, chunk.y*32+32}}, name = craterTypes2, limit = 1} == 0)) then
         local prob = 128;
         if(not (game.surfaces[chunk.surface].count_tiles_filtered{area={{chunk.x*32, chunk.y*32}, {chunk.x*32+32, chunk.y*32+32}}, name = waterInCraterGoingOutDepth0Only, limit = 1} == 0)) then
@@ -333,7 +333,7 @@ local function slowFill(event)
           target = targets[math.random(1, #targets)]
         end
       else
-        global.cratersSlow[index] = nil
+        storage.cratersSlow[index] = nil
       end
       if not (target==nil) then
         local h = waterInCraterGoingInDepths[target.name]+1
@@ -349,19 +349,19 @@ local function slowFill(event)
           game.surfaces[chunk.surface].create_entity{name="tile-ghost",position={pos.x+0.5, pos.y+0.5},inner_name=t.ghost_name,force=t.force}
         end
 
-        if(global.cratersFast[chunk.surface]==nil)then
-          global.cratersFast[chunk.surface] = {}
-          global.cratersFastData[chunk.surface] = {synch = 0, xCount = 0, xCountSoFar = 0, xDone = {}}
+        if(storage.cratersFast[chunk.surface]==nil)then
+          storage.cratersFast[chunk.surface] = {}
+          storage.cratersFastData[chunk.surface] = {synch = 0, xCount = 0, xCountSoFar = 0, xDone = {}}
         end
         local xChunkPos = math.floor(pos.x/8)
-        if(global.cratersFast[chunk.surface][xChunkPos]==nil)then
-          global.cratersFast[chunk.surface][xChunkPos] = {}
-          global.cratersFastData[chunk.surface].xCount = global.cratersFastData[chunk.surface].xCount + 1
+        if(storage.cratersFast[chunk.surface][xChunkPos]==nil)then
+          storage.cratersFast[chunk.surface][xChunkPos] = {}
+          storage.cratersFastData[chunk.surface].xCount = storage.cratersFastData[chunk.surface].xCount + 1
         end
-        if(global.cratersFast[chunk.surface][xChunkPos][math.floor((pos.y)/8)] == nil) then
-          global.cratersFast[chunk.surface][xChunkPos][math.floor((pos.y)/8)] = h
+        if(storage.cratersFast[chunk.surface][xChunkPos][math.floor((pos.y)/8)] == nil) then
+          storage.cratersFast[chunk.surface][xChunkPos][math.floor((pos.y)/8)] = h
         else
-          global.cratersFast[chunk.surface][xChunkPos][math.floor((pos.y)/8)] = math.max(global.cratersFast[chunk.surface][xChunkPos][math.floor((pos.y)/8)], h)
+          storage.cratersFast[chunk.surface][xChunkPos][math.floor((pos.y)/8)] = math.max(storage.cratersFast[chunk.surface][xChunkPos][math.floor((pos.y)/8)], h)
         end
       end
     end
@@ -372,7 +372,7 @@ local function check_fill(surface_index, chunkPosAndArea, x, y)
   if (not (game.surfaces[surface_index].count_tiles_filtered{
     area={{x=chunkPosAndArea.area.left_top.x+1, y=chunkPosAndArea.area.left_top.y+1},{x=chunkPosAndArea.area.right_bottom.x-1, y=chunkPosAndArea.area.right_bottom.y-1}}, name = craterTypes0, limit = 1
   } == 0)) then
-    table.insert(global.cratersSlow, {t = 0, x = chunkPosAndArea.x, y = chunkPosAndArea.y, surface = surface_index});
+    table.insert(storage.cratersSlow, {t = 0, x = chunkPosAndArea.x, y = chunkPosAndArea.y, surface = surface_index});
     for xChunkPos = 0,4 do
       for yChunkPos = 0,4 do
         if (not (game.surfaces[surface_index].count_tiles_filtered{area={{x+xChunkPos*8, y+yChunkPos*8}, {x+xChunkPos*8+8, y+yChunkPos*8+8}}, name = waterTypes, limit = 1} == 0)) and
@@ -382,15 +382,15 @@ local function check_fill(surface_index, chunkPosAndArea, x, y)
             height = 0;
           end
           -- have both water and crater
-          if(global.cratersFast[surface_index]==nil)then
-            global.cratersFast[surface_index] = {}
-            global.cratersFastData[surface_index] = {synch = 0, xCount = 0, xCountSoFar = 0, xDone = {}}
+          if(storage.cratersFast[surface_index]==nil)then
+            storage.cratersFast[surface_index] = {}
+            storage.cratersFastData[surface_index] = {synch = 0, xCount = 0, xCountSoFar = 0, xDone = {}}
           end
-          if(global.cratersFast[surface_index][chunkPosAndArea.x*4+xChunkPos]==nil)then
-            global.cratersFast[surface_index][chunkPosAndArea.x*4+xChunkPos] = {}
-            global.cratersFastData[surface_index].xCount = global.cratersFastData[surface_index].xCount + 1
+          if(storage.cratersFast[surface_index][chunkPosAndArea.x*4+xChunkPos]==nil)then
+            storage.cratersFast[surface_index][chunkPosAndArea.x*4+xChunkPos] = {}
+            storage.cratersFastData[surface_index].xCount = storage.cratersFastData[surface_index].xCount + 1
           end
-          global.cratersFast[surface_index][chunkPosAndArea.x*4+xChunkPos][chunkPosAndArea.y*4+yChunkPos] = height
+          storage.cratersFast[surface_index][chunkPosAndArea.x*4+xChunkPos][chunkPosAndArea.y*4+yChunkPos] = height
         end
       end
     end

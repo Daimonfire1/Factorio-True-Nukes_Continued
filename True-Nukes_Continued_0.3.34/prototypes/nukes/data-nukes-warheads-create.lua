@@ -9,7 +9,7 @@ local reflector = nuke_materials.reflector
 local computer = nuke_materials.computer
 local fusionMaterial = nuke_materials.fusionMaterial
 
-local create_utils = require("__Warheads__.prototypes.sprite-assembly-util")
+local create_utils = require("__Warheads_Continued__.prototypes.sprite-assembly-util")
 
 
 local createAppearance = create_utils.createAppearance
@@ -26,8 +26,8 @@ if(settings.startup["enable-small-atomics"].value) then
     preciseSize = 8,
     final_effect = nuke_explosions.N0_1t_detonation,
 
-    appearance = createAppearance({type = "nuclear_core", tints = {tints.californium, tints.californium, tints.nothing}, text_location = "__True-Nukes__/graphics/text/", text = "0_1t"}),
-    chart_picture = "__True-Nukes__/graphics/artillery/atomic-artillery-californium-map-visualization.png",
+    appearance = createAppearance({type = "nuclear_core", tints = {tints.californium, tints.californium, tints.nothing}, text_location = "__True-Nukes_Continued__/graphics/text/", text = "0_1t"}),
+    chart_picture = "__True-Nukes_Continued__/graphics/artillery/atomic-artillery-californium-map-visualization.png",
     cooldown_modifier = 2,
     stack_size = 100,
     energy_required = 100,
@@ -51,8 +51,8 @@ if(settings.startup["enable-small-atomics"].value) then
     preciseSize = 12,
     final_effect = nuke_explosions.N0_5t_detonation,
 
-    appearance = createAppearance({type = "nuclear_core", tints = {tints.californium, tints.californium, tints.uraniumDead}, text_location = "__True-Nukes__/graphics/text/", text = "0_5t"}),
-    chart_picture = "__True-Nukes__/graphics/artillery/atomic-artillery-californium-map-visualization.png",
+    appearance = createAppearance({type = "nuclear_core", tints = {tints.californium, tints.californium, tints.uraniumDead}, text_location = "__True-Nukes_Continued__/graphics/text/", text = "0_5t"}),
+    chart_picture = "__True-Nukes_Continued__/graphics/artillery/atomic-artillery-californium-map-visualization.png",
     cooldown_modifier = 5,
     stack_size = 100,
     energy_required = 90,
@@ -78,8 +78,8 @@ if(settings.startup["enable-small-atomics"].value) then
       preciseSize = 4,
       final_effect = nuke_explosions.N0_1t_detonation,
 
-      appearance = createAppearance({type = "nuclear_core", tints = {tints.californium, tints.californium, tints.nothing}, text_location = "__True-Nukes__/graphics/text/", text = "0_1t"}),
-      chart_picture = "__True-Nukes__/graphics/artillery/atomic-artillery-californium-map-visualization.png",
+      appearance = createAppearance({type = "nuclear_core", tints = {tints.californium, tints.californium, tints.nothing}, text_location = "__True-Nukes_Continued__/graphics/text/", text = "0_1t"}),
+      chart_picture = "__True-Nukes_Continued__/graphics/artillery/atomic-artillery-californium-map-visualization.png",
       cooldown_modifier = 5,
       stack_size = 200,
       energy_required = 100,
@@ -103,8 +103,8 @@ if(settings.startup["enable-small-atomics"].value) then
       preciseSize = 2,
       final_effect = nuke_explosions.N0_1t_detonation,
 
-      appearance = createAppearance({type = "nuclear_core", tints = {tints.californium, tints.californium, tints.californium}, text_location = "__True-Nukes__/graphics/text/", text = "0_1t"}),
-      chart_picture = "__True-Nukes__/graphics/artillery/atomic-artillery-californium-map-visualization.png",
+      appearance = createAppearance({type = "nuclear_core", tints = {tints.californium, tints.californium, tints.californium}, text_location = "__True-Nukes_Continued__/graphics/text/", text = "0_1t"}),
+      chart_picture = "__True-Nukes_Continued__/graphics/artillery/atomic-artillery-californium-map-visualization.png",
       cooldown_modifier = 5,
       stack_size = 200,
       energy_required = 80,
@@ -127,8 +127,8 @@ if(settings.startup["enable-small-atomics"].value) then
       preciseSize = 8,
       final_effect = nuke_explosions.N0_5t_detonation,
 
-      appearance = createAppearance({type = "nuclear_core", tints = {tints.californium, tints.californium, tints.uraniumDead}, text_location = "__True-Nukes__/graphics/text/", text = "0_5t"}),
-      chart_picture = "__True-Nukes__/graphics/artillery/atomic-artillery-californium-map-visualization.png",
+      appearance = createAppearance({type = "nuclear_core", tints = {tints.californium, tints.californium, tints.uraniumDead}, text_location = "__True-Nukes_Continued__/graphics/text/", text = "0_5t"}),
+      chart_picture = "__True-Nukes_Continued__/graphics/artillery/atomic-artillery-californium-map-visualization.png",
       cooldown_modifier = 5,
       stack_size = 100,
       energy_required = 90,
@@ -152,8 +152,8 @@ if(settings.startup["enable-small-atomics"].value) then
       preciseSize = 4,
       final_effect = nuke_explosions.N0_5t_detonation,
 
-      appearance = createAppearance({type = "nuclear_core", tints = {tints.californium, tints.californium, tints.californium}, text_location = "__True-Nukes__/graphics/text/", text = "0_5t"}),
-      chart_picture = "__True-Nukes__/graphics/artillery/atomic-artillery-californium-map-visualization.png",
+      appearance = createAppearance({type = "nuclear_core", tints = {tints.californium, tints.californium, tints.californium}, text_location = "__True-Nukes_Continued__/graphics/text/", text = "0_5t"}),
+      chart_picture = "__True-Nukes_Continued__/graphics/artillery/atomic-artillery-californium-map-visualization.png",
       cooldown_modifier = 5,
       stack_size = 100,
       energy_required = 60,
@@ -182,8 +182,8 @@ if(settings.startup["enable-medium-atomics"].value) then
     preciseSize = 16,
     final_effect = nuke_explosions.N2t_detonation,
 
-    appearance = createAppearance({type = "nuclear_core", tints = {tints.uraniumLive, tints.californium, tints.nothing}, text_location = "__True-Nukes__/graphics/text/", text = "2t"}),
-    chart_picture = "__True-Nukes__/graphics/artillery/atomic-artillery-californium-map-visualization.png",
+    appearance = createAppearance({type = "nuclear_core", tints = {tints.uraniumLive, tints.californium, tints.nothing}, text_location = "__True-Nukes_Continued__/graphics/text/", text = "2t"}),
+    chart_picture = "__True-Nukes_Continued__/graphics/artillery/atomic-artillery-californium-map-visualization.png",
     cooldown_modifier = 5,
     stack_size = 20,
     energy_required = 20,
@@ -206,8 +206,8 @@ if(settings.startup["enable-medium-atomics"].value) then
     preciseSize = 22,
     final_effect = nuke_explosions.N4t_detonation,
 
-    appearance = createAppearance({type = "nuclear_core", tints = {tints.uraniumLive, tints.californium, tints.uraniumDead}, text_location = "__True-Nukes__/graphics/text/", text = "4t"}),
-    chart_picture = "__True-Nukes__/graphics/artillery/atomic-artillery-californium-map-visualization.png",
+    appearance = createAppearance({type = "nuclear_core", tints = {tints.uraniumLive, tints.californium, tints.uraniumDead}, text_location = "__True-Nukes_Continued__/graphics/text/", text = "4t"}),
+    chart_picture = "__True-Nukes_Continued__/graphics/artillery/atomic-artillery-californium-map-visualization.png",
     cooldown_modifier = 5,
     stack_size = 10,
     energy_required = 30,
@@ -229,8 +229,8 @@ if(settings.startup["enable-medium-atomics"].value) then
     preciseSize = 28,
 
     final_effect = nuke_explosions.N8t_detonation,
-    appearance = createAppearance({type = "nuclear_core", tints = {tints.californium, tints.uraniumLive, tints.nothing}, text_location = "__True-Nukes__/graphics/text/", text = "8t"}),
-    chart_picture = "__True-Nukes__/graphics/artillery/atomic-artillery-californium-map-visualization.png",
+    appearance = createAppearance({type = "nuclear_core", tints = {tints.californium, tints.uraniumLive, tints.nothing}, text_location = "__True-Nukes_Continued__/graphics/text/", text = "8t"}),
+    chart_picture = "__True-Nukes_Continued__/graphics/artillery/atomic-artillery-californium-map-visualization.png",
     cooldown_modifier = 5,
     stack_size = 10,
     energy_required = 40,
@@ -252,8 +252,8 @@ if(settings.startup["enable-medium-atomics"].value) then
     preciseSize = 12,
     final_effect = nuke_explosions.N2t_detonation,
 
-    appearance = createAppearance({type = "nuclear_core", tints = {tints.californium, tints.californium, tints.californium}, text_location = "__True-Nukes__/graphics/text/", text = "2t"}),
-    chart_picture = "__True-Nukes__/graphics/artillery/atomic-artillery-californium-map-visualization.png",
+    appearance = createAppearance({type = "nuclear_core", tints = {tints.californium, tints.californium, tints.californium}, text_location = "__True-Nukes_Continued__/graphics/text/", text = "2t"}),
+    chart_picture = "__True-Nukes_Continued__/graphics/artillery/atomic-artillery-californium-map-visualization.png",
     cooldown_modifier = 5,
     stack_size = 20,
     energy_required = 60,
@@ -278,8 +278,8 @@ if(settings.startup["enable-medium-atomics"].value) then
     preciseSize = 32,
 
     final_effect = nuke_explosions.N20t_detonation,
-    appearance = createAppearance({type = "nuclear_core", tints = {tints.californium, tints.uraniumLive, tints.uraniumDead}, text_location = "__True-Nukes__/graphics/text/", text = "20t"}),
-    chart_picture = "__True-Nukes__/graphics/artillery/atomic-artillery-californium-map-visualization.png",
+    appearance = createAppearance({type = "nuclear_core", tints = {tints.californium, tints.uraniumLive, tints.uraniumDead}, text_location = "__True-Nukes_Continued__/graphics/text/", text = "20t"}),
+    chart_picture = "__True-Nukes_Continued__/graphics/artillery/atomic-artillery-californium-map-visualization.png",
     cooldown_modifier = 5,
     stack_size = 5,
     energy_required = 60,
@@ -301,8 +301,8 @@ if(settings.startup["enable-medium-atomics"].value) then
     size = "medium",
     preciseSize = 26,
     final_effect = nuke_explosions.N20t_detonation,
-    appearance = createAppearance({type = "nuclear_core", tints = {tints.californium, tints.uraniumLive, tints.uraniumDead}, text_location = "__True-Nukes__/graphics/text/", text = "20t"}),
-    chart_picture = "__True-Nukes__/graphics/artillery/atomic-artillery-californium-map-visualization.png",
+    appearance = createAppearance({type = "nuclear_core", tints = {tints.californium, tints.uraniumLive, tints.uraniumDead}, text_location = "__True-Nukes_Continued__/graphics/text/", text = "20t"}),
+    chart_picture = "__True-Nukes_Continued__/graphics/artillery/atomic-artillery-californium-map-visualization.png",
     cooldown_modifier = 5,
     stack_size = 5,
     energy_required = 120,
@@ -328,8 +328,8 @@ if(settings.startup["enable-medium-atomics"].value) then
       preciseSize = 8,
       final_effect = nuke_explosions.N2t_detonation,
 
-      appearance = createAppearance({type = "nuclear_core", tints = {tints.californium, tints.californium, tints.californium}, text_location = "__True-Nukes__/graphics/text/", text = "2t"}),
-      chart_picture = "__True-Nukes__/graphics/artillery/atomic-artillery-californium-map-visualization.png",
+      appearance = createAppearance({type = "nuclear_core", tints = {tints.californium, tints.californium, tints.californium}, text_location = "__True-Nukes_Continued__/graphics/text/", text = "2t"}),
+      chart_picture = "__True-Nukes_Continued__/graphics/artillery/atomic-artillery-californium-map-visualization.png",
       cooldown_modifier = 5,
       stack_size = 20,
       energy_required = 120,
@@ -351,8 +351,8 @@ if(settings.startup["enable-medium-atomics"].value) then
       preciseSize = 16,
       final_effect = nuke_explosions.N4t_detonation,
 
-      appearance = createAppearance({type = "nuclear_core", tints = {tints.uraniumLive, tints.californium, tints.uraniumDead}, text_location = "__True-Nukes__/graphics/text/", text = "4t"}),
-      chart_picture = "__True-Nukes__/graphics/artillery/atomic-artillery-californium-map-visualization.png",
+      appearance = createAppearance({type = "nuclear_core", tints = {tints.uraniumLive, tints.californium, tints.uraniumDead}, text_location = "__True-Nukes_Continued__/graphics/text/", text = "4t"}),
+      chart_picture = "__True-Nukes_Continued__/graphics/artillery/atomic-artillery-californium-map-visualization.png",
       cooldown_modifier = 5,
       stack_size = 10,
       energy_required = 90,
@@ -374,8 +374,8 @@ if(settings.startup["enable-medium-atomics"].value) then
       preciseSize = 12,
       final_effect = nuke_explosions.N4t_detonation,
 
-      appearance = createAppearance({type = "nuclear_core", tints = {tints.uraniumLive, tints.californium, tints.californium}, text_location = "__True-Nukes__/graphics/text/", text = "4t"}),
-      chart_picture = "__True-Nukes__/graphics/artillery/atomic-artillery-californium-map-visualization.png",
+      appearance = createAppearance({type = "nuclear_core", tints = {tints.uraniumLive, tints.californium, tints.californium}, text_location = "__True-Nukes_Continued__/graphics/text/", text = "4t"}),
+      chart_picture = "__True-Nukes_Continued__/graphics/artillery/atomic-artillery-californium-map-visualization.png",
       cooldown_modifier = 5,
       stack_size = 10,
       energy_required = 180,
@@ -397,8 +397,8 @@ if(settings.startup["enable-medium-atomics"].value) then
       preciseSize = 20,
 
       final_effect = nuke_explosions.N8t_detonation,
-      appearance = createAppearance({type = "nuclear_core", tints = {tints.uraniumLive, tints.californium, tints.californium}, text_location = "__True-Nukes__/graphics/text/", text = "8t"}),
-      chart_picture = "__True-Nukes__/graphics/artillery/atomic-artillery-californium-map-visualization.png",
+      appearance = createAppearance({type = "nuclear_core", tints = {tints.uraniumLive, tints.californium, tints.californium}, text_location = "__True-Nukes_Continued__/graphics/text/", text = "8t"}),
+      chart_picture = "__True-Nukes_Continued__/graphics/artillery/atomic-artillery-californium-map-visualization.png",
       cooldown_modifier = 5,
       stack_size = 10,
       energy_required = 120,
@@ -420,8 +420,8 @@ if(settings.startup["enable-medium-atomics"].value) then
       preciseSize = 15,
 
       final_effect = nuke_explosions.N8t_detonation,
-      appearance = createAppearance({type = "nuclear_core", tints = {tints.uraniumLive, tints.californium, tints.californium}, text_location = "__True-Nukes__/graphics/text/", text = "8t"}),
-      chart_picture = "__True-Nukes__/graphics/artillery/atomic-artillery-californium-map-visualization.png",
+      appearance = createAppearance({type = "nuclear_core", tints = {tints.uraniumLive, tints.californium, tints.californium}, text_location = "__True-Nukes_Continued__/graphics/text/", text = "8t"}),
+      chart_picture = "__True-Nukes_Continued__/graphics/artillery/atomic-artillery-californium-map-visualization.png",
       cooldown_modifier = 5,
       stack_size = 10,
       energy_required = 240,
@@ -444,8 +444,8 @@ if(settings.startup["enable-medium-atomics"].value) then
       size = "small",
       preciseSize = 20,
       final_effect = nuke_explosions.N20t_detonation,
-      appearance = createAppearance({type = "nuclear_core", tints = {tints.uraniumLive, tints.californium, tints.californium}, text_location = "__True-Nukes__/graphics/text/", text = "20t"}),
-      chart_picture = "__True-Nukes__/graphics/artillery/atomic-artillery-californium-map-visualization.png",
+      appearance = createAppearance({type = "nuclear_core", tints = {tints.uraniumLive, tints.californium, tints.californium}, text_location = "__True-Nukes_Continued__/graphics/text/", text = "20t"}),
+      chart_picture = "__True-Nukes_Continued__/graphics/artillery/atomic-artillery-californium-map-visualization.png",
       cooldown_modifier = 5,
       stack_size = 5,
       energy_required = 300,
@@ -471,8 +471,8 @@ if(settings.startup["enable-large-atomics"].value) then
     size = "large",
     preciseSize = 38,
     final_effect = nuke_explosions.N500t_detonation,
-    appearance = createAppearance({type = "nuclear_core", tints = {tints.uraniumLive, tints.uraniumLive, tints.nothing}, text_location = "__True-Nukes__/graphics/text/", text = "500t"}),
-    chart_picture = "__True-Nukes__/graphics/artillery/atomic-artillery-map-visualization.png",
+    appearance = createAppearance({type = "nuclear_core", tints = {tints.uraniumLive, tints.uraniumLive, tints.nothing}, text_location = "__True-Nukes_Continued__/graphics/text/", text = "500t"}),
+    chart_picture = "__True-Nukes_Continued__/graphics/artillery/atomic-artillery-map-visualization.png",
     cooldown_modifier = 5,
     stack_size = 1,
     energy_required = 90,
@@ -494,8 +494,8 @@ if(settings.startup["enable-large-atomics"].value) then
     size = "large",
     preciseSize = 40,
     final_effect = nuke_explosions.N1kt_detonation,
-    appearance = createAppearance({type = "nuclear_core", tints = {tints.uraniumLive, tints.uraniumLive, tints.uraniumDead}, text_location = "__True-Nukes__/graphics/text/", text = "1kt"}),
-    chart_picture = "__True-Nukes__/graphics/artillery/atomic-artillery-map-visualization.png",
+    appearance = createAppearance({type = "nuclear_core", tints = {tints.uraniumLive, tints.uraniumLive, tints.uraniumDead}, text_location = "__True-Nukes_Continued__/graphics/text/", text = "1kt"}),
+    chart_picture = "__True-Nukes_Continued__/graphics/artillery/atomic-artillery-map-visualization.png",
     cooldown_modifier = 5,
     stack_size = 1,
     energy_required = 120,
@@ -519,8 +519,8 @@ if(settings.startup["enable-large-atomics"].value) then
       size = "large",
       preciseSize = 32,
       final_effect = nuke_explosions.N500t_detonation,
-      appearance = createAppearance({type = "nuclear_core", tints = {tints.uraniumLive, tints.uraniumLive, tints.nothing}, text_location = "__True-Nukes__/graphics/text/", text = "500t"}),
-      chart_picture = "__True-Nukes__/graphics/artillery/atomic-artillery-map-visualization.png",
+      appearance = createAppearance({type = "nuclear_core", tints = {tints.uraniumLive, tints.uraniumLive, tints.nothing}, text_location = "__True-Nukes_Continued__/graphics/text/", text = "500t"}),
+      chart_picture = "__True-Nukes_Continued__/graphics/artillery/atomic-artillery-map-visualization.png",
       cooldown_modifier = 5,
       stack_size = 1,
       energy_required = 210,
@@ -543,8 +543,8 @@ if(settings.startup["enable-large-atomics"].value) then
       size = "medium",
       preciseSize = 26,
       final_effect = nuke_explosions.N500t_detonation,
-      appearance = createAppearance({type = "nuclear_core", tints = {tints.californium, tints.uraniumLive, tints.uraniumLive}, text_location = "__True-Nukes__/graphics/text/", text = "500t"}),
-      chart_picture = "__True-Nukes__/graphics/artillery/atomic-artillery-map-visualization.png",
+      appearance = createAppearance({type = "nuclear_core", tints = {tints.californium, tints.uraniumLive, tints.uraniumLive}, text_location = "__True-Nukes_Continued__/graphics/text/", text = "500t"}),
+      chart_picture = "__True-Nukes_Continued__/graphics/artillery/atomic-artillery-map-visualization.png",
       cooldown_modifier = 5,
       stack_size = 1,
       energy_required = 360,
@@ -567,8 +567,8 @@ if(settings.startup["enable-large-atomics"].value) then
       size = "large",
       preciseSize = 35,
       final_effect = nuke_explosions.N1kt_detonation,
-      appearance = createAppearance({type = "nuclear_core", tints = {tints.uraniumLive, tints.uraniumLive, tints.uraniumDead}, text_location = "__True-Nukes__/graphics/text/", text = "1kt"}),
-      chart_picture = "__True-Nukes__/graphics/artillery/atomic-artillery-map-visualization.png",
+      appearance = createAppearance({type = "nuclear_core", tints = {tints.uraniumLive, tints.uraniumLive, tints.uraniumDead}, text_location = "__True-Nukes_Continued__/graphics/text/", text = "1kt"}),
+      chart_picture = "__True-Nukes_Continued__/graphics/artillery/atomic-artillery-map-visualization.png",
       cooldown_modifier = 5,
       stack_size = 1,
       energy_required = 300,
@@ -591,8 +591,8 @@ if(settings.startup["enable-large-atomics"].value) then
       size = "medium",
       preciseSize = 30,
       final_effect = nuke_explosions.N1kt_detonation,
-      appearance = createAppearance({type = "nuclear_core", tints = {tints.californium, tints.uraniumLive, tints.uraniumLive}, text_location = "__True-Nukes__/graphics/text/", text = "1kt"}),
-      chart_picture = "__True-Nukes__/graphics/artillery/atomic-artillery-map-visualization.png",
+      appearance = createAppearance({type = "nuclear_core", tints = {tints.californium, tints.uraniumLive, tints.uraniumLive}, text_location = "__True-Nukes_Continued__/graphics/text/", text = "1kt"}),
+      chart_picture = "__True-Nukes_Continued__/graphics/artillery/atomic-artillery-map-visualization.png",
       cooldown_modifier = 5,
       stack_size = 1,
       energy_required = 600,
@@ -619,8 +619,8 @@ if(settings.startup["enable-15kt"].value) then
     size = "huge",
     preciseSize = 44,
     final_effect = nuke_explosions.N15kt_detonation,
-    appearance = createAppearance({type = "nuclear_core", tints = {tints.uraniumLive, tints.uraniumLive, tints.uraniumLive}, text_location = "__True-Nukes__/graphics/text/", text = "15kt"}),
-    chart_picture = "__True-Nukes__/graphics/artillery/atomic-artillery-map-visualization.png",
+    appearance = createAppearance({type = "nuclear_core", tints = {tints.uraniumLive, tints.uraniumLive, tints.uraniumLive}, text_location = "__True-Nukes_Continued__/graphics/text/", text = "15kt"}),
+    chart_picture = "__True-Nukes_Continued__/graphics/artillery/atomic-artillery-map-visualization.png",
     cooldown_modifier = 5,
     stack_size = 1,
     energy_required = 180,
@@ -646,8 +646,8 @@ if(settings.startup["enable-15kt"].value) then
       size = "large",
       preciseSize = 38,
       final_effect = nuke_explosions.N15kt_detonation,
-      appearance = createAppearance({type = "nuclear_core", tints = {tints.uraniumLive, tints.uraniumLive, tints.uraniumLive}, text_location = "__True-Nukes__/graphics/text/", text = "15kt"}),
-      chart_picture = "__True-Nukes__/graphics/artillery/atomic-artillery-map-visualization.png",
+      appearance = createAppearance({type = "nuclear_core", tints = {tints.uraniumLive, tints.uraniumLive, tints.uraniumLive}, text_location = "__True-Nukes_Continued__/graphics/text/", text = "15kt"}),
+      chart_picture = "__True-Nukes_Continued__/graphics/artillery/atomic-artillery-map-visualization.png",
       cooldown_modifier = 5,
       stack_size = 1,
       energy_required = 480,
@@ -673,8 +673,8 @@ if(settings.startup["enable-15kt"].value) then
       size = "large",
       preciseSize = 33,
       final_effect = nuke_explosions.N15kt_detonation,
-      appearance = createAppearance({type = "nuclear_core", tints = {tints.uraniumLive, tints.uraniumLive, tints.uraniumLive}, text_location = "__True-Nukes__/graphics/text/", text = "15kt"}),
-      chart_picture = "__True-Nukes__/graphics/artillery/atomic-artillery-map-visualization.png",
+      appearance = createAppearance({type = "nuclear_core", tints = {tints.uraniumLive, tints.uraniumLive, tints.uraniumLive}, text_location = "__True-Nukes_Continued__/graphics/text/", text = "15kt"}),
+      chart_picture = "__True-Nukes_Continued__/graphics/artillery/atomic-artillery-map-visualization.png",
       cooldown_modifier = 5,
       stack_size = 1,
       energy_required = 720,
@@ -701,8 +701,8 @@ if(settings.startup["enable-fusion"].value) then
     size = "huge",
     preciseSize = 56,
     final_effect = nuke_explosions.N15kt_detonation,
-    appearance = createAppearance({type = "nuclear_core", tints = {tints.tritium, tints.tritium, tints.tritium}, text_location = "__True-Nukes__/graphics/text/", text = "15kt+"}),
-    chart_picture = "__True-Nukes__/graphics/artillery/atomic-artillery-fusion-map-visualization.png",
+    appearance = createAppearance({type = "nuclear_core", tints = {tints.tritium, tints.tritium, tints.tritium}, text_location = "__True-Nukes_Continued__/graphics/text/", text = "15kt+"}),
+    chart_picture = "__True-Nukes_Continued__/graphics/artillery/atomic-artillery-fusion-map-visualization.png",
     cooldown_modifier = 5,
     stack_size = 1,
     energy_required = 180,
@@ -726,14 +726,14 @@ if(settings.startup["enable-fusion"].value) then
       {
         additional_ingedients = {},
         appendName = "-15kt",
-        appearance = createAppearance({type = "nuclear_core", tints = {tints.tritium, tints.tritium, tints.tritium}, text_location = "__True-Nukes__/graphics/text/", text = "15kt"}),
+        appearance = createAppearance({type = "nuclear_core", tints = {tints.tritium, tints.tritium, tints.tritium}, text_location = "__True-Nukes_Continued__/graphics/text/", text = "15kt"}),
         appendOrder = "-0-015",
         final_effect = nuke_explosions.N15kt_detonation
       },
       {
-        additional_ingedients = {{fusionMaterial, 2}},
+        additional_ingedients = {{type = "item", name = fusionMaterial, amount = 2}},
         appendName = "-100kt",
-        appearance = createAppearance({type = "nuclear_core", tints = {tints.tritium, tints.tritium, tints.tritium}, text_location = "__True-Nukes__/graphics/text/", text = "100kt"}),
+        appearance = createAppearance({type = "nuclear_core", tints = {tints.tritium, tints.tritium, tints.tritium}, text_location = "__True-Nukes_Continued__/graphics/text/", text = "100kt"}),
         appendOrder = "-0-100",
         final_effect = nuke_explosions.N100kt_detonation
       }
@@ -741,44 +741,44 @@ if(settings.startup["enable-fusion"].value) then
   }
   if(settings.startup["enable-big-fusion-weapons"].value) then
     table.insert(warheads["TN-warhead-big--1"].explosions, {
-      additional_ingedients = {{fusionMaterial, 20}},
+      additional_ingedients = {{type = "item", name = fusionMaterial, amount = 20}},
       appendName = "-1Mt",
-      appearance = createAppearance({type = "nuclear_core", tints = {tints.tritium, tints.tritium, tints.tritium}, text_location = "__True-Nukes__/graphics/text/", text = "1Mt"}),
+      appearance = createAppearance({type = "nuclear_core", tints = {tints.tritium, tints.tritium, tints.tritium}, text_location = "__True-Nukes_Continued__/graphics/text/", text = "1Mt"}),
       appendOrder = "-1-001",
       final_effect = nuke_explosions.N1Mt_detonation
     })
     table.insert(warheads["TN-warhead-big--1"].explosions, {
-      additional_ingedients = {{fusionMaterial, 100}},
+      additional_ingedients = {{type = "item", name = fusionMaterial, amount = 100}},
       appendName = "-5Mt",
-      appearance = createAppearance({type = "nuclear_core", tints = {tints.tritium, tints.tritium, tints.tritium}, text_location = "__True-Nukes__/graphics/text/", text = "5Mt"}),
+      appearance = createAppearance({type = "nuclear_core", tints = {tints.tritium, tints.tritium, tints.tritium}, text_location = "__True-Nukes_Continued__/graphics/text/", text = "5Mt"}),
       appendOrder = "-1-005",
       final_effect = nuke_explosions.N5Mt_detonation
     })
     table.insert(warheads["TN-warhead-big--1"].explosions, {
-      additional_ingedients = {{fusionMaterial, 200}},
+      additional_ingedients = {{type = "item", name = fusionMaterial, amount = 200}},
       appendName = "-10Mt",
-      appearance = createAppearance({type = "nuclear_core", tints = {tints.tritium, tints.tritium, tints.tritium}, text_location = "__True-Nukes__/graphics/text/", text = "10Mt"}),
+      appearance = createAppearance({type = "nuclear_core", tints = {tints.tritium, tints.tritium, tints.tritium}, text_location = "__True-Nukes_Continued__/graphics/text/", text = "10Mt"}),
       appendOrder = "-1-010",
       final_effect = nuke_explosions.N10Mt_detonation
     })
     table.insert(warheads["TN-warhead-big--1"].explosions, {
-      additional_ingedients = {{fusionMaterial, 1000}},
+      additional_ingedients = {{type = "item", name = fusionMaterial, amount = 1000}},
       appendName = "-50Mt",
-      appearance = createAppearance({type = "nuclear_core", tints = {tints.tritium, tints.tritium, tints.tritium}, text_location = "__True-Nukes__/graphics/text/", text = "50Mt"}),
+      appearance = createAppearance({type = "nuclear_core", tints = {tints.tritium, tints.tritium, tints.tritium}, text_location = "__True-Nukes_Continued__/graphics/text/", text = "50Mt"}),
       appendOrder = "-1-050",
       final_effect = nuke_explosions.N50Mt_detonation
     })
     table.insert(warheads["TN-warhead-big--1"].explosions, {
-      additional_ingedients = {{fusionMaterial, 2000}},
+      additional_ingedients = {{type = "item", name = fusionMaterial, amount = 2000}},
       appendName = "-100Mt",
-      appearance = createAppearance({type = "nuclear_core", tints = {tints.tritium, tints.tritium, tints.tritium}, text_location = "__True-Nukes__/graphics/text/", text = "100Mt"}),
+      appearance = createAppearance({type = "nuclear_core", tints = {tints.tritium, tints.tritium, tints.tritium}, text_location = "__True-Nukes_Continued__/graphics/text/", text = "100Mt"}),
       appendOrder = "-1-100",
       final_effect = nuke_explosions.N100Mt_detonation
     })
     table.insert(warheads["TN-warhead-big--1"].explosions, {
-      additional_ingedients = {{fusionMaterial, 20000}},
+      additional_ingedients = {{type = "item", name = fusionMaterial, amount =20000}},
       appendName = "-1Gt",
-      appearance = createAppearance({type = "nuclear_core", tints = {tints.tritium, tints.tritium, tints.tritium}, text_location = "__True-Nukes__/graphics/text/", text = "1Gt"}),
+      appearance = createAppearance({type = "nuclear_core", tints = {tints.tritium, tints.tritium, tints.tritium}, text_location = "__True-Nukes_Continued__/graphics/text/", text = "1Gt"}),
       appendOrder = "-2-001",
       final_effect = nuke_explosions.N1Gt_detonation
     })
@@ -791,8 +791,8 @@ if(settings.startup["enable-fusion"].value) then
       target_type = "position",
       size = "huge",
       preciseSize = 48,
-      appearance = createAppearance({type = "nuclear_core", tints = {tints.uraniumLive, tints.tritium, tints.tritium}, text_location = "__True-Nukes__/graphics/text/", text = "15kt+"}),
-      chart_picture = "__True-Nukes__/graphics/artillery/atomic-artillery-fusion-map-visualization.png",
+      appearance = createAppearance({type = "nuclear_core", tints = {tints.uraniumLive, tints.tritium, tints.tritium}, text_location = "__True-Nukes_Continued__/graphics/text/", text = "15kt+"}),
+      chart_picture = "__True-Nukes_Continued__/graphics/artillery/atomic-artillery-fusion-map-visualization.png",
       cooldown_modifier = 5,
       stack_size = 1,
       energy_required = 300,
@@ -817,14 +817,14 @@ if(settings.startup["enable-fusion"].value) then
         {
           additional_ingedients = {},
           appendName = "-15kt",
-          appearance = createAppearance({type = "nuclear_core", tints = {tints.uraniumLive, tints.tritium, tints.tritium}, text_location = "__True-Nukes__/graphics/text/", text = "15kt"}),
+          appearance = createAppearance({type = "nuclear_core", tints = {tints.uraniumLive, tints.tritium, tints.tritium}, text_location = "__True-Nukes_Continued__/graphics/text/", text = "15kt"}),
           appendOrder = "-0-015",
           final_effect = nuke_explosions.N15kt_detonation
         },
         {
-          additional_ingedients = {{fusionMaterial, 4}},
+          additional_ingedients = {{type = "item", name = fusionMaterial, amount = 4}},
           appendName = "-100kt",
-          appearance = createAppearance({type = "nuclear_core", tints = {tints.uraniumLive, tints.tritium, tints.tritium}, text_location = "__True-Nukes__/graphics/text/", text = "100kt"}),
+          appearance = createAppearance({type = "nuclear_core", tints = {tints.uraniumLive, tints.tritium, tints.tritium}, text_location = "__True-Nukes_Continued__/graphics/text/", text = "100kt"}),
           appendOrder = "-0-100",
           final_effect = nuke_explosions.N100kt_detonation
         }
@@ -832,16 +832,16 @@ if(settings.startup["enable-fusion"].value) then
     }
     if(settings.startup["enable-big-fusion-weapons"].value) then
       table.insert(warheads["TN-warhead-big--2"].explosions, {
-        additional_ingedients = {{fusionMaterial, 40}},
+        additional_ingedients = {{type = "item", name = fusionMaterial, amount = 40}},
         appendName = "-1Mt",
-        appearance = createAppearance({type = "nuclear_core", tints = {tints.uraniumLive, tints.tritium, tints.tritium}, text_location = "__True-Nukes__/graphics/text/", text = "1Mt"}),
+        appearance = createAppearance({type = "nuclear_core", tints = {tints.uraniumLive, tints.tritium, tints.tritium}, text_location = "__True-Nukes_Continued__/graphics/text/", text = "1Mt"}),
         appendOrder = "-1-001",
         final_effect = nuke_explosions.N1Mt_detonation
       })
       table.insert(warheads["TN-warhead-big--2"].explosions, {
-        additional_ingedients = {{fusionMaterial, 200}},
+        additional_ingedients = {{type = "item", name = fusionMaterial, amount = 200}},
         appendName = "-5Mt",
-        appearance = createAppearance({type = "nuclear_core", tints = {tints.uraniumLive, tints.tritium, tints.tritium}, text_location = "__True-Nukes__/graphics/text/", text = "5Mt"}),
+        appearance = createAppearance({type = "nuclear_core", tints = {tints.uraniumLive, tints.tritium, tints.tritium}, text_location = "__True-Nukes_Continued__/graphics/text/", text = "5Mt"}),
         appendOrder = "-1-005",
         final_effect = nuke_explosions.N5Mt_detonation
       })
@@ -852,8 +852,8 @@ if(settings.startup["enable-fusion"].value) then
       target_type = "position",
       size = "large",
       preciseSize = 40,
-      appearance = createAppearance({type = "nuclear_core", tints = {tints.uraniumLive, tints.tritium, tints.uraniumLive}, text_location = "__True-Nukes__/graphics/text/", text = "15kt+"}),
-      chart_picture = "__True-Nukes__/graphics/artillery/atomic-artillery-fusion-map-visualization.png",
+      appearance = createAppearance({type = "nuclear_core", tints = {tints.uraniumLive, tints.tritium, tints.uraniumLive}, text_location = "__True-Nukes_Continued__/graphics/text/", text = "15kt+"}),
+      chart_picture = "__True-Nukes_Continued__/graphics/artillery/atomic-artillery-fusion-map-visualization.png",
       cooldown_modifier = 5,
       stack_size = 1,
       energy_required = 720,
@@ -877,14 +877,14 @@ if(settings.startup["enable-fusion"].value) then
         {
           additional_ingedients = {},
           appendName = "-15kt",
-          appearance = createAppearance({type = "nuclear_core", tints = {tints.uraniumLive, tints.tritium, tints.uraniumLive}, text_location = "__True-Nukes__/graphics/text/", text = "15kt"}),
+          appearance = createAppearance({type = "nuclear_core", tints = {tints.uraniumLive, tints.tritium, tints.uraniumLive}, text_location = "__True-Nukes_Continued__/graphics/text/", text = "15kt"}),
           appendOrder = "-0-015",
           final_effect = nuke_explosions.N15kt_detonation
         },
         {
-          additional_ingedients = {{fusionMaterial, 8}},
+          additional_ingedients = {{type = "item", name = fusionMaterial, amount = 8}},
           appendName = "-100kt",
-          appearance = createAppearance({type = "nuclear_core", tints = {tints.uraniumLive, tints.tritium, tints.uraniumLive}, text_location = "__True-Nukes__/graphics/text/", text = "100kt"}),
+          appearance = createAppearance({type = "nuclear_core", tints = {tints.uraniumLive, tints.tritium, tints.uraniumLive}, text_location = "__True-Nukes_Continued__/graphics/text/", text = "100kt"}),
           appendOrder = "-0-100",
           final_effect = nuke_explosions.N100kt_detonation
         }

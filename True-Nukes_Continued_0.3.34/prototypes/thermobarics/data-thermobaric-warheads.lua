@@ -1,6 +1,6 @@
-require("__Warheads__.prototypes.warheads")
+require("__Warheads_Continued__.prototypes.warheads")
 
-local create_utils = require("__Warheads__.prototypes.sprite-assembly-util")
+local create_utils = require("__Warheads_Continued__.prototypes.sprite-assembly-util")
 
 
 local createAppearance = create_utils.createAppearance
@@ -39,7 +39,7 @@ if(settings.startup["enable-small-thermobarics"].value) then
     size = "small",
     preciseSize = 16,
     appearance = createAppearance({type = "can_1", style = 4, tints = {tints.explosive, tints.explosive}}),
-    chart_picture = "__True-Nukes__/graphics/artillery/thermobaric-artillery-map-visualization.png",
+    chart_picture = "__True-Nukes_Continued__/graphics/artillery/thermobaric-artillery-map-visualization.png",
     range_modifier = 1.5,
     stack_size = 100,
     energy_required = 20,
@@ -50,7 +50,7 @@ if(settings.startup["enable-small-thermobarics"].value) then
       {circuit_type, 5},
       {fuel_type, 15},
       {"flamethrower-ammo", 5},
-      {"empty-barrel", 2}
+      {"barrel", 2}
     },
     final_effect = {
       {
@@ -88,7 +88,7 @@ if(settings.startup["enable-small-thermobarics"].value) then
             target_effects =
             {
               type = "damage",
-              damage = {amount = 0.1, type = "fire"}
+              damage = {amount = 1, type = "fire"}
             }
           }
         }
@@ -106,7 +106,7 @@ if(settings.startup["enable-small-thermobarics"].value) then
             {
               {
                 type = "damage",
-                damage = {amount = 600, type = "explosion"}
+                damage = {amount = 1200, type = "explosion"}
               }
             }
           }
@@ -126,7 +126,7 @@ if(settings.startup["enable-medium-thermobarics"].value) then
     size = "medium",
     preciseSize = 24,
     appearance = createAppearance({type = "can_2", style = 2, tints = {tints.explosive}}),
-    chart_picture = "__True-Nukes__/graphics/artillery/thermobaric-artillery-map-visualization.png",
+    chart_picture = "__True-Nukes_Continued__/graphics/artillery/thermobaric-artillery-map-visualization.png",
     range_modifier = 1.5,
     stack_size = 20,
     energy_required = 30,
@@ -137,7 +137,7 @@ if(settings.startup["enable-medium-thermobarics"].value) then
       {circuit_type, 10},
       {fuel_type, 25},
       {"flamethrower-ammo", 12},
-      {"empty-barrel", 5}
+      {"barrel", 5}
     },
     final_effect = {
       {
@@ -171,7 +171,7 @@ if(settings.startup["enable-medium-thermobarics"].value) then
             target_effects =
             {
               type = "damage",
-              damage = {amount = 0.1, type = "fire"}
+              damage = {amount = 1, type = "fire"}
             }
           }
         }
@@ -189,7 +189,7 @@ if(settings.startup["enable-medium-thermobarics"].value) then
             {
               {
                 type = "damage",
-                damage = {amount = 600, type = "explosion"}
+                damage = {amount = 1200, type = "explosion"}
               }
             }
           }
@@ -211,7 +211,7 @@ if(settings.startup["enable-large-thermobarics"].value) then
     size = "large",
     preciseSize = 32,
     appearance = createAppearance({type = "can_3", tints = {tints.explosive}}),
-    chart_picture = "__True-Nukes__/graphics/artillery/thermobaric-artillery-map-visualization.png",
+    chart_picture = "__True-Nukes_Continued__/graphics/artillery/thermobaric-artillery-map-visualization.png",
     stack_size = 10,
     energy_required = 40,
     clamp_position = true,
@@ -221,7 +221,7 @@ if(settings.startup["enable-large-thermobarics"].value) then
       {circuit_type, 15},
       {fuel_type, 40},
       {"flamethrower-ammo", 20},
-      {"empty-barrel", 10}
+      {"barrel", 10}
     },
     final_effect = {
       {
@@ -255,7 +255,7 @@ if(settings.startup["enable-large-thermobarics"].value) then
             target_effects =
             {
               type = "damage",
-              damage = {amount = 0.1, type = "fire"}
+              damage = {amount = 1, type = "fire"}
             }
           }
         }
@@ -273,7 +273,7 @@ if(settings.startup["enable-large-thermobarics"].value) then
             {
               {
                 type = "damage",
-                damage = {amount = 600, type = "explosion"}
+                damage = {amount = 1200, type = "explosion"}
               }
             }
           }

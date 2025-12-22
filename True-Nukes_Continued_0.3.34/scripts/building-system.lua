@@ -1,4 +1,4 @@
-local warheads_added = require("__True-Nukes__.prototypes.nukes.data-nukes-building-warheads")
+local warheads_added = require("__True-Nukes_Continued__.prototypes.nukes.data-nukes-building-warheads")
 local test_system = require("nuclear-test-system")
 local achievement_system = require("achievement-system")
 
@@ -17,8 +17,8 @@ local function nukeBuildingDetonate(building)
 end
 
 local function checkBuildings()
-  if(#global.nukeBuildings>0) then
-    for i,building in ipairs(global.nukeBuildings) do
+  if(#storage.nukeBuildings>0) then
+    for i,building in ipairs(storage.nukeBuildings) do
       if(building.valid) then
         if(not building.get_output_inventory().is_empty()) then
           nukeBuildingDetonate(building)
@@ -41,7 +41,7 @@ local function checkBuildings()
           end
         end
       else
-        table.remove(global.nukeBuildings, i)
+        table.remove(storage.nukeBuildings, i)
       end
     end
   end

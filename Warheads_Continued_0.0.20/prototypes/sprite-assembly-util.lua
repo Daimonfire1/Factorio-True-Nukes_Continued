@@ -17,409 +17,409 @@ local sprite_types = {
     },
     {
       sections = {
-        "__Warheads__/graphics/artillery/artillery-shell-tip.png",
+        "__Warheads_Continued__/graphics/artillery/artillery-shell-tip.png",
       },
       lights = {
-        "__Warheads__/graphics/artillery/artillery-shell-tip.png",
+        "__Warheads_Continued__/graphics/artillery/artillery-shell-tip.png",
       },
-      final = "__Warheads__/graphics/artillery/artillery-shell-base.png"
+      final = "__Warheads_Continued__/graphics/artillery/artillery-shell-base.png"
     },
     {
-      base = "__Warheads__/graphics/artillery/artillery-shell-ring-1-base-left.png",
+      base = "__Warheads_Continued__/graphics/artillery/artillery-shell-ring-1-base-left.png",
       sections = {
-        "__Warheads__/graphics/artillery/artillery-shell-tip.png",
-        "__Warheads__/graphics/artillery/artillery-shell-ring-1.png"
+        "__Warheads_Continued__/graphics/artillery/artillery-shell-tip.png",
+        "__Warheads_Continued__/graphics/artillery/artillery-shell-ring-1.png"
       },
       lights = {
-        "__Warheads__/graphics/artillery/artillery-shell-tip.png",
-        "__Warheads__/graphics/artillery/artillery-shell-ring-1.png"
+        "__Warheads_Continued__/graphics/artillery/artillery-shell-tip.png",
+        "__Warheads_Continued__/graphics/artillery/artillery-shell-ring-1.png"
       },
-      final = "__Warheads__/graphics/artillery/artillery-shell-ring-1-base-right.png"
+      final = "__Warheads_Continued__/graphics/artillery/artillery-shell-ring-1-base-right.png"
     },
     {
-      base = "__Warheads__/graphics/artillery/artillery-shell-ring-2-base-left.png",
+      base = "__Warheads_Continued__/graphics/artillery/artillery-shell-ring-2-base-left.png",
       sections = {
-        "__Warheads__/graphics/artillery/artillery-shell-tip.png",
-        "__Warheads__/graphics/artillery/artillery-shell-ring-1.png",
-        "__Warheads__/graphics/artillery/artillery-shell-ring-2.png"
+        "__Warheads_Continued__/graphics/artillery/artillery-shell-tip.png",
+        "__Warheads_Continued__/graphics/artillery/artillery-shell-ring-1.png",
+        "__Warheads_Continued__/graphics/artillery/artillery-shell-ring-2.png"
       },
       lights = {
-        "__Warheads__/graphics/artillery/artillery-shell-tip.png",
-        "__Warheads__/graphics/artillery/artillery-shell-ring-1.png",
-        "__Warheads__/graphics/artillery/artillery-shell-ring-2.png"
+        "__Warheads_Continued__/graphics/artillery/artillery-shell-tip.png",
+        "__Warheads_Continued__/graphics/artillery/artillery-shell-ring-1.png",
+        "__Warheads_Continued__/graphics/artillery/artillery-shell-ring-2.png"
       },
-      final = "__Warheads__/graphics/artillery/artillery-shell-ring-2-base-right.png"
+      final = "__Warheads_Continued__/graphics/artillery/artillery-shell-ring-2-base-right.png"
     },
     {
-      base = "__Warheads__/graphics/artillery/artillery-shell-ring-fat-base-left.png",
+      base = "__Warheads_Continued__/graphics/artillery/artillery-shell-ring-fat-base-left.png",
       sections = {
-        "__Warheads__/graphics/artillery/artillery-shell-tip.png",
-        "__Warheads__/graphics/artillery/artillery-shell-ring-fat.png"
+        "__Warheads_Continued__/graphics/artillery/artillery-shell-tip.png",
+        "__Warheads_Continued__/graphics/artillery/artillery-shell-ring-fat.png"
       },
       lights = {
-        "__Warheads__/graphics/artillery/artillery-shell-tip.png",
-        "__Warheads__/graphics/artillery/artillery-shell-ring-fat.png"
+        "__Warheads_Continued__/graphics/artillery/artillery-shell-tip.png",
+        "__Warheads_Continued__/graphics/artillery/artillery-shell-ring-fat.png"
       },
-      final = "__Warheads__/graphics/artillery/artillery-shell-ring-fat-base-right.png",
+      final = "__Warheads_Continued__/graphics/artillery/artillery-shell-ring-fat-base-right.png",
     },
   },
   cannon = {
     {
-      base = "__Warheads__/graphics/cannon/cannon-shell-base.png"
+      base = "__Warheads_Continued__/graphics/cannon/cannon-shell-base.png"
     },
     {
-      base = "__Warheads__/graphics/cannon/cannon-shell-base.png",
+      base = "__Warheads_Continued__/graphics/cannon/cannon-shell-base.png",
       sections = {
-        "__Warheads__/graphics/cannon/cannon-shell-tip.png",
+        "__Warheads_Continued__/graphics/cannon/cannon-shell-tip.png",
       },
       lights = {
-        "__Warheads__/graphics/cannon/cannon-shell-tip.png",
+        "__Warheads_Continued__/graphics/cannon/cannon-shell-tip.png",
       },
-      final = "__Warheads__/graphics/cannon/cannon-shell-base-top.png"
+      final = "__Warheads_Continued__/graphics/cannon/cannon-shell-base-top.png"
     },
     {
-      base = "__Warheads__/graphics/cannon/cannon-shell-base.png",
+      base = "__Warheads_Continued__/graphics/cannon/cannon-shell-base.png",
       sections = {
-        "__Warheads__/graphics/cannon/cannon-shell-edge.png",
+        "__Warheads_Continued__/graphics/cannon/cannon-shell-edge.png",
       },
       lights = {
-        "__Warheads__/graphics/cannon/cannon-shell-edge.png",
+        "__Warheads_Continued__/graphics/cannon/cannon-shell-edge.png",
       },
-      final = "__Warheads__/graphics/cannon/cannon-shell-base-top.png"
+      final = "__Warheads_Continued__/graphics/cannon/cannon-shell-base-top.png"
     },
     {
-      base = "__Warheads__/graphics/cannon/cannon-shell-base.png",
+      base = "__Warheads_Continued__/graphics/cannon/cannon-shell-base.png",
       sections = {
-        "__Warheads__/graphics/cannon/cannon-shell-tip.png",
-        "__Warheads__/graphics/cannon/cannon-shell-edge.png",
+        "__Warheads_Continued__/graphics/cannon/cannon-shell-tip.png",
+        "__Warheads_Continued__/graphics/cannon/cannon-shell-edge.png",
       },
       lights = {
-        "__Warheads__/graphics/cannon/cannon-shell-tip.png",
-        "__Warheads__/graphics/cannon/cannon-shell-edge.png",
+        "__Warheads_Continued__/graphics/cannon/cannon-shell-tip.png",
+        "__Warheads_Continued__/graphics/cannon/cannon-shell-edge.png",
       },
-      final = "__Warheads__/graphics/cannon/cannon-shell-base-top.png"
+      final = "__Warheads_Continued__/graphics/cannon/cannon-shell-base-top.png"
     },
   },
   rocket = {
     {
-      base = "__Warheads__/graphics/rockets/rocket.png"
+      base = "__Warheads_Continued__/graphics/rockets/rocket.png"
     },
     {
       base = {
-        "__Warheads__/graphics/rockets/rocket-fins.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-fins.png",
       },
       sections = {
-        "__Warheads__/graphics/rockets/rocket-tip.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-tip.png",
       },
       lights = {
-        "__Warheads__/graphics/rockets/rocket-tip-light.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-tip-light.png",
       },
       final = {
-        "__Warheads__/graphics/rockets/rocket-ring-1.png",
-        "__Warheads__/graphics/rockets/rocket-ring-2.png",
-        "__Warheads__/graphics/rockets/rocket-ring-3.png",
-        "__Warheads__/graphics/rockets/rocket-engine.png",
-      },
-    },
-    {
-      base = {
-        "__Warheads__/graphics/rockets/rocket-fins.png",
-      },
-      sections = {
-        "__Warheads__/graphics/rockets/rocket-tip.png",
-        "__Warheads__/graphics/rockets/rocket-ring-1.png",
-      },
-      lights = {
-        "__Warheads__/graphics/rockets/rocket-tip-light.png",
-        "__Warheads__/graphics/rockets/rocket-ring-1-light.png",
-      },
-      final = {
-        "__Warheads__/graphics/rockets/rocket-ring-2.png",
-        "__Warheads__/graphics/rockets/rocket-ring-3.png",
-        "__Warheads__/graphics/rockets/rocket-engine.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-ring-1.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-ring-2.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-ring-3.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-engine.png",
       },
     },
     {
       base = {
-        "__Warheads__/graphics/rockets/rocket-fins.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-fins.png",
       },
       sections = {
-        "__Warheads__/graphics/rockets/rocket-tip.png",
-        "__Warheads__/graphics/rockets/rocket-ring-1.png",
-        "__Warheads__/graphics/rockets/rocket-ring-2.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-tip.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-ring-1.png",
       },
       lights = {
-        "__Warheads__/graphics/rockets/rocket-tip-light.png",
-        "__Warheads__/graphics/rockets/rocket-ring-1-light.png",
-        "__Warheads__/graphics/rockets/rocket-ring-2-light.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-tip-light.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-ring-1-light.png",
       },
       final = {
-        "__Warheads__/graphics/rockets/rocket-ring-3.png",
-        "__Warheads__/graphics/rockets/rocket-engine.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-ring-2.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-ring-3.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-engine.png",
       },
     },
     {
       base = {
-        "__Warheads__/graphics/rockets/rocket-fins.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-fins.png",
       },
       sections = {
-        "__Warheads__/graphics/rockets/rocket-tip.png",
-        "__Warheads__/graphics/rockets/rocket-ring-1.png",
-        "__Warheads__/graphics/rockets/rocket-ring-2.png",
-        "__Warheads__/graphics/rockets/rocket-ring-3.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-tip.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-ring-1.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-ring-2.png",
       },
       lights = {
-        "__Warheads__/graphics/rockets/rocket-tip-light.png",
-        "__Warheads__/graphics/rockets/rocket-ring-1-light.png",
-        "__Warheads__/graphics/rockets/rocket-ring-2-light.png",
-        "__Warheads__/graphics/rockets/rocket-ring-3.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-tip-light.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-ring-1-light.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-ring-2-light.png",
       },
       final = {
-        "__Warheads__/graphics/rockets/rocket-engine.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-ring-3.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-engine.png",
       },
     },
     {
-      base = "__Warheads__/graphics/rockets/rocket-fins.png",
+      base = {
+        "__Warheads_Continued__/graphics/rockets/rocket-fins.png",
+      },
       sections = {
-        "__Warheads__/graphics/rockets/rocket-tip.png",
-        "__Warheads__/graphics/rockets/rocket-ring-1.png",
-        "__Warheads__/graphics/rockets/rocket-ring-2.png",
-        "__Warheads__/graphics/rockets/rocket-ring-3.png",
-        "__Warheads__/graphics/rockets/rocket-engine.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-tip.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-ring-1.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-ring-2.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-ring-3.png",
       },
       lights = {
-        "__Warheads__/graphics/rockets/rocket-tip-light.png",
-        "__Warheads__/graphics/rockets/rocket-ring-1-light.png",
-        "__Warheads__/graphics/rockets/rocket-ring-2-light.png",
-        "__Warheads__/graphics/rockets/rocket-ring-3.png",
-        "__Warheads__/graphics/rockets/rocket-engine.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-tip-light.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-ring-1-light.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-ring-2-light.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-ring-3.png",
+      },
+      final = {
+        "__Warheads_Continued__/graphics/rockets/rocket-engine.png",
+      },
+    },
+    {
+      base = "__Warheads_Continued__/graphics/rockets/rocket-fins.png",
+      sections = {
+        "__Warheads_Continued__/graphics/rockets/rocket-tip.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-ring-1.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-ring-2.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-ring-3.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-engine.png",
+      },
+      lights = {
+        "__Warheads_Continued__/graphics/rockets/rocket-tip-light.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-ring-1-light.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-ring-2-light.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-ring-3.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-engine.png",
       }
     },
   },
   rocket_big = {
     {
       base = {
-        "__Warheads__/graphics/rockets/rocket-fins.png",
-        {icon = "__Warheads__/graphics/rockets/rocket-tip.png", size = 64, tint = tints.nothing},
-        {icon = "__Warheads__/graphics/rockets/rocket-ring-1.png", size = 64, tint = tints.nothing},
-        {icon = "__Warheads__/graphics/rockets/rocket-ring-2.png", size = 64, tint = tints.nothing},
-        {icon = "__Warheads__/graphics/rockets/rocket-ring-3.png", size = 64, tint = tints.nothing},
-        {icon = "__Warheads__/graphics/rockets/rocket-engine.png", size = 64, tint = tints.explosive}
+        "__Warheads_Continued__/graphics/rockets/rocket-fins.png",
+        {icon = "__Warheads_Continued__/graphics/rockets/rocket-tip.png", size = 64, tint = tints.nothing},
+        {icon = "__Warheads_Continued__/graphics/rockets/rocket-ring-1.png", size = 64, tint = tints.nothing},
+        {icon = "__Warheads_Continued__/graphics/rockets/rocket-ring-2.png", size = 64, tint = tints.nothing},
+        {icon = "__Warheads_Continued__/graphics/rockets/rocket-ring-3.png", size = 64, tint = tints.nothing},
+        {icon = "__Warheads_Continued__/graphics/rockets/rocket-engine.png", size = 64, tint = tints.explosive}
       }
     },
     {
       base = {
-        "__Warheads__/graphics/rockets/rocket-fins.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-fins.png",
       },
       sections = {
-        "__Warheads__/graphics/rockets/rocket-tip.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-tip.png",
       },
       lights = {
-        "__Warheads__/graphics/rockets/rocket-tip-light.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-tip-light.png",
       },
       final = {
-        {icon = "__Warheads__/graphics/rockets/rocket-ring-1.png", size = 64, tint = tints.nothing},
-        {icon = "__Warheads__/graphics/rockets/rocket-ring-2.png", size = 64, tint = tints.nothing},
-        {icon = "__Warheads__/graphics/rockets/rocket-ring-3.png", size = 64, tint = tints.nothing},
-        {icon = "__Warheads__/graphics/rockets/rocket-engine.png", size = 64, tint = tints.explosive}
+        {icon = "__Warheads_Continued__/graphics/rockets/rocket-ring-1.png", size = 64, tint = tints.nothing},
+        {icon = "__Warheads_Continued__/graphics/rockets/rocket-ring-2.png", size = 64, tint = tints.nothing},
+        {icon = "__Warheads_Continued__/graphics/rockets/rocket-ring-3.png", size = 64, tint = tints.nothing},
+        {icon = "__Warheads_Continued__/graphics/rockets/rocket-engine.png", size = 64, tint = tints.explosive}
       },
     },
     {
       base = {
-        "__Warheads__/graphics/rockets/rocket-fins.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-fins.png",
       },
       sections = {
-        "__Warheads__/graphics/rockets/rocket-tip.png",
-        "__Warheads__/graphics/rockets/rocket-ring-1.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-tip.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-ring-1.png",
       },
       lights = {
-        "__Warheads__/graphics/rockets/rocket-tip-light.png",
-        "__Warheads__/graphics/rockets/rocket-ring-1-light.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-tip-light.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-ring-1-light.png",
       },
       final = {
-        {icon = "__Warheads__/graphics/rockets/rocket-ring-2.png", size = 64, tint = tints.nothing},
-        {icon = "__Warheads__/graphics/rockets/rocket-ring-3.png", size = 64, tint = tints.nothing},
-        {icon = "__Warheads__/graphics/rockets/rocket-engine.png", size = 64, tint = tints.explosive}
+        {icon = "__Warheads_Continued__/graphics/rockets/rocket-ring-2.png", size = 64, tint = tints.nothing},
+        {icon = "__Warheads_Continued__/graphics/rockets/rocket-ring-3.png", size = 64, tint = tints.nothing},
+        {icon = "__Warheads_Continued__/graphics/rockets/rocket-engine.png", size = 64, tint = tints.explosive}
       },
     },
     {
       base = {
-        "__Warheads__/graphics/rockets/rocket-fins.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-fins.png",
       },
       sections = {
-        "__Warheads__/graphics/rockets/rocket-tip.png",
-        "__Warheads__/graphics/rockets/rocket-ring-1.png",
-        "__Warheads__/graphics/rockets/rocket-ring-2.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-tip.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-ring-1.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-ring-2.png",
       },
       lights = {
-        "__Warheads__/graphics/rockets/rocket-tip-light.png",
-        "__Warheads__/graphics/rockets/rocket-ring-1-light.png",
-        "__Warheads__/graphics/rockets/rocket-ring-2-light.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-tip-light.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-ring-1-light.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-ring-2-light.png",
       },
       final = {
-        {icon = "__Warheads__/graphics/rockets/rocket-ring-3.png", size = 64, tint = tints.nothing},
-        {icon = "__Warheads__/graphics/rockets/rocket-engine.png", size = 64, tint = tints.explosive}
+        {icon = "__Warheads_Continued__/graphics/rockets/rocket-ring-3.png", size = 64, tint = tints.nothing},
+        {icon = "__Warheads_Continued__/graphics/rockets/rocket-engine.png", size = 64, tint = tints.explosive}
       },
     },
     {
       base = {
-        "__Warheads__/graphics/rockets/rocket-fins.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-fins.png",
       },
       sections = {
-        "__Warheads__/graphics/rockets/rocket-tip.png",
-        "__Warheads__/graphics/rockets/rocket-ring-1.png",
-        "__Warheads__/graphics/rockets/rocket-ring-2.png",
-        "__Warheads__/graphics/rockets/rocket-ring-3.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-tip.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-ring-1.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-ring-2.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-ring-3.png",
       },
       lights = {
-        "__Warheads__/graphics/rockets/rocket-tip-light.png",
-        "__Warheads__/graphics/rockets/rocket-ring-1-light.png",
-        "__Warheads__/graphics/rockets/rocket-ring-2-light.png",
-        "__Warheads__/graphics/rockets/rocket-ring-3.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-tip-light.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-ring-1-light.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-ring-2-light.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-ring-3.png",
       },
       final = {
-        {icon = "__Warheads__/graphics/rockets/rocket-engine.png", size = 64, tint = tints.explosive}
+        {icon = "__Warheads_Continued__/graphics/rockets/rocket-engine.png", size = 64, tint = tints.explosive}
       },
     },
     {
-      base = "__Warheads__/graphics/rockets/rocket-fins.png",
+      base = "__Warheads_Continued__/graphics/rockets/rocket-fins.png",
       sections = {
-        "__Warheads__/graphics/rockets/rocket-tip.png",
-        "__Warheads__/graphics/rockets/rocket-ring-1.png",
-        "__Warheads__/graphics/rockets/rocket-ring-2.png",
-        "__Warheads__/graphics/rockets/rocket-ring-3.png",
-        "__Warheads__/graphics/rockets/rocket-engine.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-tip.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-ring-1.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-ring-2.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-ring-3.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-engine.png",
       },
       lights = {
-        "__Warheads__/graphics/rockets/rocket-tip-light.png",
-        "__Warheads__/graphics/rockets/rocket-ring-1-light.png",
-        "__Warheads__/graphics/rockets/rocket-ring-2-light.png",
-        "__Warheads__/graphics/rockets/rocket-ring-3.png",
-        "__Warheads__/graphics/rockets/rocket-engine.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-tip-light.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-ring-1-light.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-ring-2-light.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-ring-3.png",
+        "__Warheads_Continued__/graphics/rockets/rocket-engine.png",
       }
     },
   },
   rounds = {
     {
-      base = "__Warheads__/graphics/rounds/rounds-blank.png",
+      base = "__Warheads_Continued__/graphics/rounds/rounds-blank.png",
       sections = {
-        "__Warheads__/graphics/rounds/rounds-end.png",
+        "__Warheads_Continued__/graphics/rounds/rounds-end.png",
       },
       lights = {
-        "__Warheads__/graphics/rounds/rounds-end.png",
+        "__Warheads_Continued__/graphics/rounds/rounds-end.png",
       }
     },
     {
-      base = "__Warheads__/graphics/rounds/rounds-blank.png",
+      base = "__Warheads_Continued__/graphics/rounds/rounds-blank.png",
       sections = {
-        "__Warheads__/graphics/rounds/rounds-end.png",
-        "__Warheads__/graphics/rounds/rounds-middle.png",
+        "__Warheads_Continued__/graphics/rounds/rounds-end.png",
+        "__Warheads_Continued__/graphics/rounds/rounds-middle.png",
       },
       lights = {
-        "__Warheads__/graphics/rounds/rounds-end.png",
-        "__Warheads__/graphics/rounds/rounds-middle.png",
+        "__Warheads_Continued__/graphics/rounds/rounds-end.png",
+        "__Warheads_Continued__/graphics/rounds/rounds-middle.png",
       }
     }
   },
   shotgun = {
     {
       sections = {
-        "__Warheads__/graphics/shotgun/shotgun-shell.png",
+        "__Warheads_Continued__/graphics/shotgun/shotgun-shell.png",
       },
-      final = "__Warheads__/graphics/shotgun/shotgun-base.png",
+      final = "__Warheads_Continued__/graphics/shotgun/shotgun-base.png",
     },
     {
       sections = {
-        "__Warheads__/graphics/shotgun/piercing-shotgun-shell.png",
-        "__Warheads__/graphics/shotgun/piercing-top.png",
+        "__Warheads_Continued__/graphics/shotgun/piercing-shotgun-shell.png",
+        "__Warheads_Continued__/graphics/shotgun/piercing-top.png",
       },
       final = {
-        "__Warheads__/graphics/shotgun/shotgun-under.png",
-        "__Warheads__/graphics/shotgun/shotgun-base.png",
+        "__Warheads_Continued__/graphics/shotgun/shotgun-under.png",
+        "__Warheads_Continued__/graphics/shotgun/shotgun-base.png",
       },
     },
     {
       sections = {
-        "__Warheads__/graphics/shotgun/piercing-shotgun-shell.png",
-        "__Warheads__/graphics/shotgun/frag-top.png",
+        "__Warheads_Continued__/graphics/shotgun/piercing-shotgun-shell.png",
+        "__Warheads_Continued__/graphics/shotgun/frag-top.png",
       },
-      final = "__Warheads__/graphics/shotgun/shotgun-base.png",
+      final = "__Warheads_Continued__/graphics/shotgun/shotgun-base.png",
     }
   },
   nuclear_core = {
     {
-      base = "__Warheads__/graphics/warheads/sphere-1-base.png",
+      base = "__Warheads_Continued__/graphics/warheads/sphere-1-base.png",
       sections = {
-        "__Warheads__/graphics/warheads/sphere-1-top.png",
-        "__Warheads__/graphics/warheads/sphere-1-ring-part-1.png",
-        "__Warheads__/graphics/warheads/sphere-1-ring-part-2.png",
+        "__Warheads_Continued__/graphics/warheads/sphere-1-top.png",
+        "__Warheads_Continued__/graphics/warheads/sphere-1-ring-part-1.png",
+        "__Warheads_Continued__/graphics/warheads/sphere-1-ring-part-2.png",
       },
       lights = {
-        "__Warheads__/graphics/warheads/sphere-1-top-light.png",
-        "__Warheads__/graphics/warheads/sphere-1-ring-part-1-light.png",
-        "__Warheads__/graphics/warheads/sphere-1-ring-part-2-light.png",
+        "__Warheads_Continued__/graphics/warheads/sphere-1-top-light.png",
+        "__Warheads_Continued__/graphics/warheads/sphere-1-ring-part-1-light.png",
+        "__Warheads_Continued__/graphics/warheads/sphere-1-ring-part-2-light.png",
       }
     }
   },
   can_1 = {
     {
-      base = "__Warheads__/graphics/warheads/can-1-body-1.png",
+      base = "__Warheads_Continued__/graphics/warheads/can-1-body-1.png",
     },
     {
-      base = "__Warheads__/graphics/warheads/can-1-body-2.png",
+      base = "__Warheads_Continued__/graphics/warheads/can-1-body-2.png",
       sections = {
-        "__Warheads__/graphics/warheads/can-1-body-2.png",
-        "__Warheads__/graphics/warheads/can-1-top.png"
+        "__Warheads_Continued__/graphics/warheads/can-1-body-2.png",
+        "__Warheads_Continued__/graphics/warheads/can-1-top.png"
       },
     },
     {
-      base = "__Warheads__/graphics/warheads/can-1-body-3.png",
+      base = "__Warheads_Continued__/graphics/warheads/can-1-body-3.png",
       sections = {
-        "__Warheads__/graphics/warheads/can-1-ring-1.png"
+        "__Warheads_Continued__/graphics/warheads/can-1-ring-1.png"
       },
     },
     {
-      base = "__Warheads__/graphics/warheads/can-1-body-4.png",
+      base = "__Warheads_Continued__/graphics/warheads/can-1-body-4.png",
       sections = {
-        "__Warheads__/graphics/warheads/can-1-top.png",
-        "__Warheads__/graphics/warheads/can-1-ring-1.png"
+        "__Warheads_Continued__/graphics/warheads/can-1-top.png",
+        "__Warheads_Continued__/graphics/warheads/can-1-ring-1.png"
       },
     },
     {
-      base = "__Warheads__/graphics/warheads/can-1-body-5.png",
+      base = "__Warheads_Continued__/graphics/warheads/can-1-body-5.png",
       sections = {
-        "__Warheads__/graphics/warheads/can-1-ring-1.png",
-        "__Warheads__/graphics/warheads/can-1-ring-2.png"
+        "__Warheads_Continued__/graphics/warheads/can-1-ring-1.png",
+        "__Warheads_Continued__/graphics/warheads/can-1-ring-2.png"
       },
     },
     {
-      base = "__Warheads__/graphics/warheads/can-1-body-6.png",
+      base = "__Warheads_Continued__/graphics/warheads/can-1-body-6.png",
       sections = {
-        "__Warheads__/graphics/warheads/can-1-top.png",
-        "__Warheads__/graphics/warheads/can-1-ring-1.png",
-        "__Warheads__/graphics/warheads/can-1-ring-2.png"
+        "__Warheads_Continued__/graphics/warheads/can-1-top.png",
+        "__Warheads_Continued__/graphics/warheads/can-1-ring-1.png",
+        "__Warheads_Continued__/graphics/warheads/can-1-ring-2.png"
       },
     },
   },
   can_2 = {
     {
-      base = "__Warheads__/graphics/warheads/can-2-body-1.png"
+      base = "__Warheads_Continued__/graphics/warheads/can-2-body-1.png"
     },
     {
-      base = "__Warheads__/graphics/warheads/can-2-body-1.png",
+      base = "__Warheads_Continued__/graphics/warheads/can-2-body-1.png",
       sections = {
-        "__Warheads__/graphics/warheads/can-2-ring-1.png"
+        "__Warheads_Continued__/graphics/warheads/can-2-ring-1.png"
       },
-      final = "__Warheads__/graphics/warheads/can-2-body-final.png",
+      final = "__Warheads_Continued__/graphics/warheads/can-2-body-final.png",
     },
   },
   can_3 = {
     {
-      base = "__Warheads__/graphics/warheads/can-3-body.png",
+      base = "__Warheads_Continued__/graphics/warheads/can-3-body.png",
       sections = {
-        "__Warheads__/graphics/warheads/can-3-ring.png"
+        "__Warheads_Continued__/graphics/warheads/can-3-ring.png"
       },
-      final = "__Warheads__/graphics/warheads/can-3-final.png",
+      final = "__Warheads_Continued__/graphics/warheads/can-3-final.png",
     },
   }
 }
@@ -441,7 +441,7 @@ local function createAppearance(setup)
   local sprite_type = sprites[setup.type]
   local style = sprite_type[setup.style or 1]
 
-  local text_location = setup.text_location or "__Warheads__/graphics/warheads/"
+  local text_location = setup.text_location or "__Warheads_Continued__/graphics/warheads/"
 
   if(style.base) then
     if(type(style.base) == "table" and not style.base.icon) then
@@ -504,7 +504,7 @@ local function setupWarheadsForWeapon(setup)
   local sprites = setup.sprite_types or sprite_types
   local sprite_type = sprites[setup.type]
   local weapontype = setup.weapon
-  local text_location = setup.text_location or "__Warheads__/graphics/warheads/"
+  local text_location = setup.text_location or "__Warheads_Continued__/graphics/warheads/"
 
   for w,v in pairs(setup.warheads) do
     if(weaponTypes[weapontype]) then

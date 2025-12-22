@@ -8,7 +8,7 @@ data:extend({
 		animations =
 		{
 			{
-				filename = "__True-Nukes__/MushroomCloudInBuilt/graphics/explosion/LUQ.png",
+				filename = "__True-Nukes_Continued__/MushroomCloudInBuilt/graphics/explosion/LUQ.png",
 				priority = "extra-high",
 				width = 256,
 				height = 256,
@@ -33,7 +33,7 @@ data:extend({
 			variations =
 			{
 				{
-					filename = "__True-Nukes__/MushroomCloudInBuilt/sound/nuclear_detonation_in_vincinity_1.ogg", -- only audible up to 40 tiles
+					filename = "__True-Nukes_Continued__/MushroomCloudInBuilt/sound/nuclear_detonation_in_vincinity_1.ogg", -- only audible up to 40 tiles
 					volume = 0.5
 				},
 			}
@@ -46,7 +46,7 @@ data:extend({
 		animations =
 		{
 			{
-				filename = "__True-Nukes__/MushroomCloudInBuilt/graphics/explosion/RUQ.png",
+				filename = "__True-Nukes_Continued__/MushroomCloudInBuilt/graphics/explosion/RUQ.png",
 				priority = "extra-high",
 				width = 256,
 				height = 256,
@@ -71,7 +71,7 @@ data:extend({
 			variations =
 			{
 				{
-					filename = "__True-Nukes__/MushroomCloudInBuilt/sound/nuclear_detonation_in_vincinity_1.ogg",
+					filename = "__True-Nukes_Continued__/MushroomCloudInBuilt/sound/nuclear_detonation_in_vincinity_1.ogg",
 					volume = 0.5
 				},
 			}
@@ -84,7 +84,7 @@ data:extend({
 		animations =
 		{
 			{
-				filename = "__True-Nukes__/MushroomCloudInBuilt/graphics/explosion/LLQ.png",
+				filename = "__True-Nukes_Continued__/MushroomCloudInBuilt/graphics/explosion/LLQ.png",
 				priority = "extra-high",
 				width = 256,
 				height = 256,
@@ -109,7 +109,7 @@ data:extend({
 			variations =
 			{	
 				{
-					filename = "__True-Nukes__/MushroomCloudInBuilt/sound/nuclear_detonation_in_vincinity_1.ogg",
+					filename = "__True-Nukes_Continued__/MushroomCloudInBuilt/sound/nuclear_detonation_in_vincinity_1.ogg",
 					volume = 0.5,
 				},
 			}
@@ -122,7 +122,7 @@ data:extend({
 		animations =
 		{
 			{
-				filename = "__True-Nukes__/MushroomCloudInBuilt/graphics/explosion/RLQ.png",
+				filename = "__True-Nukes_Continued__/MushroomCloudInBuilt/graphics/explosion/RLQ.png",
 				priority = "extra-high",
 				width = 256,
 				height = 256,
@@ -147,7 +147,7 @@ data:extend({
 			variations =
 			{
 				{
-					filename = "__True-Nukes__/MushroomCloudInBuilt/sound/nuclear_detonation_in_vincinity_1.ogg",
+					filename = "__True-Nukes_Continued__/MushroomCloudInBuilt/sound/nuclear_detonation_in_vincinity_1.ogg",
 					volume = 0.5
 				},
 			}

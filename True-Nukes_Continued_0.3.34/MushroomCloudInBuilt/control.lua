@@ -1,9 +1,9 @@
 script.on_init(function() onInit() end)
 
 function onInit()
-    global.TN_shockwave_approaching = global.TN_shockwave_approaching or false
-    global.TN_shockwave_impact_tick = global.TN_shockwave_impact_tick or {}
-	global.TN_lightEffects = global.TN_lightEffects or {}
+    storage.TN_shockwave_approaching = storage.TN_shockwave_approaching or false
+    storage.TN_shockwave_impact_tick = storage.TN_shockwave_impact_tick or {}
+	storage.TN_lightEffects = storage.TN_lightEffects or {}
     -- WIP
 end
 
@@ -73,11 +73,11 @@ function createBlastSoundsAndFlash(position, surface, radius_1, radius_2, radius
 		effects.ids.flash = flash
 	end
 	effects.light_scale = light_scale;
-	if global.TN_lightEffects == nil then
-		global.TN_lightEffects = {}
+	if storage.TN_lightEffects == nil then
+		storage.TN_lightEffects = {}
 	end
 	
-	global.TN_lightEffects[#global.TN_lightEffects+1] = effects
+	storage.TN_lightEffects[#storage.TN_lightEffects+1] = effects
 		
         for i, player in pairs(game.connected_players) do
 		if player.surface.index == evtSurfaceID then
@@ -103,14 +103,14 @@ function createBlastSoundsAndFlash(position, surface, radius_1, radius_2, radius
 end
 
 function everyTick(event)	
-	if global.TN_lightEffects == nil then
-		global.TN_lightEffects = {}
+	if storage.TN_lightEffects == nil then
+		storage.TN_lightEffects = {}
 	end
-	if global.TN_lightEffects ~= nil then
-		for i, effects in pairs(global.TN_lightEffects) do
+	if storage.TN_lightEffects ~= nil then
+		for i, effects in pairs(storage.TN_lightEffects) do
 			effects.ttl = effects.ttl - 1
 			if effects.ttl <= 0 then 
-				global.TN_lightEffects[i] = nil
+				storage.TN_lightEffects[i] = nil
 			else
 				local maxDur = effects.maxDur
 				if effects.ids.flash ~= nil then

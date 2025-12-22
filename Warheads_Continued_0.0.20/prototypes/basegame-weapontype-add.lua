@@ -1,5 +1,6 @@
 weaponTypes["shotgun-shell-birdshot"]= {
   type = "projectile",
+  ignore = not settings.startup["enable-shotgun-bird"].value,
   size = 1,
   baseName = "shotgun-shell-birdshot",
   baseOrder = "b[shotgun]-f",
@@ -13,6 +14,7 @@ weaponTypes["shotgun-shell-birdshot"]= {
   lights = {},
   image_base_shift = {4, 2},
   image_warhead_shift = {-8, -8},
+  ammo_category = "bullet",
   item = table.deepcopy(data.raw.ammo["piercing-shotgun-shell"]),
   projectile = table.deepcopy(data.raw.projectile["piercing-shotgun-pellet"]),
 }
@@ -34,6 +36,7 @@ weaponTypes["shotgun-shell-birdshot"].item.ammo_type.action[shotgunActionIndex].
 weaponTypes["shotgun-shell-buckshot"]= {
   type = "projectile",
   size = 4,
+  ignore = not settings.startup["enable-shotgun-buck"].value,
   baseName = "shotgun-shell-buckshot",
   baseOrder = "b[shotgun]-e",
   base_item = "piercing-shotgun-shell",
@@ -46,6 +49,7 @@ weaponTypes["shotgun-shell-buckshot"]= {
   lights = {},
   image_base_shift = {4, 2},
   image_warhead_shift = {-8, -8},
+  ammo_category = "bullet",
   item = table.deepcopy(data.raw.ammo["piercing-shotgun-shell"]),
   projectile = table.deepcopy(data.raw.projectile["piercing-shotgun-pellet"]),
 }
@@ -54,6 +58,7 @@ weaponTypes["shotgun-shell-buckshot"].item.ammo_type.action[shotgunActionIndex].
 weaponTypes["shotgun-shell-slug"]= {
   type = "projectile",
   size = 14,
+  ignore = not settings.startup["enable-shotgun-slug"].value,
   baseName = "shotgun-shell-slug",
   baseOrder = "b[shotgun]-d",
   base_item = "piercing-shotgun-shell",
@@ -66,6 +71,7 @@ weaponTypes["shotgun-shell-slug"]= {
   lights = {},
   image_base_shift = {4, 2},
   image_warhead_shift = {-8, -8},
+  ammo_category = "bullet",
   item = table.deepcopy(data.raw.ammo["piercing-shotgun-shell"]),
   projectile = table.deepcopy(data.raw.projectile["piercing-shotgun-pellet"]),
 }
@@ -92,6 +98,7 @@ weaponTypes["shotgun-shell"]= { -- DO NOT USE, ONLY HERE AS FALLBACK...
   lights = {},
   image_base_shift = {4, 2},
   image_warhead_shift = {-8, -8},
+  ammo_category = "bullet",
   item = table.deepcopy(data.raw.ammo["piercing-shotgun-shell"]),
   projectile = table.deepcopy(data.raw.projectile["piercing-shotgun-pellet"]),
 }
@@ -100,6 +107,7 @@ weaponTypes["shotgun-shell"]= { -- DO NOT USE, ONLY HERE AS FALLBACK...
 weaponTypes["rounds-magazine"]= {
   type = "bullet",
   size = "tiny",
+  ignore = not settings.startup["enable-magazine"].value,
   baseName = "rounds-magazine",
   baseOrder = "a[basic-clips]-d",
   base_item = "piercing-rounds-magazine",
@@ -109,23 +117,28 @@ weaponTypes["rounds-magazine"]= {
   lights = {},
   image_base_shift = {4, 2},
   image_warhead_shift = {-8, -8},
+  ammo_category = "bullet",
   item = table.deepcopy(data.raw.ammo["piercing-rounds-magazine"]),
 }
 
 if data.raw.projectile["p-r-bullet"] then
   weaponTypes["rounds-magazine"].type = "projectile"
+  weaponTypes["rounds-magazine"].ammo_category = "projectile"
   weaponTypes["rounds-magazine"].projectile = table.deepcopy(data.raw.projectile["p-r-bullet"])
 elseif data.raw.projectile["piercing-rounds-bullet"] then
   weaponTypes["rounds-magazine"].type = "projectile"
+  weaponTypes["rounds-magazine"].ammo_category = "projectile"
   weaponTypes["rounds-magazine"].projectile = table.deepcopy(data.raw.projectile["piercing-rounds-bullet"])
 elseif data.raw.projectile["piercing-bullet"] then
   weaponTypes["rounds-magazine"].type = "projectile"
+  weaponTypes["rounds-magazine"].ammo_category = "projectile"
   weaponTypes["rounds-magazine"].projectile = table.deepcopy(data.raw.projectile["piercing-bullet"])
 end
 
 weaponTypes["cannon-shell"]= {
   type = "projectile",
   size = "small",
+  ignore = not settings.startup["enable-cannon-shell"].value,
   baseName = "cannon-shell",
   baseOrder = "d[explosive-cannon-shell]-cz",
   base_item = "cannon-shell",
@@ -135,6 +148,7 @@ weaponTypes["cannon-shell"]= {
   lights = {},
   range_modifier = 3,
   image_base_shift = {-4, 0},
+  ammo_category = "bullet",
   item = table.deepcopy(data.raw.ammo["cannon-shell"]),
   projectile = table.deepcopy(data.raw.projectile["cannon-projectile"]),
 }
@@ -151,6 +165,7 @@ weaponTypes["rocket"]= {-- DO NOT USE, ONLY HERE AS FALLBACK...
   icons = {},
   lights = {},
   image_base_shift = {-4, 0},
+  ammo_category = "rocket",
   item = table.deepcopy(data.raw.ammo["rocket"]),
   projectile = table.deepcopy(data.raw.projectile["rocket"]),
 }
@@ -158,6 +173,7 @@ weaponTypes["rocket"]= {-- DO NOT USE, ONLY HERE AS FALLBACK...
 weaponTypes["small-rocket"]= {
   type = "projectile",
   size = "small",
+  ignore = not settings.startup["enable-small-rocket"].value,
   baseName = "small-rocket",
   baseOrder = "d[rocket-launcher]-c",
   base_item = "rocket",
@@ -167,18 +183,20 @@ weaponTypes["small-rocket"]= {
   icons = {},
   lights = {},
   image_base_shift = {-4, 0},
+  ammo_category = "rocket",
   item = table.deepcopy(data.raw.ammo["rocket"]),
   projectile = table.deepcopy(data.raw.projectile["rocket"]),
 }
 weaponTypes["big-rocket"]= {
   type = "projectile",
   size = "medium",
+  ignore = not settings.startup["enable-big-rocket"].value,
   min_size = "tiny",
   baseName = "big-rocket",
   baseOrder = "d[rocket-launcher]-d",
   base_item = "rocket",
   icon = "__base__/graphics/icons/rocket.png",
-  extra_ingredients = {{"rocket-control-unit", 5}, {"rocket-fuel", 10}},
+  extra_ingredients = {{"processing-unit", 5}, {"rocket-fuel", 10}},
   energy_required = 12,
   range_modifier = 3,
   cooldown_modifier = 10,
@@ -186,6 +204,7 @@ weaponTypes["big-rocket"]= {
   icons = {},
   lights = {},
   image_base_shift = {-4, 0},
+  ammo_category = "rocket",
   item = table.deepcopy(data.raw.ammo["rocket"]),
   projectile = table.deepcopy(data.raw.projectile["rocket"]),
 }
@@ -193,6 +212,7 @@ weaponTypes["artillery-shell"]= {
   type = "artillery",
   max_size = "large",
   min_size = "small",
+  ignore = not settings.startup["enable-artillery-shell"].value,
   baseName = "artillery-shell",
   base_item = "artillery-shell",
   icon = "__base__/graphics/icons/artillery-shell.png",
@@ -201,6 +221,7 @@ weaponTypes["artillery-shell"]= {
   lights = {},
   image_base_shift = {4, 2},
   image_warhead_shift = {-8, -8},
+  ammo_category = "artillery-shell",
   item = table.deepcopy(data.raw.ammo["artillery-shell"]),
   projectile = table.deepcopy(data.raw["artillery-projectile"]["artillery-projectile"]),
 }
@@ -208,24 +229,28 @@ weaponTypes["land-mine"]= {
   type = "land-mine",
   max_size = "huge",
   min_size = "tiny",
+  ignore = not settings.startup["enable-land-mine"].value,
   baseName = "land-mine",
   base_item = "land-mine",
   icon = "__base__/graphics/icons/land-mine.png",
   energy_required = 0.5,
   icons = {},
   lights = {},
+  ammo_category = "landmine",
   item = table.deepcopy(data.raw.item["land-mine"]),
   landmine = table.deepcopy(data.raw["land-mine"]["land-mine"]),
 }
 weaponTypes["capsule"]= {
   type = "capsule",
   max_size = "medium",
+  ignore = not settings.startup["enable-capsule"].value,
   baseName = "capsule",
   base_item = "grenade",
   icon = "__base__/graphics/icons/grenade.png",
   energy_required = 0.5,
   icons = {},
   lights = {},
+  ammo_category = "grenade",
   item = table.deepcopy(data.raw.capsule["grenade"]),
   projectile = table.deepcopy(data.raw["projectile"]["grenade"]),
 }

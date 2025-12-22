@@ -1,5 +1,5 @@
 
-local create_utils = require("__Warheads__.prototypes.sprite-assembly-util")
+local create_utils = require("__Warheads_Continued__.prototypes.sprite-assembly-util")
 
 
 local createAppearance = create_utils.createAppearance

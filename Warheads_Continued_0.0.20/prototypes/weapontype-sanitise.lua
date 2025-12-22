@@ -415,7 +415,7 @@ local function sanitseWeapontype(weapontype)
   result.recipe.result_count = weapontype.result_count or 1
   result.recipe.additional_results = weapontype.additional_results or {}
 
-  result.recipe.ingredients = {{name = weapontype.base_item, amount = 1}}
+  result.recipe.ingredients = {{type = "item", name = weapontype.base_item, amount = 1}}
   if(weapontype.extra_ingredients) then
     for _,i in pairs(weapontype.extra_ingredients) do
       table.insert(result.recipe.ingredients, i)

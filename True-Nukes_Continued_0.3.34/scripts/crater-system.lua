@@ -96,15 +96,15 @@ local function nukeTileChangesHeightAwareHuge(position, check_craters, surface_i
           height = 0;
         end
         -- have both water and crater
-        if(global.cratersFast[surface_index]==nil)then
-          global.cratersFast[surface_index] = {}
-          global.cratersFastData[surface_index] = {synch = 0, xCount = 0, xCountSoFar = 0, xDone = {}}
+        if(storage.cratersFast[surface_index]==nil)then
+          storage.cratersFast[surface_index] = {}
+          storage.cratersFastData[surface_index] = {synch = 0, xCount = 0, xCountSoFar = 0, xDone = {}}
         end
-        if(global.cratersFast[surface_index][xChunkPos]==nil)then
-          global.cratersFast[surface_index][xChunkPos] = {}
-          global.cratersFastData[surface_index].xCount = global.cratersFastData[surface_index].xCount + 1
+        if(storage.cratersFast[surface_index][xChunkPos]==nil)then
+          storage.cratersFast[surface_index][xChunkPos] = {}
+          storage.cratersFastData[surface_index].xCount = storage.cratersFastData[surface_index].xCount + 1
         end
-        global.cratersFast[surface_index][xChunkPos][yChunkPos] = height
+        storage.cratersFast[surface_index][xChunkPos][yChunkPos] = height
       end
     end
   end
@@ -112,7 +112,7 @@ local function nukeTileChangesHeightAwareHuge(position, check_craters, surface_i
   for xChunkPos = math.floor((position.x-fireball_r*1.1)/32-1),math.floor((position.x+fireball_r*1.1)/32+1) do
     for yChunkPos = math.floor((position.y-fireball_r*1.1)/32-1),math.floor((position.y+fireball_r*1.1)/32+1) do
       if (not (game.surfaces[surface_index].count_tiles_filtered{area={{xChunkPos*32, yChunkPos*32}, {xChunkPos*32+32, yChunkPos*32+32}}, name =  water.craterTypes0, limit = 1} == 0)) then
-        table.insert(global.cratersSlow, {t = 0, x = xChunkPos, y = yChunkPos, surface = surface_index});
+        table.insert(storage.cratersSlow, {t = 0, x = xChunkPos, y = yChunkPos, surface = surface_index});
       end
     end
   end
@@ -284,26 +284,26 @@ local function nukeTileChangesHeightAware(position, check_craters, surface_index
 
         end
         -- have both water and crater
-        if(global.cratersFast[surface_index]==nil)then
-          global.cratersFast[surface_index] = {}
-          global.cratersFastData[surface_index] = {synch = 0, xCount = 0, xCountSoFar = 0, xDone = {}}
+        if(storage.cratersFast[surface_index]==nil)then
+          storage.cratersFast[surface_index] = {}
+          storage.cratersFastData[surface_index] = {synch = 0, xCount = 0, xCountSoFar = 0, xDone = {}}
         end
-        if(global.cratersFast[surface_index][xChunkPos]==nil)then
-          global.cratersFast[surface_index][xChunkPos] = {}
-          global.cratersFastData[surface_index].xCount = global.cratersFastData[surface_index].xCount + 1
+        if(storage.cratersFast[surface_index][xChunkPos]==nil)then
+          storage.cratersFast[surface_index][xChunkPos] = {}
+          storage.cratersFastData[surface_index].xCount = storage.cratersFastData[surface_index].xCount + 1
         end
-        global.cratersFast[surface_index][xChunkPos][yChunkPos] = height
+        storage.cratersFast[surface_index][xChunkPos][yChunkPos] = height
       end
     end
   end
-  if(not global.cratersSlow)then
-    global.cratersSlow = {}
+  if(not storage.cratersSlow)then
+    storage.cratersSlow = {}
   end
   -- slow filling - no checks required, all the chunks get this anyway
   for xChunkPos = math.floor((position.x-fireball_r*1.1)/32-1),math.floor((position.x+fireball_r*1.1)/32+1) do
     for yChunkPos = math.floor((position.y-fireball_r*1.1)/32-1),math.floor((position.y+fireball_r*1.1)/32+1) do
       if (not (game.surfaces[surface_index].count_tiles_filtered{area={{xChunkPos*32, yChunkPos*32}, {xChunkPos*32+32, yChunkPos*32+32}}, name = water.craterTypes0, limit = 1} == 0)) then
-        table.insert(global.cratersSlow, {t = 0, x = xChunkPos, y = yChunkPos, surface = surface_index});
+        table.insert(storage.cratersSlow, {t = 0, x = xChunkPos, y = yChunkPos, surface = surface_index});
       end
     end
   end

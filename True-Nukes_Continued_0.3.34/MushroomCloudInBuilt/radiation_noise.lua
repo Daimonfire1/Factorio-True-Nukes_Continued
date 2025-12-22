@@ -12,7 +12,7 @@ local radiationSoundEffects = {
 		variations =
 		{
 			{
-				filename = "__True-Nukes__/MushroomCloudInBuilt/sound/radiation_ticking.ogg",
+				filename = "__True-Nukes_Continued__/MushroomCloudInBuilt/sound/radiation_ticking.ogg",
 				volume = 3
 			}
 		}
@@ -27,7 +27,7 @@ data:extend({
     show_when_smoke_off = true,
     animation =
     {
-		filename = "__True-Nukes__/MushroomCloudInBuilt/graphics/dummy.png",
+		filename = "__True-Nukes_Continued__/MushroomCloudInBuilt/graphics/dummy.png",
 		priority = "low",
 		width = 32,
 		height = 32,
@@ -56,7 +56,7 @@ data:extend({
 {
 	type = "sound",
 	name = "nuclear-detonation-radiation-ticking",
-	filename = "__True-Nukes__/MushroomCloudInBuilt/sound/radiation_ticking.ogg",
+	filename = "__True-Nukes_Continued__/MushroomCloudInBuilt/sound/radiation_ticking.ogg",
 	volume = 3
 }
 })

@@ -1,4 +1,4 @@
-global.allowAchievements = true
+storage.allowAchievements = true
 
 
 
@@ -8,12 +8,12 @@ global.allowAchievements = true
 
 local function checkAllowAchievements()
   if(game.active_mods["space-exploration"]) then
-    global.allowAchievements = true
+    storage.allowAchievements = true
   end
-  if(global.allowAchievements)then
+  if(storage.allowAchievements)then
     for _,player in pairs(game.players) do
       if(player.cheat_mode and not game.active_mods["space-exploration"]) then
-        global.allowAchievements = false;
+        storage.allowAchievements = false;
         game.print("Warning, cheat mode detected - achievements disabled for True-Nukes")
       end
     end
@@ -24,7 +24,7 @@ script.on_event(defines.events.on_console_command, checkAllowAchievements)
 
 local function buildingDamaged(e)
   checkAllowAchievements();
-  if(e.force and global.allowAchievements) then
+  if(e.force and storage.allowAchievements) then
     for _,player in pairs(e.force.players) do
       player.unlock_achievement("shoot-fusion")
     end
@@ -36,7 +36,7 @@ script.on_event(defines.events.on_entity_damaged, buildingDamaged, {{filter="nam
 local function buildingDied(e)
   checkAllowAchievements();
   if(e.cause and e.cause.type == "character" and e.cause.player and
-    global.allowAchievements and e.entity.crafting_progress>0 and e.entity.get_recipe().name == "detonation-atomic-2-stage-1Gt-1") then
+    storage.allowAchievements and e.entity.crafting_progress>0 and e.entity.get_recipe().name == "detonation-atomic-2-stage-1Gt-1") then
     e.cause.player.unlock_achievement("stop-1Gt")
   end
 end
@@ -45,7 +45,7 @@ script.on_event(defines.events.on_entity_died, buildingDied, {{filter="name",nam
 
 local function buildingMined(e)
   checkAllowAchievements();
-  if(global.allowAchievements and e.entity.crafting_progress>0 and e.entity.get_recipe().name == "detonation-atomic-2-stage-1Gt-1") then
+  if(storage.allowAchievements and e.entity.crafting_progress>0 and e.entity.get_recipe().name == "detonation-atomic-2-stage-1Gt-1") then
     game.players[e.player_index].unlock_achievement("stop-1Gt")
   end
 end
@@ -54,7 +54,7 @@ script.on_event(defines.events.on_pre_player_mined_item, buildingMined, {{filter
 
 local function building_detonated(building, warhead)
   checkAllowAchievements();
-  if(building.force and global.allowAchievements) then
+  if(building.force and storage.allowAchievements) then
     local name = warhead.name
     local achievements = {}
     if(name == "-atomic-15kt") then
@@ -69,7 +69,7 @@ local function building_detonated(building, warhead)
     elseif (name=="-atomic-500t") then
       for _,f in pairs(game.forces) do
         if(f ~= building.force) then
-          if (global.nuclearTests[f.index] and global.nuclearTests[f.index]["test-pack-atomic-500t-1"]) then
+          if (storage.nuclearTests[f.index] and storage.nuclearTests[f.index]["test-pack-atomic-500t-1"]) then
             table.insert(achievements, "multi-force-500t")
             for _,p in pairs(f.players) do
               p.unlock_achievement("multi-force-500t")
@@ -88,14 +88,14 @@ end
 
 local function nukedSelf(player)
   checkAllowAchievements();
-  if(global.allowAchievements) then
+  if(storage.allowAchievements) then
     player.unlock_achievement("nuke-self")
   end
 end
 
 local function nukedEverything(force)
   checkAllowAchievements();
-  if(global.allowAchievements) then
+  if(storage.allowAchievements) then
     for _,p in pairs(force.players) do
       p.unlock_achievement("destroy-everything")
     end

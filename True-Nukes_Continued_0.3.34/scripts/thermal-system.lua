@@ -169,23 +169,23 @@ end
 
 
 local function atomic_thermal_blast(surface_index, position, force, cause, thermal_max_r, initialDamage, fireball_r, corpseMap)
-  if not global.thermalBlasts then
-    global.thermalBlasts = {}
+  if not storage.thermalBlasts then
+    storage.thermalBlasts = {}
   end
 
   local pos = atomic_thermal_blast_internal(surface_index, position, force, cause, thermal_max_r, initialDamage, fireball_r, position.x-thermal_max_r, position.y-thermal_max_r, corpseMap);
   if((pos.x ~= position.x+thermal_max_r or pos.y ~= position.y+thermal_max_r) and (pos.x ~= -1 or pos.y ~= -1)) then
-    table.insert(global.thermalBlasts, {surface_index=surface_index, position=position, force=force, cause=cause, thermal_max_r=thermal_max_r, initialDamage=initialDamage, fireball_r=fireball_r, x=pos.x, y=pos.y})
+    table.insert(storage.thermalBlasts, {surface_index=surface_index, position=position, force=force, cause=cause, thermal_max_r=thermal_max_r, initialDamage=initialDamage, fireball_r=fireball_r, x=pos.x, y=pos.y})
   end
 end
 
 local function atomic_thermal_blast_move_along(corpseMap)
-  for i,therm in pairs(global.thermalBlasts) do
+  for i,therm in pairs(storage.thermalBlasts) do
     local pos = atomic_thermal_blast_internal(therm.surface_index, therm.position, therm.force, therm.cause, therm.thermal_max_r, therm.initialDamage, therm.fireball_r, therm.x, therm.y, corpseMap);
     therm.x = pos.x
     therm.y = pos.y
     if((math.abs(pos.x - (therm.position.x-therm.thermal_max_r))<1 and math.abs(pos.y - (therm.position.y+therm.thermal_max_r))<1) or (pos.x == -1 and pos.y == -1)) then
-      global.thermalBlasts[i]=nil
+      storage.thermalBlasts[i]=nil
     end
   end
 end

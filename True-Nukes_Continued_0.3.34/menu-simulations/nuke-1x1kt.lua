@@ -2,7 +2,7 @@ local controlScript = require("control-script")
 data.raw["utility-constants"]["default"].main_menu_simulations.nuke_1x1kt =
   {
     checkboard = false,
-    save = "__True-Nukes__/menu-simulations/menu-simulation-artillery-nuke.zip",
+    save = "__True-Nukes_Continued__/menu-simulations/menu-simulation-artillery-nuke.zip",
     length = 60 * 20,
     init =
 

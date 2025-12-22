@@ -306,7 +306,7 @@ local function move_blast(i,blast,pastEHits, corpseMap)
     end
   end
   if(blast.r>blast.max and not hasEnded) then
-    global.blastWaves[i] = nil
+    storage.blastWaves[i] = nil
     return true
   end
   return hasEnded

@@ -3,5 +3,6 @@
 **/.settings
 **/.project
 **/.buildpath
+.vscode
 
 #Just lua and eclipse, so nothing much here...
