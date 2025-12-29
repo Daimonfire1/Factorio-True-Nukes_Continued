@@ -1,0 +1,10 @@
+---------------------------------------------------------------------------------------------------
+Version: 0.0.3
+Date: 2025-12-29
+  Changes:
+    - I forgor to fix the naming, mod should actually work now lmao
+---------------------------------------------------------------------------------------------------
+Version: 0.0.2
+Date: 2025-12-23
+  Changes:
+    - First pass on (somewhat) working port to Factorio 2.0

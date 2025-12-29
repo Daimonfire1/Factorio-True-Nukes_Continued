@@ -1,4 +1,14 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.3.35
+Date: 2025-12-29
+  Changes:
+    - RESEARCH SYSTEM IS BACK BOIS
+  Bugfixes:
+    - Nuclear testing facility drank a bucket of milk and is no longer invisible
+  Info:
+    - Please leave Feedback and Bugs you found either in the Discussions section or on the corresponding Git-Repo. I look at each and every report, and it helps me a lot since I cannot check every aspect of the ported version
+    - Sincerely, your burning bar of Daim chocolate <3
+---------------------------------------------------------------------------------------------------
 Version: 0.3.34
 Date: 2025-12-23
   Changes:

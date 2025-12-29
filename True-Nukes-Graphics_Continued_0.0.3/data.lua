@@ -6,7 +6,7 @@ data:extend({
 		animations =
 		{
 			{
-				filename = "__True-Nukes-Graphics__/explosion-big/LUQ.png",
+				filename = "__True-Nukes-Graphics_Continued__/explosion-big/LUQ.png",
 				priority = "extra-high",
 				width = 512,
 				height = 512,
@@ -29,7 +29,7 @@ data:extend({
 		animations =
 		{
 			{
-				filename = "__True-Nukes-Graphics__/explosion-big/RUQ.png",
+				filename = "__True-Nukes-Graphics_Continued__/explosion-big/RUQ.png",
 				priority = "extra-high",
 				width = 512,
 				height = 512,
@@ -52,7 +52,7 @@ data:extend({
 		animations =
 		{
 			{
-				filename = "__True-Nukes-Graphics__/explosion-big/LLQ.png",
+				filename = "__True-Nukes-Graphics_Continued__/explosion-big/LLQ.png",
 				priority = "extra-high",
 				width = 512,
 				height = 512,
@@ -75,7 +75,7 @@ data:extend({
 		animations =
 		{
 			{
-				filename = "__True-Nukes-Graphics__/explosion-big/RLQ.png",
+				filename = "__True-Nukes-Graphics_Continued__/explosion-big/RLQ.png",
 				priority = "extra-high",
 				width = 512,
 				height = 512,

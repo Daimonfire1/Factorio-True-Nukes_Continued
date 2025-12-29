@@ -7,7 +7,8 @@ table.insert(water_tile_type_names, "nuclear-deep-shallow-fill")
 table.insert(water_tile_type_names, "nuclear-deep-fill")
 
 if(settings.startup["enable-medium-atomics"].value and settings.startup["enable-nuclear-tests"].value) then
-  data.raw.technology["atomic-bomb"].research_trigger = {type = "scripted", trigger_description = "Detonate a 20t test pack"}
+  -- data.raw.technology["atomic-bomb"].research_trigger = {type = "scripted", trigger_description = "Detonate a 20t test pack"}
+  data.raw.technology["atomic-bomb"].research_trigger = {type = "craft-item", item = "test-pack-atomic-20t-1", count = 1}
   --data.raw.technology["atomic-bomb"].unit.ingredients = {{"test-pack-atomic-20t-1", 1}}
   --data.raw.technology["atomic-bomb"].unit.count = 1
   --data.raw.technology["atomic-bomb"].unit.time = 1

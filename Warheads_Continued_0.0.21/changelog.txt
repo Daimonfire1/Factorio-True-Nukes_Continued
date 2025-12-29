@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.0.21
+Date: 2025-12-29
+  Changes:
+    - I forgot the proper changelog. And since I am currently updating everything anyways, this may be the stupidest changelog entry you will ever see :D
+---------------------------------------------------------------------------------------------------
 Version: 0.0.20
 Date: 2025-12-23
   Changes:

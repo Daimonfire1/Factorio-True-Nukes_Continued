@@ -40,8 +40,14 @@ for _,w in pairs(warheads_to_add) do
         {
           {type = "item", name = w.warhead, amount = 1}
         },
-        results = {{type = "item", name = "detonation" .. warhead.appendName .. explosion.appendName .. w.label, amount = 1}},
+        results = {
+          {type = "item", name = "detonation" .. warhead.appendName .. explosion.appendName .. w.label, amount = 1}
+        },
       }
+      if data.raw.tool["test-pack" .. warhead.appendName .. explosion.appendName .. w.label] then
+        table.insert(recipe.results, {type = "item", 1, name = "test-pack" .. warhead.appendName .. explosion.appendName .. w.label, amount = 1})
+        recipe.main_product = "test-pack" .. w.name .. w.label
+      end
       if(w.fusion) then
         recipe.category = "fusion-detonation"
       end
@@ -158,19 +164,6 @@ data:extend{
     max_health = 5000,
     corpse = "assembling-machine-1-remnants",
     dying_explosion = "massive-explosion",
-    picture =
-    {
-      filename = "__True-Nukes_Continued__/graphics/nuclear-test-building.png",
-      width = 64,
-      height = 64
-    },
-    resistances =
-    {
-      {
-        type = "fire",
-        percent = 70
-      }
-    },
     collision_box = {{-1.40, -1.40}, {1.40, 1.40}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
     damaged_trigger_effect = hit_effects.entity(),
@@ -237,26 +230,28 @@ data:extend{
         }
       }
     },
-    animation =
-    {
-      layers =
+    graphics_set = {
+      animation =
       {
+        layers =
         {
-          filename = "__True-Nukes_Continued__/graphics/megaton-nuke/megaton-nuke-base.png",
-          width = 212,
-          height = 192,
-          shift = util.by_pixel(0, -5),
-          scale = 0.5
-        },
-        {
-          filename = "__True-Nukes_Continued__/graphics/megaton-nuke/megaton-nuke-shadow.png",
-          priority = "high",
-          width = 287,
-          height = 159,
-          repeat_count = repeat_count,
-          shift = util.by_pixel(20, 6),
-          draw_as_shadow = true,
-          scale = 0.5
+          {
+            filename = "__True-Nukes_Continued__/graphics/megaton-nuke/megaton-nuke-base.png",
+            width = 212,
+            height = 192,
+            shift = util.by_pixel(0, -5),
+            scale = 0.5
+          },
+          {
+            filename = "__True-Nukes_Continued__/graphics/megaton-nuke/megaton-nuke-shadow.png",
+            priority = "high",
+            width = 287,
+            height = 159,
+            repeat_count = repeat_count,
+            shift = util.by_pixel(20, 6),
+            draw_as_shadow = true,
+            scale = 0.5
+          }
         }
       }
     },
