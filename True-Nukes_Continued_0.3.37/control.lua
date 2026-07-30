@@ -476,22 +476,11 @@ local function clearAllCraters(surface)
   surface.set_tiles(l);
 end
 
--- NOTE: In Factorio 2.0+ the per-mod `global` table was renamed to `storage`.
--- The getGlobal/setGlobal remote interface is kept for backwards compatibility
--- with any other mod that may have been calling it, but it now proxies `storage`.
 local function getGlobal()
-  return storage;
+  return global;
 end
-local function setGlobal(newstorage)
-  -- storage is not directly reassignable in 2.0+; clear and copy keys.
-  if type(newstorage) == "table" then
-    for k in pairs(storage) do
-      storage[k] = nil
-    end
-    for k, v in pairs(newstorage) do
-      storage[k] = v
-    end
-  end
+local function setGlobal(newglobal)
+  global = newglobal;
 end
 remote.add_interface("True-Nukes Scripts", {
   thermobaricWeaponHit = thermobaric_weapon_hit,
