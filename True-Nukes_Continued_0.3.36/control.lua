@@ -13,25 +13,25 @@ local achievement_system = require("scripts.achievement-system")
 local createBlastSoundsAndFlash = mushroomFunctions[1]
 script.on_init(function()
   storage.nuclearTests = {}       -- a map of force-index to maps from atomic-test-pack to count...
-  storage.thermalBlasts = {}				-- a simple array, with elements: {surface_index, position, force, thermal_max_r, initialDamage, fireball_r, x, y}, each as a key of the map
-  storage.blastWaves = {}					-- a simple array, with elements:
+  storage.thermalBlasts = {}                            -- a simple array, with elements: {surface_index, position, force, thermal_max_r, initialDamage, fireball_r, x, y}, each as a key of the map
+  storage.blastWaves = {}                                       -- a simple array, with elements:
   --{r = currrent explosion radius, pos = centre position, pow = initial blast multiplier (usually initial r*r)
   -- , max = maximum radius, s = surface index, fire = leave fires (true for thermobarics, false for nukes), damage_init = starting damage, speed = how far to jump every round, fire_rad = the radius to which the fire wave is solid
   -- , blast_min_damage = amount of extra damage to add all the time, itt = the number of itterations done, doItts = whether to time slice the blast, ittframe = keeps track of frame count for time slicing
   -- , force = force of the cause of the explosion - allows allocating kills correctly, cause = allows allocating kills to the originator})
 
-  storage.nukeBuildings = {} 				-- array of the LuaEntities for any nukeBuildings
-  storage.optimisedNukes = {} 				-- has keys:
+  storage.nukeBuildings = {}                            -- array of the LuaEntities for any nukeBuildings
+  storage.optimisedNukes = {}                           -- has keys:
   --position, surface_index, crater_internal_r, crater_external_r, fireball_r, fire_outer_r, blast_max_r, tree_fire_max_r, thermal_max_r, check_craters
   --used for doing chunk-by-chunk loading of detonation results
 
-  storage.cratersFast = {} 				-- map: cratersFast[surface index][xposition][yposition] = the highest water height in that area (x, y in units of 10)
-  storage.cratersFastData = {}				-- map: cratersFastData[surface index] =
+  storage.cratersFast = {}                              -- map: cratersFast[surface index][xposition][yposition] = the highest water height in that area (x, y in units of 10)
+  storage.cratersFastData = {}                          -- map: cratersFastData[surface index] =
   -- {synch =  1-4 making deep water travel slower, xCount = number of x chunks on this surface, xCountSoFar = number of x chunks done so far this round, xDone = all x values done so far this round}
-  storage.cratersFastItterationCount = 0	-- the counter of ticks for circling x chunks - counts up to 53
+  storage.cratersFastItterationCount = 0        -- the counter of ticks for circling x chunks - counts up to 53
 
 
-  storage.cratersSlow = {} 				-- array of {t = time waiting - 20s units, x = xin units of 32, y = y in units of 32, surface = the surface index}
+  storage.cratersSlow = {}                              -- array of {t = time waiting - 20s units, x = xin units of 32, y = y in units of 32, surface = the surface index}
 end)
 
 
@@ -476,11 +476,22 @@ local function clearAllCraters(surface)
   surface.set_tiles(l);
 end
 
+-- NOTE: In Factorio 2.0+ the per-mod `global` table was renamed to `storage`.
+-- The getGlobal/setGlobal remote interface is kept for backwards compatibility
+-- with any other mod that may have been calling it, but it now proxies `storage`.
 local function getGlobal()
-  return global;
+  return storage;
 end
-local function setGlobal(newglobal)
-  global = newglobal;
+local function setGlobal(newstorage)
+  -- storage is not directly reassignable in 2.0+; clear and copy keys.
+  if type(newstorage) == "table" then
+    for k in pairs(storage) do
+      storage[k] = nil
+    end
+    for k, v in pairs(newstorage) do
+      storage[k] = v
+    end
+  end
 end
 remote.add_interface("True-Nukes Scripts", {
   thermobaricWeaponHit = thermobaric_weapon_hit,

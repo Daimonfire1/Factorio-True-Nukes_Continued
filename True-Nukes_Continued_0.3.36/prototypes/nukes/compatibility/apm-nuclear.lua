@@ -17,8 +17,8 @@ if (data.raw.technology["dense-neutron-flux"]) then
 end
 
 if (data.raw.technology["tritium-breeder-fuel-cell"]) then
-  data.raw.item["tritium-breeder-fuel-cell"].fuel_category = "apm_nuclear_breeder"
+  data.raw.item["tritium-breeder-fuel-cell"].fuel_categories = {"apm_nuclear_breeder"}
 end
 if (data.raw.technology["advanced-tritium-breeder-fuel-cell"]) then
-  data.raw.item["advanced-tritium-breeder-fuel-cell"].fuel_category = "apm_nuclear_breeder"
+  data.raw.item["advanced-tritium-breeder-fuel-cell"].fuel_categories = {"apm_nuclear_breeder"}
 end

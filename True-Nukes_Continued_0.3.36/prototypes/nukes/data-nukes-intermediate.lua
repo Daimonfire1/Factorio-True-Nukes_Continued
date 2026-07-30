@@ -37,7 +37,7 @@ if(nuke_materials.smallBoomMaterial == "californium") then
       name = "californium-processing",
       energy_required = 120,
       enabled = false,
-      category = "centrifuging",
+      categories = {"centrifuging"},
       ingredients = {
         {type = "item", name = nuke_materials.boomMaterial, amount = 10},
         {type = "item", name = nuke_materials.deadMaterial, amount = 1}
@@ -58,7 +58,7 @@ if(nuke_materials.smallBoomMaterial == "californium") then
       name = "advanced-californium-processing",
       energy_required = 20,
       enabled = false,
-      category = "centrifuging",
+      categories = {"centrifuging"},
       ingredients = {
         {type = "item", name = nuke_materials.boomMaterial, amount = 5},
         {type = "item", name = nuke_materials.reflector, amount = 2}
@@ -74,7 +74,7 @@ if(nuke_materials.smallBoomMaterial == "californium") then
         {type = "item", name = nuke_materials.boomMaterial, amount = 4},
         {type = "item", name = nuke_materials.deadMaterial, amount = 1},
         {type = "item", name = nuke_materials.reflector, amount = 1},
-        {type = "item", name = nuke_materials.reflector, amount = 1, probability = 0.6},
+        {type = "item", name = nuke_materials.reflector, amount = 1, independent_probability = 0.6},
         {type = "item", name = "californium", amount = 1}
       },
       allow_decomposition = false
@@ -88,7 +88,7 @@ data:extend{
     name = "advanced-kovarex-enrichment-process",
     energy_required = 10,
     enabled = false,
-    category = "centrifuging",
+    categories = {"centrifuging"},
     ingredients = {
       {type = "item", name = "uranium-235", amount = 20},
       {type = "item", name = "uranium-238", amount = 5},
@@ -105,7 +105,7 @@ data:extend{
       {type = "item", name = "uranium-235", amount = 21},
       {type = "item", name = "uranium-238", amount = 2},
       {type = "item", name = nuke_materials.reflector, amount = 1},
-      {type = "item", name = nuke_materials.reflector, amount = 1, probability = 0.6}
+      {type = "item", name = nuke_materials.reflector, amount = 1, independent_probability = 0.6}
     },
     allow_decomposition = false
   },
@@ -121,7 +121,7 @@ data:extend{
   {
     type = "recipe",
     name = "FOGBANK",
-    category = "chemistry",
+    categories = {"chemistry"},
     energy_required = 20,
     enabled = false,
     ingredients =
@@ -158,7 +158,7 @@ data:extend{
   {
     type = "recipe",
     name = "neutron-reflector",
-    category = "chemistry",
+    categories = {"chemistry"},
     energy_required = 10,
     enabled = false,
     ingredients =
@@ -283,7 +283,7 @@ if(nuke_materials.fusionMaterial == "tritium-canister") then
       name = "tritium-extraction",
       energy_required = 60,
       enabled = false,
-      category = "centrifuging",
+      categories = {"centrifuging"},
       ingredients = {
         {type = "item", name = "used-up-tritium-breeder-fuel-cell", amount = 5},
         {type = "item", name = "plastic-bar", amount = 5}
@@ -304,7 +304,7 @@ if(nuke_materials.fusionMaterial == "tritium-canister") then
       name = "advanced-tritium-extraction",
       energy_required = 30,
       enabled = false,
-      category = "centrifuging",
+      categories = {"centrifuging"},
       ingredients = {
         {type = "item", name = "used-up-advanced-tritium-breeder-fuel-cell", amount = 2},
         {type = "item", name = "plastic-bar", amount = 5}
@@ -319,7 +319,7 @@ if(nuke_materials.fusionMaterial == "tritium-canister") then
       results = {
         {type = "item", name = "tritium-canister", amount = 1},
         {type = "item", name = "uranium-238", amount = 2},
-        {type = "item", name = nuke_materials.reflector, amount = 1, probability = 0.8}
+        {type = "item", name = nuke_materials.reflector, amount = 1, independent_probability = 0.8}
       },
       allow_decomposition = false
     },
@@ -328,7 +328,7 @@ if(nuke_materials.fusionMaterial == "tritium-canister") then
       name = "advanced-tritium-breeder-fuel-cell",
       energy_required = 15,
       enabled = false,
-      category = "crafting-with-fluid",
+      categories = {"crafting-with-fluid"},
       ingredients = table.deepcopy(data.raw.recipe["uranium-fuel-cell"].ingredients),
       results = {
         {type = "item", name = "advanced-tritium-breeder-fuel-cell", amount = 10}
@@ -339,7 +339,7 @@ if(nuke_materials.fusionMaterial == "tritium-canister") then
       name = "tritium-breeder-fuel-cell",
       energy_required = 10,
       enabled = false,
-      category = "crafting-with-fluid",
+      categories = {"crafting-with-fluid"},
       ingredients = table.deepcopy(data.raw.recipe["uranium-fuel-cell"].ingredients),
       results = {
         {type = "item", name = "tritium-breeder-fuel-cell", amount = 10}
@@ -379,35 +379,27 @@ table.insert(data.raw.recipe["tritium-breeder-fuel-cell"].ingredients, {type="fl
 table.insert(data.raw.recipe["advanced-tritium-breeder-fuel-cell"].ingredients, {type="fluid", name="water", amount=100})
 table.insert(data.raw.recipe["advanced-tritium-breeder-fuel-cell"].ingredients, {type="item", name=nuke_materials.reflector, amount=5})
 end
-for i = 0,100 do
-  if(data.raw.module["productivity-module-" .. i] and data.raw.module["productivity-module-" .. i].limitation) then
-    if(nuke_materials.smallBoomMaterial == "californium") then
-      table.insert(data.raw.module["productivity-module-" .. i].limitation, "californium-processing")
-      table.insert(data.raw.module["productivity-module-" .. i].limitation, "advanced-californium-processing")
-    end
-    if(nuke_materials.fusionMaterial == "tritium-canister") then
-      table.insert(data.raw.module["productivity-module-" .. i].limitation, "tritium-breeder-fuel-cell")
-      table.insert(data.raw.module["productivity-module-" .. i].limitation, "advanced-tritium-breeder-fuel-cell")
-      table.insert(data.raw.module["productivity-module-" .. i].limitation, "tritium-extraction")
-      table.insert(data.raw.module["productivity-module-" .. i].limitation, "advanced-tritium-extraction")
-    end
-    table.insert(data.raw.module["productivity-module-" .. i].limitation, "advanced-kovarex-enrichment-process")
-    table.insert(data.raw.module["productivity-module-" .. i].limitation, "FOGBANK")
-    table.insert(data.raw.module["productivity-module-" .. i].limitation, "neutron-reflector")
-  end
+-- In Factorio 2.0+ the ModulePrototype::limitation array was removed.
+-- The replacement is the per-recipe boolean flag `allow_productivity` on
+-- RecipePrototype. We build a list of recipe names we want productivity
+-- modules to be usable on, then set allow_productivity = true on each.
+local productivity_recipe_names = {}
+if(nuke_materials.smallBoomMaterial == "californium") then
+  table.insert(productivity_recipe_names, "californium-processing")
+  table.insert(productivity_recipe_names, "advanced-californium-processing")
 end
-if(data.raw.module["productivity-module"] and data.raw.module["productivity-module"].limitation) then
-  if(nuke_materials.smallBoomMaterial == "californium") then
-    table.insert(data.raw.module["productivity-module"].limitation, "californium-processing")
-    table.insert(data.raw.module["productivity-module"].limitation, "advanced-californium-processing")
+if(nuke_materials.fusionMaterial == "tritium-canister") then
+  table.insert(productivity_recipe_names, "tritium-breeder-fuel-cell")
+  table.insert(productivity_recipe_names, "advanced-tritium-breeder-fuel-cell")
+  table.insert(productivity_recipe_names, "tritium-extraction")
+  table.insert(productivity_recipe_names, "advanced-tritium-extraction")
+end
+table.insert(productivity_recipe_names, "advanced-kovarex-enrichment-process")
+table.insert(productivity_recipe_names, "FOGBANK")
+table.insert(productivity_recipe_names, "neutron-reflector")
+
+for _, recipe_name in pairs(productivity_recipe_names) do
+  if data.raw.recipe[recipe_name] then
+    data.raw.recipe[recipe_name].allow_productivity = true
   end
-  if(nuke_materials.fusionMaterial == "tritium-canister") then
-    table.insert(data.raw.module["productivity-module"].limitation, "tritium-breeder-fuel-cell")
-    table.insert(data.raw.module["productivity-module"].limitation, "advanced-tritium-breeder-fuel-cell")
-    table.insert(data.raw.module["productivity-module"].limitation, "tritium-extraction")
-    table.insert(data.raw.module["productivity-module"].limitation, "advanced-tritium-extraction")
-  end
-  table.insert(data.raw.module["productivity-module"].limitation, "advanced-kovarex-enrichment-process")
-  table.insert(data.raw.module["productivity-module"].limitation, "FOGBANK")
-  table.insert(data.raw.module["productivity-module"].limitation, "neutron-reflector")
 end

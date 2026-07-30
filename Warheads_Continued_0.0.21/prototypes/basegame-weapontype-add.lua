@@ -1,3 +1,73 @@
+-- Helper: normalise a Trigger / TriggerDelivery value (single item or array)
+-- into an array we can safely iterate with ipairs.
+local function as_array(t)
+  if t == nil then return {} end
+  if type(t) ~= "table" then return {} end
+  if type(t.type) == "string" then return { t } end
+  return t
+end
+
+-- Helper: recursively find the first delivery node that has a `projectile`
+-- field. In Factorio 2.0+ the shotgun shell's projectile delivery is nested
+-- inside target_effects -> nested-result -> area -> action_delivery.
+local function find_projectile_delivery(node)
+  if type(node) ~= "table" then return nil end
+  if type(node.type) == "string" and node.projectile ~= nil then
+    return node
+  end
+  for _, act in ipairs(as_array(node.action)) do
+    local r = find_projectile_delivery(act)
+    if r then return r end
+  end
+  for _, del in ipairs(as_array(node.action_delivery)) do
+    local r = find_projectile_delivery(del)
+    if r then return r end
+  end
+  for _, eff in ipairs(as_array(node.target_effects)) do
+    if eff.type == "nested-result" then
+      local r = find_projectile_delivery(eff)
+      if r then return r end
+    end
+  end
+  for _, eff in ipairs(as_array(node.source_effects)) do
+    if eff.type == "nested-result" then
+      local r = find_projectile_delivery(eff)
+      if r then return r end
+    end
+  end
+  return nil
+end
+
+-- Helper: recursively find the first "area" TriggerItem (where repeat_count
+-- lives in Factorio 2.0+ shotgun shells).
+local function find_area_action(node)
+  if type(node) ~= "table" then return nil end
+  if type(node.type) == "string" and node.type == "area" then
+    return node
+  end
+  for _, act in ipairs(as_array(node.action)) do
+    local r = find_area_action(act)
+    if r then return r end
+  end
+  for _, del in ipairs(as_array(node.action_delivery)) do
+    local r = find_area_action(del)
+    if r then return r end
+  end
+  for _, eff in ipairs(as_array(node.target_effects)) do
+    if eff.type == "nested-result" then
+      local r = find_area_action(eff)
+      if r then return r end
+    end
+  end
+  for _, eff in ipairs(as_array(node.source_effects)) do
+    if eff.type == "nested-result" then
+      local r = find_area_action(eff)
+      if r then return r end
+    end
+  end
+  return nil
+end
+
 weaponTypes["shotgun-shell-birdshot"]= {
   type = "projectile",
   ignore = not settings.startup["enable-shotgun-bird"].value,
@@ -18,12 +88,39 @@ weaponTypes["shotgun-shell-birdshot"]= {
   item = table.deepcopy(data.raw.ammo["piercing-shotgun-shell"]),
   projectile = table.deepcopy(data.raw.projectile["piercing-shotgun-pellet"]),
 }
-local shotgunActionIndex = 1
-if  (data.raw.ammo["piercing-shotgun-shell"].ammo_type.action[2]) then
-  shotgunActionIndex = 2
-end 
-weaponTypes["shotgun-shell-birdshot"].item.ammo_type.action[shotgunActionIndex].repeat_count = 20
-weaponTypes["shotgun-shell-birdshot"].item.ammo_type.action[shotgunActionIndex].action_delivery = {
+-- In Factorio 1.1 the piercing-shotgun-shell had two actions in its ammo_type:
+--   action[1] = gunshot visual (instant), action[2] = pellet-firing (projectile).
+-- In Factorio 2.0+ there is only one action, and the projectile delivery is
+-- nested inside target_effects -> nested-result -> area -> action_delivery.
+-- The birdshot weaponType replaces the entire action_delivery with a flat
+-- projectile delivery so the warhead system can substitute the projectile.
+-- We need to find the right action index to modify.
+local birdshot_item = weaponTypes["shotgun-shell-birdshot"].item
+local birdshot_actions = as_array(birdshot_item.ammo_type.action)
+local shotgunActionIndex = nil
+for i, act in ipairs(birdshot_actions) do
+  -- Prefer the action whose action_delivery (or nested delivery) has a projectile.
+  if find_projectile_delivery(act) or find_area_action(act) then
+    shotgunActionIndex = i
+    break
+  end
+end
+-- Fallback to index 1 if nothing matched.
+if not shotgunActionIndex then
+  shotgunActionIndex = 1
+end
+-- Set the repeat_count on the area action (Factorio 2.0+ nests it there).
+do
+  local area_act = find_area_action(birdshot_actions[shotgunActionIndex])
+  if area_act then
+    area_act.repeat_count = 20
+  elseif birdshot_actions[shotgunActionIndex] then
+    birdshot_actions[shotgunActionIndex].repeat_count = 20
+  end
+end
+-- Replace the action_delivery with a flat projectile delivery so the
+-- warhead action_creator can find and substitute the projectile.
+birdshot_actions[shotgunActionIndex].action_delivery = {
   type = "projectile",
   projectile = "piercing-shotgun-pellet",
   starting_speed = 1,
@@ -53,7 +150,16 @@ weaponTypes["shotgun-shell-buckshot"]= {
   item = table.deepcopy(data.raw.ammo["piercing-shotgun-shell"]),
   projectile = table.deepcopy(data.raw.projectile["piercing-shotgun-pellet"]),
 }
-weaponTypes["shotgun-shell-buckshot"].item.ammo_type.action[shotgunActionIndex].repeat_count = 6
+-- Set repeat_count on the area action (or the outer action as fallback).
+do
+  local buckshot_actions = as_array(weaponTypes["shotgun-shell-buckshot"].item.ammo_type.action)
+  local area_act = find_area_action(buckshot_actions[shotgunActionIndex] or buckshot_actions[1])
+  if area_act then
+    area_act.repeat_count = 6
+  elseif buckshot_actions[shotgunActionIndex or 1] then
+    buckshot_actions[shotgunActionIndex or 1].repeat_count = 6
+  end
+end
 
 weaponTypes["shotgun-shell-slug"]= {
   type = "projectile",
@@ -75,11 +181,32 @@ weaponTypes["shotgun-shell-slug"]= {
   item = table.deepcopy(data.raw.ammo["piercing-shotgun-shell"]),
   projectile = table.deepcopy(data.raw.projectile["piercing-shotgun-pellet"]),
 }
-weaponTypes["shotgun-shell-slug"].item.ammo_type.action[shotgunActionIndex].repeat_count = 1
-if weaponTypes["shotgun-shell-slug"].item.ammo_type.action[shotgunActionIndex].action_delivery.type then
-  weaponTypes["shotgun-shell-slug"].item.ammo_type.action[shotgunActionIndex].action_delivery.direction_deviation = 0
-else
-  weaponTypes["shotgun-shell-slug"].item.ammo_type.action[shotgunActionIndex].action_delivery[1].direction_deviation = 0
+-- Set repeat_count = 1 and direction_deviation = 0 on the slug.
+do
+  local slug_item = weaponTypes["shotgun-shell-slug"].item
+  local slug_actions = as_array(slug_item.ammo_type.action)
+  local target_action = slug_actions[shotgunActionIndex] or slug_actions[1]
+  if target_action then
+    local area_act = find_area_action(target_action)
+    if area_act then
+      area_act.repeat_count = 1
+    else
+      target_action.repeat_count = 1
+    end
+    -- Set direction_deviation = 0 on the projectile delivery (which may be
+    -- nested inside the area action's action_delivery, or directly on the
+    -- outer action_delivery).
+    local proj_del = find_projectile_delivery(target_action)
+    if proj_del then
+      proj_del.direction_deviation = 0
+    elseif target_action.action_delivery and type(target_action.action_delivery) == "table" then
+      if target_action.action_delivery.type then
+        target_action.action_delivery.direction_deviation = 0
+      elseif target_action.action_delivery[1] then
+        target_action.action_delivery[1].direction_deviation = 0
+      end
+    end
+  end
 end
 
 weaponTypes["shotgun-shell"]= { -- DO NOT USE, ONLY HERE AS FALLBACK...

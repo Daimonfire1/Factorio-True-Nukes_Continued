@@ -84,9 +84,18 @@ local function damage_entity(surface, distSq, ePos, power, fire, damage_init, bl
     end
     return
   else
-    if(t=="curved-rail") then
+    -- In Factorio 2.0 the rail prototypes were reworked: the old
+    -- "straight-rail"/"curved-rail" became "legacy-straight-rail"/"legacy-curved-rail"
+    -- and new split rail prototypes were added (curved-rail-a/b, half-diagonal-rail,
+    -- and the elevated variants). All of them still represent rails and should
+    -- get the same reduced blast damage.
+    if(t=="curved-rail" or t=="legacy-curved-rail"
+       or t=="curved-rail-a" or t=="curved-rail-b"
+       or t=="elevated-curved-rail-a" or t=="elevated-curved-rail-b") then
       damage = damage/10
-    elseif (t=="straight-rail") then
+    elseif (t=="straight-rail" or t=="legacy-straight-rail"
+            or t=="half-diagonal-rail"
+            or t=="elevated-straight-rail" or t=="elevated-half-diagonal-rail") then
       damage = damage/10
     elseif (t=="transport-belt") then
       damage = damage/10

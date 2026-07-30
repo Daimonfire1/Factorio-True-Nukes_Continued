@@ -50,7 +50,7 @@ if data.raw.ammo["armor-piercing-rifle-magazine"] then
   }
   weaponTypes["rounds-magazine"].ignore = true
 end
-weaponTypes["big-rocket"].category = "heavy-rocket"
+weaponTypes["big-rocket"].categories = {"heavy-rocket"}
 weaponTypes["big-rocket"].base_item = "heavy-rocket"
 weaponTypes["big-rocket"].extra_ingredients = nil
 

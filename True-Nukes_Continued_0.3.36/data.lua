@@ -84,7 +84,6 @@ if(settings.startup["enable-fire-shield"].value) then
       place_as_equipment_result = "fire-shield-equipment",
       subgroup = "military-equipment",
       order = "a[shield]-aA[fire-shield-equipment]",
-      default_request_amount = 5,
       stack_size = 10
     },
     {

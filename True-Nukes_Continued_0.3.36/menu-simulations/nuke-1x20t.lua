@@ -14,7 +14,7 @@ data.raw["utility-constants"]["default"].main_menu_simulations.nuke_1x20t =
     game.camera_zoom = 1
     game.tick_paused = false
     game.surfaces.nauvis.daytime = 0
-    game.forces.enemy.evolution_factor = 1
+    game.forces.enemy.set_evolution_factor(1)
 
     game.surfaces[1].create_entity{name = "atomic-rocket", position = {center[1]+100, center[2]-100}, force = "player", target = {center[1]+10, center[2]-10}, speed = 1}
 

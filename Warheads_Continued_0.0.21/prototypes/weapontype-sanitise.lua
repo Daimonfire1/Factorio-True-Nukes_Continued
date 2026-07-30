@@ -237,34 +237,68 @@ local function sanitseWeapontype(weapontype)
   if(item.ammo_category and (result.item.ammo_category == nil)) then result.item.ammo_category = item.ammo_category end
 
   -- default action creators
+  -- Helper: normalise a Trigger / TriggerDelivery value (which may be a single
+  -- item or an array of items) into an array we can safely iterate with ipairs.
+  local function as_array(t)
+    if t == nil then return {} end
+    if type(t) ~= "table" then return {} end
+    -- A single TriggerItem / TriggerDeliveryItem has a `type` string field.
+    -- An array does not (its keys are 1..n).
+    if type(t.type) == "string" then return { t } end
+    return t
+  end
+
+  -- Helper: recursively search a trigger tree for the first delivery node that
+  -- has a non-nil `field_name` value (e.g. "projectile" or "stream").
+  -- Factorio 2.0+ nests the projectile delivery inside target_effects ->
+  -- nested-result -> area -> action_delivery, so a flat lookup fails.
+  local function find_delivery_recursive(node, field_name)
+    if type(node) ~= "table" then return nil end
+
+    -- Is this node itself a delivery with the wanted field?
+    if type(node.type) == "string" and node[field_name] ~= nil then
+      return node
+    end
+
+    -- Recurse into action (Trigger: single or array)
+    for _, act in ipairs(as_array(node.action)) do
+      local r = find_delivery_recursive(act, field_name)
+      if r then return r end
+    end
+
+    -- Recurse into action_delivery (TriggerDelivery: single or array)
+    for _, del in ipairs(as_array(node.action_delivery)) do
+      local r = find_delivery_recursive(del, field_name)
+      if r then return r end
+    end
+
+    -- Recurse into target_effects (TriggerEffect may wrap a nested action)
+    for _, eff in ipairs(as_array(node.target_effects)) do
+      if eff.type == "nested-result" then
+        local r = find_delivery_recursive(eff, field_name)
+        if r then return r end
+      end
+    end
+
+    -- Recurse into source_effects
+    for _, eff in ipairs(as_array(node.source_effects)) do
+      if eff.type == "nested-result" then
+        local r = find_delivery_recursive(eff, field_name)
+        if r then return r end
+      end
+    end
+
+    return nil
+  end
+
   if not result.item.action_creator then
     if result.type == "projectile" or result.type == "artillery" then
       result.item.action_creator = function (projectile, range_mult, target_action, final_action, source_action)
         local a = table.deepcopy(item.ammo_type.action)
-        local to_use = nil
-        for _,act in pairs(a) do
-          local action = act
-          if(a.action_delivery)then
-            action = a
-          end
-          if(action.action_delivery.projectile) then
-            to_use = action.action_delivery
-          else
-            for _,del in pairs(action.action_delivery) do
-              if (type(del) == "table" and del.projectile) then
-                to_use = del
-              end
-            end
-          end
-          if(to_use) then
-            break
-          end
-        end
+        local to_use = find_delivery_recursive(a, "projectile")
         if(not to_use) then
-          log("ERROR: Cannot find projectile field")
-          log("NAME: " .. item.name)
-          local ERROR_No_projectile_field_on_item____PLEASE_REPORT_AS_BUG_ON_MOD_PAGE = nil
-          log(ERROR_No_projectile_field_on_item____PLEASE_REPORT_AS_BUG_ON_MOD_PAGE.a)
+          log("WARNING: Warheads_Continued: Cannot find projectile field on item " .. tostring(item.name) .. " - using original action unchanged. Warhead projectile will not be substituted for this weapon type.")
+          return a
         end
         to_use.projectile = projectile
         if(to_use.max_range) then
@@ -281,31 +315,10 @@ local function sanitseWeapontype(weapontype)
     elseif result.type == "stream" then
       result.item.action_creator = function (stream, range_mult, target_action, final_action, source_action)
         local a = table.deepcopy(item.ammo_type.action)
-        local to_use = nil
-
-        for _,act in pairs(a) do
-          local action = act
-          if(a.action_delivery)then
-            action = a
-          end
-          if(action.action_delivery.stream) then
-            to_use = action.action_delivery
-          else
-            for _,del in pairs(action.action_delivery) do
-              if (del.stream) then
-                to_use = del
-              end
-            end
-          end
-          if(to_use) then
-            break
-          end
-        end
+        local to_use = find_delivery_recursive(a, "stream")
         if(not to_use) then
-          log("ERROR: Cannot find stream field")
-          log("NAME: " .. item.name)
-          local ERROR_No_projectile_field_on_item____PLEASE_REPORT_AS_BUG_ON_MOD_PAGE = nil
-          log(ERROR_No_projectile_field_on_item____PLEASE_REPORT_AS_BUG_ON_MOD_PAGE.a)
+          log("WARNING: Warheads_Continued: Cannot find stream field on item " .. tostring(item.name) .. " - using original action unchanged. Warhead stream will not be substituted for this weapon type.")
+          return a
         end
         to_use.stream = stream
         if source_action then
@@ -342,31 +355,39 @@ local function sanitseWeapontype(weapontype)
     elseif result.type == "bullet" then
       result.item.action_creator = function (projectile, range_mult, target_action, final_action, source_action)
         local a = table.deepcopy(item.ammo_type.action)
+        -- For bullet type, we want the instant delivery (where target_effects
+        -- can be appended). Search recursively for a delivery with type="instant".
         local to_use = nil
-
-        for _,act in pairs(a) do
-          local action = act
-          if(a.action_delivery)then
-            action = a
+        local function find_instant_delivery(node)
+          if type(node) ~= "table" then return nil end
+          for _, del in ipairs(as_array(node.action_delivery)) do
+            if del.type == "instant" then return del end
+            -- also recurse into nested deliveries
+            local r = find_instant_delivery(del)
+            if r then return r end
           end
-          if(action.action_delivery.type) then
-            to_use = action.action_delivery
-          else
-            for _,del in pairs(action.action_delivery) do
-              if (del.type == "instant") then
-                to_use = del
-              end
+          for _, eff in ipairs(as_array(node.target_effects)) do
+            if eff.type == "nested-result" then
+              local r = find_instant_delivery(eff)
+              if r then return r end
             end
           end
-          if(to_use) then
-            break
+          for _, eff in ipairs(as_array(node.source_effects)) do
+            if eff.type == "nested-result" then
+              local r = find_instant_delivery(eff)
+              if r then return r end
+            end
           end
+          for _, act in ipairs(as_array(node.action)) do
+            local r = find_instant_delivery(act)
+            if r then return r end
+          end
+          return nil
         end
+        to_use = find_instant_delivery(a)
         if(not to_use) then
-          log("ERROR: Cannot find target_action field")
-          log("NAME: " .. item.name)
-          local ERROR_No_target_action_field_on_item____PLEASE_REPORT_AS_BUG_ON_MOD_PAGE = nil
-          log(ERROR_No_target_action_field_on_item____PLEASE_REPORT_AS_BUG_ON_MOD_PAGE.a)
+          log("WARNING: Warheads_Continued: Cannot find instant delivery on item " .. tostring(item.name) .. " - using original action unchanged. Warhead effects will not be applied to this weapon type.")
+          return a
         end
 
         if target_action then
@@ -396,13 +417,40 @@ local function sanitseWeapontype(weapontype)
       result.item.action_creator = function (projectile, range_mult, target_action, final_action, source_action)
         local a = table.deepcopy(item.capsule_action)
         a.attack_parameters.range = a.attack_parameters.range*range_mult
-        if source_action then
-          if not a.attack_parameters.ammo_type.action[2].action_delivery.source_effects then
-            a.attack_parameters.ammo_type.action[2].action_delivery.source_effects = {}
-          end
-          table.insert(to_use.source_effects, {type = "nested-result", action = source_action})
+        -- Find the projectile delivery recursively, since 2.0+ may nest it.
+        local actions = as_array(a.attack_parameters.ammo_type.action)
+        local proj_delivery = nil
+        for _, act in ipairs(actions) do
+          proj_delivery = find_delivery_recursive(act, "projectile")
+          if proj_delivery then break end
         end
-        a.attack_parameters.ammo_type.action[1].action_delivery.projectile = projectile
+        if proj_delivery then
+          proj_delivery.projectile = projectile
+        else
+          log("WARNING: Warheads_Continued: Cannot find projectile field in capsule " .. tostring(item.name) .. " - projectile not substituted.")
+        end
+        if source_action then
+          -- Find a source_effects list to append to (prefer the first action
+          -- that has one, else create one on the first action's delivery).
+          local added = false
+          for _, act in ipairs(actions) do
+            for _, del in ipairs(as_array(act.action_delivery)) do
+              if del.source_effects then
+                table.insert(del.source_effects, {type = "nested-result", action = source_action})
+                added = true
+                break
+              end
+            end
+            if added then break end
+          end
+          if not added and actions[1] then
+            local del = as_array(actions[1].action_delivery)[1]
+            if del then
+              if not del.source_effects then del.source_effects = {} end
+              table.insert(del.source_effects, {type = "nested-result", action = source_action})
+            end
+          end
+        end
         return a
 
       end
@@ -423,7 +471,7 @@ local function sanitseWeapontype(weapontype)
     end
   end
   result.recipe.energy_required = weapontype.energy_required
-  result.recipe.category = weapontype.recipe_category
+  result.recipe.categories = weapontype.categories
   result.recipe.subgroup = weapontype.recipe_subgroup
   result.recipe.hide_from_player_crafting = weapontype.hide_from_player_crafting
   result.recipe.warhead_count = weapontype.warhead_count or result.item.magazine_size

@@ -21,7 +21,7 @@ warheads["STP-incendiary-small"] = {
   clamp_position = true,
   recipe_result_count = 10,
   tech = "flammables",
-  recipe_category = "crafting-with-fluid",
+  categories = ["crafting-with-fluid"],
   ingredients = {
     {type="item", name="steel-plate", amount=2},
     {type="fluid", name="light-oil", amount=100},
@@ -44,7 +44,7 @@ warheads["STP-incendiary-mid"] = {
   clamp_position = true,
   energy_required = 40,
   tech = "flammables",
-  recipe_category = "crafting-with-fluid",
+  categories = ["crafting-with-fluid"],
   ingredients = {
     {type="item", name="steel-plate", amount=1},
     {type="fluid", name="light-oil", amount=20},
@@ -68,7 +68,7 @@ warheads["STP-napalm-mid"] = {
   energy_required = 40,
   clamp_position = true,
   tech = "flammables",
-  recipe_category = "crafting-with-fluid",
+  categories = ["crafting-with-fluid"],
   ingredients = {
     {type="item", name="advanced-circuit", amount=20},
     {type="item", name="steel-plate", amount=10},

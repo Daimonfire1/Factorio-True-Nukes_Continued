@@ -4,9 +4,9 @@
 return [[script.on_init(function() onInit() end)
 
 function onInit()
-    global.TN_shockwave_approaching = global.TN_shockwave_approaching or false
-    global.TN_shockwave_impact_tick = global.TN_shockwave_impact_tick or {}
-	global.TN_lightEffects = global.TN_lightEffects or {}
+    storage.TN_shockwave_approaching = storage.TN_shockwave_approaching or false
+    storage.TN_shockwave_impact_tick = storage.TN_shockwave_impact_tick or {}
+	storage.TN_lightEffects = storage.TN_lightEffects or {}
     -- WIP
 end
 
@@ -76,11 +76,11 @@ function createBlastSoundsAndFlash(position, surface, radius_1, radius_2, radius
 		effects.ids.flash = flash
 	end
 	effects.light_scale = light_scale;
-	if global.TN_lightEffects == nil then
-		global.TN_lightEffects = {}
+	if storage.TN_lightEffects == nil then
+		storage.TN_lightEffects = {}
 	end
 	
-	global.TN_lightEffects[#global.TN_lightEffects+1] = effects
+	storage.TN_lightEffects[#storage.TN_lightEffects+1] = effects
 		
         for i, player in pairs(game.connected_players) do
 		if player.surface.index == evtSurfaceID then
@@ -106,14 +106,14 @@ function createBlastSoundsAndFlash(position, surface, radius_1, radius_2, radius
 end
 
 function everyTick(event)	
-	if global.TN_lightEffects == nil then
-		global.TN_lightEffects = {}
+	if storage.TN_lightEffects == nil then
+		storage.TN_lightEffects = {}
 	end
-	if global.TN_lightEffects ~= nil then
-		for i, effects in pairs(global.TN_lightEffects) do
+	if storage.TN_lightEffects ~= nil then
+		for i, effects in pairs(storage.TN_lightEffects) do
 			effects.ttl = effects.ttl - 1
 			if effects.ttl <= 0 then 
-				global.TN_lightEffects[i] = nil
+				storage.TN_lightEffects[i] = nil
 			else
 				local maxDur = effects.maxDur
 				if effects.ids.flash ~= nil then
@@ -195,22 +195,22 @@ end
 
 
 script.on_init(function()
-	global.waitingNukeCratersBasic = {}		-- a simple array of the craters, {t = the number minutes it has been waiting for, pos = centre of crater, d = diameter too fill, s = surface index}
-	global.blastWaves = {}					-- a simple array, with elements:
+	storage.waitingNukeCratersBasic = {}		-- a simple array of the craters, {t = the number minutes it has been waiting for, pos = centre of crater, d = diameter too fill, s = surface index}
+	storage.blastWaves = {}					-- a simple array, with elements:
 	--{r = currrent explosion radius, pos = centre position, pow = initial blast multiplier (usually initial r*r)
 	-- , max = maximum radius, s = surface index, fire = leave fires (true for thermobarics, false for nukes), damage_init = starting damage, speed = how far to jump every round, fire_rad = the radius to which the fire wave is solid
 	-- , blast_min_damage = amount of extra damage to add all the time, itt = the number of itterations done, doItts = whether to time slice the blast, ittframe = keeps track of frame count for time slicing
 	-- , force = force of the cause of the explosion - allows allocating kills correctly, cause = allows allocating kills to the originator})
 
-	global.nukeBuildings = {} 				-- array of the LuaEntities for any nukeBuildings
+	storage.nukeBuildings = {} 				-- array of the LuaEntities for any nukeBuildings
 
-	global.cratersFast = {} 				-- map: cratersFast[surface index][xposition][yposition] = the highest water height in that area (x, y in units of 10)
-	global.cratersFastData = {}				-- map: cratersFastData[surface index] = 
+	storage.cratersFast = {} 				-- map: cratersFast[surface index][xposition][yposition] = the highest water height in that area (x, y in units of 10)
+	storage.cratersFastData = {}				-- map: cratersFastData[surface index] = 
 	-- {synch =  1-4 making deep water travel slower, xCount = number of x chunks on this surface, xCountSoFar = number of x chunks done so far this round, xDone = all x values done so far this round}
-	global.cratersFastItterationCount = 0	-- the counter of ticks for circling x chunks - counts up to 53
+	storage.cratersFastItterationCount = 0	-- the counter of ticks for circling x chunks - counts up to 53
 
 
-	global.cratersSlow = {} 				-- array of {t = time waiting - 20s units, x = xin units of 32, y = y in units of 32, surface = the surface index}
+	storage.cratersSlow = {} 				-- array of {t = time waiting - 20s units, x = xin units of 32, y = y in units of 32, surface = the surface index}
 end)
 
 -- These allow lookups to find tiles of interest in an area.
@@ -295,44 +295,44 @@ depthsForCraterWater[-1][0] = "water-mud"
 
 local function doFastCraterFilling(event) 
 	-- fast crater filling
-	if(global.cratersFast==nil) then
-		global.cratersFast = {}
+	if(storage.cratersFast==nil) then
+		storage.cratersFast = {}
 	end
-	if(global.cratersFastItterationCount == nil) then
-		global.cratersFastItterationCount = 0
+	if(storage.cratersFastItterationCount == nil) then
+		storage.cratersFastItterationCount = 0
 	end
-	if(global.cratersFastData == nil) then
-		global.cratersFastData = {}
+	if(storage.cratersFastData == nil) then
+		storage.cratersFastData = {}
 	end
-	global.cratersFastItterationCount = global.cratersFastItterationCount + 1
-	if(global.cratersFastItterationCount > 53) then
-		global.cratersFastItterationCount = 1
+	storage.cratersFastItterationCount = storage.cratersFastItterationCount + 1
+	if(storage.cratersFastItterationCount > 53) then
+		storage.cratersFastItterationCount = 1
 	end
-	for surface,chunks in pairs(global.cratersFast) do
-		global.cratersFastData[surface].synch = global.cratersFastData[surface].synch+1
-		if(global.cratersFastData[surface].synch == 5) then
-			global.cratersFastData[surface].synch = 1
+	for surface,chunks in pairs(storage.cratersFast) do
+		storage.cratersFastData[surface].synch = storage.cratersFastData[surface].synch+1
+		if(storage.cratersFastData[surface].synch == 5) then
+			storage.cratersFastData[surface].synch = 1
 		end
-		if(global.cratersFastItterationCount == 1) then
-			global.cratersFastData[surface].xCountSoFar = 0
-			global.cratersFastData[surface].xDone = {}
+		if(storage.cratersFastItterationCount == 1) then
+			storage.cratersFastData[surface].xCountSoFar = 0
+			storage.cratersFastData[surface].xDone = {}
 		end
 		for x,xchunks in pairs(chunks) do
-			if(global.cratersFastData[surface].xDone[x]==nil) then	--ignore all the ones we have already done
-				if(global.cratersFastData[surface].xCountSoFar > global.cratersFastData[surface].xCount*global.cratersFastItterationCount/53) then
+			if(storage.cratersFastData[surface].xDone[x]==nil) then	--ignore all the ones we have already done
+				if(storage.cratersFastData[surface].xCountSoFar > storage.cratersFastData[surface].xCount*storage.cratersFastItterationCount/53) then
 					break;
 				end
-				global.cratersFastData[surface].xDone[x] = 1
-				global.cratersFastData[surface].xCountSoFar = global.cratersFastData[surface].xCountSoFar + 1
+				storage.cratersFastData[surface].xDone[x] = 1
+				storage.cratersFastData[surface].xCountSoFar = storage.cratersFastData[surface].xCountSoFar + 1
 				for y,foundChunkH in pairs(xchunks) do
 					local tileChanges = {}
 					local ghostChanges = {}
 
 					local targetTiles
 					local chunkH = foundChunkH
-					if(chunkH >= 0 and global.cratersFastData[surface].synch==1) then
+					if(chunkH >= 0 and storage.cratersFastData[surface].synch==1) then
 						targetTiles = game.surfaces[surface].find_tiles_filtered{area={{x*10, y*10}, {x*10+10, y*10+10}}, name=craterTypes0}
-					elseif(chunkH >= -1 and (global.cratersFastData[surface].synch == 3 or global.cratersFastData[surface].synch == 1)) then
+					elseif(chunkH >= -1 and (storage.cratersFastData[surface].synch == 3 or storage.cratersFastData[surface].synch == 1)) then
 						targetTiles = game.surfaces[surface].find_tiles_filtered{area={{x*10, y*10}, {x*10+10, y*10+10}}, name=craterTypes1}
 					else
 						targetTiles = game.surfaces[surface].find_tiles_filtered{area={{x*10, y*10}, {x*10+10, y*10+10}}, name=craterTypes2}
@@ -379,7 +379,7 @@ local function doFastCraterFilling(event)
 							if(t.position.x == x*10) then
 								if(chunks[x-1]==nil) then
 									chunks[x-1] = {};
-									global.cratersFastData[surface].xCount = global.cratersFastData[surface].xCount + 1
+									storage.cratersFastData[surface].xCount = storage.cratersFastData[surface].xCount + 1
 								end
 								if(chunks[x-1][y]==nil) then
 									chunks[x-1][y] = currentH+1
@@ -389,7 +389,7 @@ local function doFastCraterFilling(event)
 							elseif(t.position.x == x*10+9) then
 								if(chunks[x+1]==nil) then
 									chunks[x+1] = {};
-									global.cratersFastData[surface].xCount = global.cratersFastData[surface].xCount + 1
+									storage.cratersFastData[surface].xCount = storage.cratersFastData[surface].xCount + 1
 								end
 								if(chunks[x+1][y]==nil) then
 									chunks[x+1][y] = currentH+1
@@ -417,15 +417,15 @@ local function doFastCraterFilling(event)
 						game.surfaces[surface].create_entity{name="tile-ghost",position=ghost.pos,inner_name=ghost.ghost_name,force=ghost.force}
 					end
 					xchunks[y] = chunkH; -- just to set the height back to being correct, in case it has changed (e.g. a new, higher water level has been found)
-					if global.cratersFastData[surface].synch==1 and not hasHeightDiff then
+					if storage.cratersFastData[surface].synch==1 and not hasHeightDiff then
 						xchunks[y] = nil
 						if next(xchunks) == nil then
-							global.cratersFastData[surface].xCount = global.cratersFastData[surface].xCount-1
+							storage.cratersFastData[surface].xCount = storage.cratersFastData[surface].xCount-1
 							chunks[x] = nil
 						end
 						if next(chunks) == nil then
-							global.cratersFast[surface] = nil
-							global.cratersFastData[surface] = nil
+							storage.cratersFast[surface] = nil
+							storage.cratersFastData[surface] = nil
 						end
 					end
 				end
@@ -672,7 +672,7 @@ local function moveBlast(i,blast,pastEHits)
 		end
 	end
 	if(blast.r>blast.max) then
-		table.remove(global.blastWaves, i)
+		table.remove(storage.blastWaves, i)
 	end
 end
 
@@ -691,20 +691,20 @@ end
 
 local function tickHandler(event)
 	everyTick(event)
-	if(global.blastWaves ==nil) then
-		global.blastWaves = {}
+	if(storage.blastWaves ==nil) then
+		storage.blastWaves = {}
 	end
-	if(global.nukeBuildings ==nil) then
-		global.nukeBuildings = {}
+	if(storage.nukeBuildings ==nil) then
+		storage.nukeBuildings = {}
 	end
-	if(#global.blastWaves>0) then
-		for i,blast in ipairs(global.blastWaves) do
+	if(#storage.blastWaves>0) then
+		for i,blast in ipairs(storage.blastWaves) do
 			moveBlast(i,blast,0)
 		end
 	end
 	doFastCraterFilling(event)
-	if(#global.nukeBuildings>0) then
-		for i,building in ipairs(global.nukeBuildings) do
+	if(#storage.nukeBuildings>0) then
+		for i,building in ipairs(storage.nukeBuildings) do
 			if(building.valid) then
 				if(not building.get_output_inventory().is_empty()) then
 					nukeBuildingDetonate(building)
@@ -719,7 +719,7 @@ local function tickHandler(event)
 					end
 				end
 			else
-				table.remove(global.nukeBuildings, i)
+				table.remove(storage.nukeBuildings, i)
 			end
 		end
 	end
@@ -883,15 +883,15 @@ local function nukeTileChangesHeightAwareHuge(position, check_craters, surface_i
 					height = -1;
 				end
 				-- have both water and crater
-				if(global.cratersFast[surface_index]==nil)then
-					global.cratersFast[surface_index] = {}
-					global.cratersFastData[surface_index] = {synch = 0, xCount = 0, xCountSoFar = 0, xDone = {}}
+				if(storage.cratersFast[surface_index]==nil)then
+					storage.cratersFast[surface_index] = {}
+					storage.cratersFastData[surface_index] = {synch = 0, xCount = 0, xCountSoFar = 0, xDone = {}}
 				end
-				if(global.cratersFast[surface_index][xChunkPos]==nil)then
-					global.cratersFast[surface_index][xChunkPos] = {}
-					global.cratersFastData[surface_index].xCount = global.cratersFastData[surface_index].xCount + 1
+				if(storage.cratersFast[surface_index][xChunkPos]==nil)then
+					storage.cratersFast[surface_index][xChunkPos] = {}
+					storage.cratersFastData[surface_index].xCount = storage.cratersFastData[surface_index].xCount + 1
 				end
-				global.cratersFast[surface_index][xChunkPos][yChunkPos] = height
+				storage.cratersFast[surface_index][xChunkPos][yChunkPos] = height
 			end
 		end
 	end
@@ -899,7 +899,7 @@ local function nukeTileChangesHeightAwareHuge(position, check_craters, surface_i
 	for xChunkPos = math.floor((position.x-fireball_r*1.1)/32-1),math.floor((position.x+fireball_r*1.1)/32+1) do
 		for yChunkPos = math.floor((position.y-fireball_r*1.1)/32-1),math.floor((position.y+fireball_r*1.1)/32+1) do
 			if (not (game.surfaces[surface_index].count_tiles_filtered{area={{xChunkPos*32, yChunkPos*32}, {xChunkPos*32+32, yChunkPos*32+32}}, name = craterTypes0, limit = 1} == 0)) then
-				table.insert(global.cratersSlow, {t = 0, x = xChunkPos, y = yChunkPos, surface = surface_index});
+				table.insert(storage.cratersSlow, {t = 0, x = xChunkPos, y = yChunkPos, surface = surface_index});
 			end
 		end
 	end
@@ -1102,26 +1102,26 @@ local function nukeTileChangesHeightAware(position, check_craters, surface_index
 					height = -1;
 				end
 				-- have both water and crater
-				if(global.cratersFast[surface_index]==nil)then
-					global.cratersFast[surface_index] = {}
-					global.cratersFastData[surface_index] = {synch = 0, xCount = 0, xCountSoFar = 0, xDone = {}}
+				if(storage.cratersFast[surface_index]==nil)then
+					storage.cratersFast[surface_index] = {}
+					storage.cratersFastData[surface_index] = {synch = 0, xCount = 0, xCountSoFar = 0, xDone = {}}
 				end
-				if(global.cratersFast[surface_index][xChunkPos]==nil)then
-					global.cratersFast[surface_index][xChunkPos] = {}
-					global.cratersFastData[surface_index].xCount = global.cratersFastData[surface_index].xCount + 1
+				if(storage.cratersFast[surface_index][xChunkPos]==nil)then
+					storage.cratersFast[surface_index][xChunkPos] = {}
+					storage.cratersFastData[surface_index].xCount = storage.cratersFastData[surface_index].xCount + 1
 				end
-				global.cratersFast[surface_index][xChunkPos][yChunkPos] = height
+				storage.cratersFast[surface_index][xChunkPos][yChunkPos] = height
 			end
 		end
 	end
-	if(not global.cratersSlow) then
-		global.cratersSlow = {}
+	if(not storage.cratersSlow) then
+		storage.cratersSlow = {}
 	end
 	-- slow filling - no checks required, all the chunks get this anyway
 	for xChunkPos = math.floor((position.x-fireball_r*1.1)/32-1),math.floor((position.x+fireball_r*1.1)/32+1) do
 		for yChunkPos = math.floor((position.y-fireball_r*1.1)/32-1),math.floor((position.y+fireball_r*1.1)/32+1) do
 			if (not (game.surfaces[surface_index].count_tiles_filtered{area={{xChunkPos*32, yChunkPos*32}, {xChunkPos*32+32, yChunkPos*32+32}}, name = craterTypes0, limit = 1} == 0)) then
-				table.insert(global.cratersSlow, {t = 0, x = xChunkPos, y = yChunkPos, surface = surface_index});
+				table.insert(storage.cratersSlow, {t = 0, x = xChunkPos, y = yChunkPos, surface = surface_index});
 			end
 		end
 	end
@@ -1150,7 +1150,7 @@ local function nukeTileChanges(position, check_craters, surface_index, crater_in
 
 		-- mandelbrodt - Moved from above to check if crater is next to water before appending to waitingNukeCratersBasic
 		if crater_internal_r>0 and settings.global["crater-water-filling"].value and not is_waterfilled then
-			table.insert(global.waitingNukeCratersBasic, {t = 0, pos = position, d = crater_internal_r, s = surface_index})
+			table.insert(storage.waitingNukeCratersBasic, {t = 0, pos = position, d = crater_internal_r, s = surface_index})
 		end
 	end
 	if ((not check_craters) or not is_waterfilled) then
@@ -1198,8 +1198,8 @@ local function atomic_weapon_hit(event, crater_internal_r, crater_external_r, fi
 		force = "enemy"
 	 end
 	 local cause = event.source_entity;
-	 if(global.waitingNukeCratersBasic ==nil) then
-		global.waitingNukeCratersBasic = {}
+	 if(storage.waitingNukeCratersBasic ==nil) then
+		storage.waitingNukeCratersBasic = {}
 	 end
 
 	 -- force the map to generate (should be reasonably quick as it is pre-loaded)
@@ -1329,7 +1329,7 @@ local function atomic_weapon_hit(event, crater_internal_r, crater_external_r, fi
 			end
 		end
 	 end
-	 table.insert(global.blastWaves, {r = fireball_r, pos = position, pow = fireball_r*fireball_r, max = blast_max_r, s = event.surface_index, fire = false, damage_init = 5000.0, speed = 8, fire_rad = 0, blast_min_damage = 0, itt = 1, doItts = true, ittframe = 1, force = force, cause = cause})
+	 table.insert(storage.blastWaves, {r = fireball_r, pos = position, pow = fireball_r*fireball_r, max = blast_max_r, s = event.surface_index, fire = false, damage_init = 5000.0, speed = 8, fire_rad = 0, blast_min_damage = 0, itt = 1, doItts = true, ittframe = 1, force = force, cause = cause})
 end
 
 local function thermobaric_weapon_hit(event, explosion_r, blast_max_r, fire_r, load_r, visable_r)
@@ -1350,7 +1350,7 @@ local function thermobaric_weapon_hit(event, explosion_r, blast_max_r, fire_r, l
 	 for _,v in pairs(game.surfaces[event.surface_index].find_tiles_filtered{position=position, radius=explosion_r}) do
 		game.surfaces[event.surface_index].create_entity{name="fire-flame",position=v.position}
 	 end
-	 table.insert(global.blastWaves, {r = explosion_r, pos = position, pow = explosion_r*explosion_r, max = blast_max_r, s = event.surface_index, fire = true, damage_init = 600.0, speed = 1, fire_rad = fire_r, blast_min_damage = 30, itt = 1, doItts = false, ittframe = 1, force = force, cause = cause})
+	 table.insert(storage.blastWaves, {r = explosion_r, pos = position, pow = explosion_r*explosion_r, max = blast_max_r, s = event.surface_index, fire = true, damage_init = 600.0, speed = 1, fire_rad = fire_r, blast_min_damage = 30, itt = 1, doItts = false, ittframe = 1, force = force, cause = cause})
 end
 
 
@@ -1427,7 +1427,7 @@ script.on_event(defines.events.on_script_trigger_effect, function(event)
   elseif(event.effect_id=="Nuke firing") then
 	 nukeFiredScan(event);
   elseif(event.effect_id=="Mega-nuke built") then
-	 table.insert(global.nukeBuildings, event.source_entity)
+	 table.insert(storage.nukeBuildings, event.source_entity)
   end
 
 end)
@@ -1436,10 +1436,10 @@ end)
 
 script.on_nth_tick(1207, function(event)
 	-- slow crater filling
-	if(global.cratersSlow == nil) then
-		global.cratersSlow = {}
+	if(storage.cratersSlow == nil) then
+		storage.cratersSlow = {}
 	end
-	for index,chunk in pairs(global.cratersSlow) do
+	for index,chunk in pairs(storage.cratersSlow) do
 		chunk.t = chunk.t+1;
 		if(chunk.t>30) then
 			local target = nil
@@ -1486,7 +1486,7 @@ script.on_nth_tick(1207, function(event)
 					target = targets[math.random(1, #targets)]
 				end
 			else
-				global.cratersSlow[index] = nil
+				storage.cratersSlow[index] = nil
 			end
 			if not (target==nil) then
 				local h = waterInCraterGoingInDepths[target.name]+1
@@ -1502,19 +1502,19 @@ script.on_nth_tick(1207, function(event)
 					game.surfaces[chunk.surface].create_entity{name="tile-ghost",position={pos.x+0.5, pos.y+0.5},inner_name=t.ghost_name,force=t.force}
 				end
 
-				if(global.cratersFast[chunk.surface]==nil)then
-					global.cratersFast[chunk.surface] = {}
-					global.cratersFastData[chunk.surface] = {synch = 0, xCount = 0, xCountSoFar = 0, xDone = {}}
+				if(storage.cratersFast[chunk.surface]==nil)then
+					storage.cratersFast[chunk.surface] = {}
+					storage.cratersFastData[chunk.surface] = {synch = 0, xCount = 0, xCountSoFar = 0, xDone = {}}
 				end
 				local xChunkPos = math.floor(pos.x/10)
-				if(global.cratersFast[chunk.surface][xChunkPos]==nil)then
-					global.cratersFast[chunk.surface][xChunkPos] = {}
-					global.cratersFastData[chunk.surface].xCount = global.cratersFastData[chunk.surface].xCount + 1
+				if(storage.cratersFast[chunk.surface][xChunkPos]==nil)then
+					storage.cratersFast[chunk.surface][xChunkPos] = {}
+					storage.cratersFastData[chunk.surface].xCount = storage.cratersFastData[chunk.surface].xCount + 1
 				end
-				if(global.cratersFast[chunk.surface][xChunkPos][math.floor((pos.y)/10)] == nil) then
-					global.cratersFast[chunk.surface][xChunkPos][math.floor((pos.y)/10)] = h
+				if(storage.cratersFast[chunk.surface][xChunkPos][math.floor((pos.y)/10)] == nil) then
+					storage.cratersFast[chunk.surface][xChunkPos][math.floor((pos.y)/10)] = h
 				else
-					global.cratersFast[chunk.surface][xChunkPos][math.floor((pos.y)/10)] = math.max(global.cratersFast[chunk.surface][xChunkPos][math.floor((pos.y)/10)], h)
+					storage.cratersFast[chunk.surface][xChunkPos][math.floor((pos.y)/10)] = math.max(storage.cratersFast[chunk.surface][xChunkPos][math.floor((pos.y)/10)], h)
 				end
 			end
 		end
@@ -1524,11 +1524,11 @@ end)
 
 script.on_nth_tick(3601, function(event)
 	-- handling crater filling for non-height aware craters
-	if(global.waitingNukeCratersBasic ==nil) then
-		global.waitingNukeCratersBasic = {}
+	if(storage.waitingNukeCratersBasic ==nil) then
+		storage.waitingNukeCratersBasic = {}
 	end
-	if(#global.waitingNukeCratersBasic>0) then
-		for _,v in pairs(global.waitingNukeCratersBasic) do
+	if(#storage.waitingNukeCratersBasic>0) then
+		for _,v in pairs(storage.waitingNukeCratersBasic) do
 			if(v["t"]>5+v["d"]) then
 				local force = nil
 				for _,w in pairs(game.surfaces[v["s"] ].find_entities_filtered{position=v["pos"], radius=v["t"]-4}) do
@@ -1542,7 +1542,7 @@ script.on_nth_tick(3601, function(event)
 						game.surfaces[v["s"] ].create_entity{name="tile-ghost",position=w.position,inner_name="landfill",force=force}
 					end
 				end
-				table.remove(global.waitingNukeCratersBasic, i)
+				table.remove(storage.waitingNukeCratersBasic, i)
 			else 
 				v["t"] = v["t"]+1
 				if(v["t"]>5) then

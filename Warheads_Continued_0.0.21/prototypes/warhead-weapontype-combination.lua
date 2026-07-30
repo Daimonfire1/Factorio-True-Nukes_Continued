@@ -141,7 +141,7 @@ local function combine(weapontype, warheadWeapon)
   recipe.name = name
   recipe.enabled = false
   recipe.order = weapontype.order .. warheadWeapon.appendOrder
-  recipe.category = weapontype.recipe.category
+  recipe.categories = weapontype.recipe.categories
   recipe.subgroup = weapontype.recipe.subgroup
   recipe.energy_required = weapontype.recipe.energy_required * warheadWeapon.recipe.energy_required_modifier
   recipe.crafting_machine_tint = warheadWeapon.recipe.crafting_machine_tint

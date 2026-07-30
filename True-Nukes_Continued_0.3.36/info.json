@@ -1,11 +1,11 @@
 {
 	"name": "True-Nukes_Continued",
-	"version": "0.3.36",
+	"version": "0.3.37",
 	"title": "True Nukes Continued",
 	"author": "Daimonfire",
 	"description": "Adds realistic nuclear blasts, and more nuclear options.",
 	"homepage": "https://github.com/Daimonfire1/Factorio-True-Nukes_Continued",
-	"factorio_version": "2.0",
+	"factorio_version": "2.1",
 	"dependencies": [
 		"Warheads_Continued",
 		"? SchallTankPlatoon",

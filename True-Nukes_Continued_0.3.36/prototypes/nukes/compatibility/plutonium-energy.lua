@@ -13,8 +13,8 @@ if (data.raw.technology["californium-processing"]) then
 end
 
 if (data.raw.technology["tritium-breeder-fuel-cell"]) then
-  data.raw.item["tritium-breeder-fuel-cell"].fuel_category = "nuclear-breeder"
+  data.raw.item["tritium-breeder-fuel-cell"].fuel_categories = {"nuclear-breeder"}
 end
 if (data.raw.technology["advanced-tritium-breeder-fuel-cell"]) then
-  data.raw.item["advanced-tritium-breeder-fuel-cell"].fuel_category = "nuclear-breeder"
+  data.raw.item["advanced-tritium-breeder-fuel-cell"].fuel_categories = {"nuclear-breeder"}
 end
