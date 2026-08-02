@@ -44,7 +44,7 @@ for _,w in pairs(warheads_to_add) do
           {type = "item", name = "detonation" .. warhead.appendName .. explosion.appendName .. w.label, amount = 1}
         },
       }
-      if data.raw.tool["test-pack" .. warhead.appendName .. explosion.appendName .. w.label] then
+      if data.raw.item["test-pack" .. warhead.appendName .. explosion.appendName .. w.label] then
         table.insert(recipe.results, {type = "item", name = "test-pack" .. warhead.appendName .. explosion.appendName .. w.label, amount = 1})
         recipe.main_product = "test-pack" .. w.name .. w.label
       end
@@ -152,7 +152,7 @@ data:extend{
     stack_size = 1
   },
   {
-    type = "furnace",
+    type = "assembling-machine",
     name = "nuclear-test-site",
     is_military_target = true,
     icon = "__True-Nukes_Continued__/graphics/nuclear-test-building.png",

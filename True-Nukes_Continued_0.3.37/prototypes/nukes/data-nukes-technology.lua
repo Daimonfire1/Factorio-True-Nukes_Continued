@@ -14,15 +14,12 @@ if(settings.startup["enable-nuclear-tests"].value) then
   if(warheads["TN-warhead-20--1"]) then
     data:extend{
       {
-        type = "tool",
+        type = "item",
         name = "test-pack-atomic-20t-1",
         icons = appearance(warheads["TN-warhead-20--1"]).icons,
         subgroup = "science-pack",
         order = "za[atomic-20t-science-pack]",
         stack_size = 200,
-        durability = 1,
-        durability_description_key = "description.science-pack-remaining-amount-key",
-        durability_description_value = "description.science-pack-remaining-amount-value"
       }
     }
     generateWarheadAnyway["TN-warhead-20--1"] = true
@@ -31,15 +28,12 @@ if(settings.startup["enable-nuclear-tests"].value) then
   if(warheads["TN-warhead-500--1"]) then
     data:extend{
       {
-        type = "tool",
+        type = "item",
         name = "test-pack-atomic-500t-1",
         icons = appearance(warheads["TN-warhead-500--1"]).icons,
         subgroup = "science-pack",
         order = "zb[atomic-500t-science-pack]",
         stack_size = 200,
-        durability = 1,
-        durability_description_key = "description.science-pack-remaining-amount-key",
-        durability_description_value = "description.science-pack-remaining-amount-value"
       }
     }
     generateWarheadAnyway["TN-warhead-500--1"] = true
@@ -48,15 +42,12 @@ if(settings.startup["enable-nuclear-tests"].value) then
   if(warheads["TN-warhead-20--3"]) then
     data:extend{
       {
-        type = "tool",
+        type = "item",
         name = "test-pack-atomic-20t-3",
         icons = appearance(warheads["TN-warhead-20--3"]).icons,
         subgroup = "science-pack",
         order = "zc[atomic-20t-science-pack]",
         stack_size = 200,
-        durability = 1,
-        durability_description_key = "description.science-pack-remaining-amount-key",
-        durability_description_value = "description.science-pack-remaining-amount-value"
       }
     }
     generateWarheadAnyway["TN-warhead-20--3"] = true
@@ -65,15 +56,12 @@ if(settings.startup["enable-nuclear-tests"].value) then
   if(warheads["TN-warhead-1k--1"]) then
     data:extend{
       {
-        type = "tool",
+        type = "item",
         name = "test-pack-atomic-1kt-1",
         icons = appearance(warheads["TN-warhead-1k--1"]).icons,
         subgroup = "science-pack",
         order = "ze[atomic-1kt-science-pack]",
         stack_size = 200,
-        durability = 1,
-        durability_description_key = "description.science-pack-remaining-amount-key",
-        durability_description_value = "description.science-pack-remaining-amount-value"
       }
     }
     generateWarheadAnyway["TN-warhead-1k--1"] = true
@@ -82,15 +70,12 @@ if(settings.startup["enable-nuclear-tests"].value) then
   if(warheads["TN-warhead-15k--1"]) then
     data:extend{
       {
-        type = "tool",
+        type = "item",
         name = "test-pack-atomic-15kt-1",
         icons = appearance(warheads["TN-warhead-15k--1"]).icons,
         subgroup = "science-pack",
         order = "zd[atomic-15kt-science-pack]",
         stack_size = 200,
-        durability = 1,
-        durability_description_key = "description.science-pack-remaining-amount-key",
-        durability_description_value = "description.science-pack-remaining-amount-value"
       }
     }
     generateWarheadAnyway["TN-warhead-15k--1"] = true
@@ -99,15 +84,12 @@ if(settings.startup["enable-nuclear-tests"].value) then
   if(warheads["TN-warhead-big--1"]) then
     data:extend{
       {
-        type = "tool",
+        type = "item",
         name = "test-pack-atomic-2-stage-100kt-1",
         icons = appearance(warheads["TN-warhead-big--1"].explosions[2]).icons,
         subgroup = "science-pack",
         order = "ze[atomic-100kt-science-pack]",
         stack_size = 200,
-        durability = 1,
-        durability_description_key = "description.science-pack-remaining-amount-key",
-        durability_description_value = "description.science-pack-remaining-amount-value"
       }
     }
     generateWarheadAnyway["TN-warhead-big--1"] = true
@@ -180,7 +162,7 @@ data.raw.technology["atomic-bomb"].prerequisites = {"basic-atomic-weapons", "pro
 
 
 data.raw.technology["atomic-bomb"].unit.count = 1
-if(data.raw.tool["test-pack-atomic-20t-1"]) then
+if(data.raw.item["test-pack-atomic-20t-1"]) then
   -- data.raw.technology["atomic-bomb"].research_trigger = {type = "scripted", trigger_description = "Detonate a 20t test pack"}
   data.raw.technology["atomic-bomb"].research_trigger = {type = "craft-item", item = "test-pack-atomic-20t-1", count = 1}
   --data.raw.technology["atomic-bomb"].unit.ingredients = {{"test-pack-atomic-20t-1", 1}}
@@ -256,7 +238,7 @@ if(hasLarge) then
       order = "e-a-f"
     },
   }
-  if(data.raw.tool["test-pack-atomic-500t-1"]) then
+  if(data.raw.item["test-pack-atomic-500t-1"]) then
     data.raw.technology["full-fission-atomics"].research_trigger = {type = "craft-item", item = "test-pack-atomic-500t-1", count = 1}
     --data.raw.technology["full-fission-atomics"].unit =
     --  {
@@ -415,11 +397,11 @@ if(hasCompact15kt or hasCompactLarge) then
   end
   local canDoTest = true
 
-  if(data.raw.tool["test-pack-atomic-15kt-1"]) then
+  if(data.raw.item["test-pack-atomic-15kt-1"]) then
     -- data.raw.technology["compact-full-fission-weapons"].research_trigger = {type = "scripted", trigger_description = "Detonate a 15kt test pack"}
     data.raw.technology["compact-full-fission-weapons"].research_trigger = {type = "craft-item", item = "test-pack-atomic-15kt-1", count = 1}
     --table.insert(data.raw.technology["compact-full-fission-weapons"].unit.ingredients, {"test-pack-atomic-15kt-1", 1})
-  elseif(data.raw.tool["test-pack-atomic-1kt-1"])then
+  elseif(data.raw.item["test-pack-atomic-1kt-1"])then
     -- data.raw.technology["compact-full-fission-weapons"].research_trigger = {type = "scripted", trigger_description = "Detonate a 1kt test pack"}
     data.raw.technology["compact-full-fission-weapons"].research_trigger = {type = "craft-item", item = "test-pack-atomic-1kt-1", count = 1}
     --table.insert(data.raw.technology["compact-full-fission-weapons"].unit.ingredients, {"test-pack-atomic-1kt-1", 1})
@@ -429,7 +411,7 @@ if(hasCompact15kt or hasCompactLarge) then
   if(data.raw.technology["compact-californium-weapons"]) then
     table.insert(data.raw.technology["compact-full-fission-weapons"].prerequisites, "compact-californium-weapons")
 
-    if(data.raw.tool["test-pack-atomic-20t-3"] and canDoTest) then
+    if(data.raw.item["test-pack-atomic-20t-3"] and canDoTest) then
       data.raw.technology["compact-full-fission-weapons"].research_trigger = {type = "craft-item", item = "test-pack-atomic-20t-3", count = 1}
       --table.insert(data.raw.technology["compact-full-fission-weapons"].unit.ingredients, {"test-pack-atomic-20t-3", 1})
     end
@@ -555,7 +537,7 @@ if(hasCompactFusion) then
     }
   }
 
-  if(data.raw.tool["test-pack-atomic-2-stage-100kt-1"]) then
+  if(data.raw.item["test-pack-atomic-2-stage-100kt-1"]) then
     data.raw.technology["compact-fusion-weapons"].research_trigger = {type = "craft-item", item = "test-pack-atomic-2-stage-100kt-1", count = 1}
     --data.raw.technology["compact-fusion-weapons"].unit =
     --  {
